@@ -3,20 +3,27 @@
     "description": "CaenCamp",
     "version": "2.0.0",
     "license": "MIT",
-    "keywords": ["caencamp", "caen", "meetup"],
+    "keywords": [
+        "caencamp",
+        "caen",
+        "meetup"
+    ],
     "bugs": {
         "url": "https://github.com/CaenCamp/new-website/issues"
     },
     "homepage": "https://github.com/CaenCamp/new-website#readme",
     "scripts": {
-        "develop": "gatsby develop",
+        "develop": "gatsby develop --host 0.0.0.0",
         "build": "gatsby build",
         "serve": "gatsby serve",
         "precommit": "lint-staged",
         "format": "./node_modules/eslint/bin/eslint.js --fix ."
     },
     "lint-staged": {
-        "*.js": ["./node_modules/eslint/bin/eslint.js --fix ./src", "git add"]
+        "*.js": [
+            "./node_modules/eslint/bin/eslint.js --fix ./src",
+            "git add"
+        ]
     },
     "dependencies": {
         "gatsby": "^1.9.36",

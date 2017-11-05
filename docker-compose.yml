@@ -1,0 +1,10 @@
+version: '3'
+services:
+  gatsby:
+    image: node:8-alpine
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - 8000:8000
+    command: npm run develop
