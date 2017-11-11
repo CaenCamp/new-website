@@ -11,3 +11,14 @@ start: ## run gatsby in develop mode
 
 build: ## build site
 	@npm run build
+
+test: test-unit ## launch test unit and e2e
+
+test-unit: ## launch test unit
+	@npm run test
+
+test-unit-watch: ## launch test unit in watch mode
+	@npm run test:watch
+
+storybook: ## Start CaenCamp storybook
+	@npm run storybook

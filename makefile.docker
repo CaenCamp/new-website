@@ -18,10 +18,10 @@ logs: ## Display logs from docker
 build: ## build site with docker
 	@docker-compose run --rm gatsby npm run build
 
-test: test-unit ## lauch test unit and e2e
+test: test-unit ## launch test unit and e2e
 
-test-unit: ## lauch test unit
+test-unit: ## launch test unit
 	@docker-compose run --rm gatsby npm run test
 
-test-unit-watch: ## lauch test unit
+test-unit-watch: ## launch test unit  in watch mode
 	@docker-compose run --rm gatsby npm run test:watch
