@@ -3,42 +3,29 @@
     "description": "CaenCamp",
     "version": "2.0.0",
     "license": "MIT",
-    "keywords": [
-        "caencamp",
-        "caen",
-        "meetup"
-    ],
+    "keywords": ["caencamp", "caen", "meetup"],
     "bugs": {
         "url": "https://github.com/CaenCamp/new-website/issues"
     },
     "homepage": "https://github.com/CaenCamp/new-website#readme",
     "scripts": {
-        "develop": "gatsby develop --host 0.0.0.0",
-        "build": "gatsby build",
-        "serve": "gatsby serve",
-        "precommit": "lint-staged",
+        "develop": "./node_modules/.bin/gatsby develop --host 0.0.0.0",
+        "build": "./node_modules/.bin/gatsby build",
+        "serve": "./node_modules/.bin/gatsby serve",
         "format": "./node_modules/eslint/bin/eslint.js --fix ."
     },
-    "lint-staged": {
-        "*.js": [
-            "./node_modules/eslint/bin/eslint.js --fix ./src",
-            "git add"
-        ]
-    },
     "dependencies": {
-        "gatsby": "^1.9.36",
-        "gatsby-link": "^1.4.1"
+        "gatsby": "1.9.108",
+        "gatsby-link": "1.6.26"
     },
     "devDependencies": {
-        "babel-eslint": "^7.2.3",
-        "eslint": "^4.6.1",
-        "eslint-config-prettier": "^2.4.0",
-        "eslint-plugin-import": "^2.7.0",
-        "eslint-plugin-jsx-a11y": "^6.0.2",
-        "eslint-plugin-prettier": "^2.2.0",
-        "eslint-plugin-react": "^7.3.0",
-        "husky": "^0.14.3",
-        "lint-staged": "^4.1.3",
-        "prettier": "^1.6.1"
+        "babel-eslint": "8.0.2",
+        "eslint": "4.11.0",
+        "eslint-config-prettier": "2.7.0",
+        "eslint-plugin-import": "2.8.0",
+        "eslint-plugin-jsx-a11y": "6.0.2",
+        "eslint-plugin-prettier": "2.3.1",
+        "eslint-plugin-react": "7.4.0",
+        "prettier": "1.8.2"
     }
 }

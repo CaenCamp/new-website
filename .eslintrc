@@ -1,20 +1,30 @@
 {
-    "parser": "babel-eslint",
+    "extends": [
+        "react-app",
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "prettier",
+        "prettier/react"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "plugins": [
+        "import",
+        "prettier"
+    ],
     "env": {
         "es6": true,
+        "jest": true,
         "mocha": true,
         "node": true,
         "browser": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:react/recommended",
-        "prettier",
-        "prettier/react"
-    ],
-    "plugins": ["react", "prettier"],
     "rules": {
         "prettier/prettier": [
             "error",
@@ -24,11 +34,12 @@
                 "trailingComma": "all"
             }
         ],
-        "import/no-extraneous-dependencies": "off",
-        "no-console": ["error", { "allow": ["warn", "error"] }],
-        "no-unused-vars": ["error", { "ignoreRestSiblings": true }]
-    },
-    "globals": {
-        "graphql": true
+        "no-unused-vars": [
+            "error",
+            {
+                "ignoreRestSiblings": true
+            }
+        ],
+        "no-console": ["warn"]
     }
 }

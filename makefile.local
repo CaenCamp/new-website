@@ -6,10 +6,8 @@ help:
 install: package.json ## install dependencies
 	@npm install
 
-develop: ## run gatsby in develop mode
+start: ## run gatsby in develop mode
 	@npm run develop
-
-run: develop ## classical make run
 
 build: ## build site
 	@npm run build
