@@ -14,10 +14,7 @@
             "experimentalObjectRestSpread": true
         }
     },
-    "plugins": [
-        "import",
-        "prettier"
-    ],
+    "plugins": ["import", "prettier"],
     "env": {
         "es6": true,
         "jest": true,

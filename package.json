@@ -9,23 +9,40 @@
     },
     "homepage": "https://github.com/CaenCamp/new-website#readme",
     "scripts": {
-        "develop": "./node_modules/.bin/gatsby develop --host 0.0.0.0",
         "build": "./node_modules/.bin/gatsby build",
+        "develop": "./node_modules/.bin/gatsby develop --host 0.0.0.0",
+        "format": "./node_modules/eslint/bin/eslint.js --fix .",
         "serve": "./node_modules/.bin/gatsby serve",
-        "format": "./node_modules/eslint/bin/eslint.js --fix ."
+        "test:watch": "jest --watch",
+        "test": "jest"
     },
     "dependencies": {
         "gatsby": "1.9.108",
-        "gatsby-link": "1.6.26"
+        "gatsby-link": "1.6.26",
+        "gatsby-plugin-react-next": "1.0.4"
     },
     "devDependencies": {
         "babel-eslint": "8.0.2",
+        "babel-jest": "21.2.0",
+        "babel-preset-es2015": "6.24.1",
+        "babel-preset-react": "6.24.1",
+        "enzyme": "3.1.1",
+        "enzyme-adapter-react-16": "1.0.4",
         "eslint": "4.11.0",
         "eslint-config-prettier": "2.7.0",
         "eslint-plugin-import": "2.8.0",
         "eslint-plugin-jsx-a11y": "6.0.2",
         "eslint-plugin-prettier": "2.3.1",
         "eslint-plugin-react": "7.4.0",
+        "expect": "21.2.1",
+        "jest": "21.2.1",
         "prettier": "1.8.2"
+    },
+    "jest": {
+        "collectCoverage": false,
+        "moduleFileExtensions": ["js"],
+        "setupFiles": ["./src/setupTests.js"],
+        "testPathIgnorePatterns": ["/node_modules/", "/templates/", "/.cache"],
+        "testRegex": "(e2e|src)/.*\\.test\\.js$"
     }
 }
