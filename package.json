@@ -3,7 +3,11 @@
     "description": "CaenCamp",
     "version": "2.0.0",
     "license": "MIT",
-    "keywords": ["caencamp", "caen", "meetup"],
+    "keywords": [
+        "caencamp",
+        "caen",
+        "meetup"
+    ],
     "bugs": {
         "url": "https://github.com/CaenCamp/new-website/issues"
     },
@@ -36,13 +40,22 @@
         "eslint-plugin-react": "7.4.0",
         "expect": "21.2.1",
         "jest": "21.2.1",
+        "jest-cli": "21.2.1",
         "prettier": "1.8.2"
     },
     "jest": {
         "collectCoverage": false,
-        "moduleFileExtensions": ["js"],
-        "setupFiles": ["./src/setupTests.js"],
-        "testPathIgnorePatterns": ["/node_modules/", "/templates/", "/.cache"],
+        "moduleFileExtensions": [
+            "js"
+        ],
+        "setupFiles": [
+            "./src/setupTests.js"
+        ],
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/templates/",
+            "/.cache"
+        ],
         "testRegex": "(e2e|src)/.*\\.test\\.js$"
     }
 }
