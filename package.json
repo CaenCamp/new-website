@@ -3,7 +3,11 @@
     "description": "CaenCamp",
     "version": "2.0.0",
     "license": "MIT",
-    "keywords": ["caencamp", "caen", "meetup"],
+    "keywords": [
+        "caencamp",
+        "caen",
+        "meetup"
+    ],
     "bugs": {
         "url": "https://github.com/CaenCamp/new-website/issues"
     },
@@ -14,8 +18,9 @@
         "format": "./node_modules/eslint/bin/eslint.js --fix .",
         "serve": "./node_modules/.bin/gatsby serve",
         "storybook": "start-storybook -p 9001 -c .storybook",
-        "test:watch": "jest --watch",
-        "test": "jest"
+        "test:watch": "jest --config ./src/jest.config.json --watch",
+        "test": "jest --config ./src/jest.config.json",
+        "e2e": "jest --config ./e2e/jest.config.json"
     },
     "dependencies": {
         "gatsby": "1.9.108",
@@ -44,13 +49,7 @@
         "expect": "21.2.1",
         "jest": "21.2.1",
         "jest-cli": "21.2.1",
-        "prettier": "1.8.2"
-    },
-    "jest": {
-        "collectCoverage": false,
-        "moduleFileExtensions": ["js"],
-        "setupFiles": ["./src/setupTests.js"],
-        "testPathIgnorePatterns": ["/node_modules/", "/templates/", "/.cache"],
-        "testRegex": "(e2e|src)/.*\\.test\\.js$"
+        "prettier": "1.8.2",
+        "puppeteer": "0.13.0"
     }
 }

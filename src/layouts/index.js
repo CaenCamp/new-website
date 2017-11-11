@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Hello from '../components/hello';
+import Hello from '../components/Hello';
 
 class TemplateWrapper extends Component {
     render() {

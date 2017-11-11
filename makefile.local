@@ -12,13 +12,17 @@ start: ## run gatsby in develop mode
 build: ## build site
 	@npm run build
 
-test: test-unit ## launch test unit and e2e
+serve: ## Start server for builded site
+	@npm run serve
 
 test-unit: ## launch test unit
 	@npm run test
 
 test-unit-watch: ## launch test unit in watch mode
 	@npm run test:watch
+
+test-e2e: ## launch test unit
+	@npm run e2e
 
 storybook: ## Start CaenCamp storybook
 	@npm run storybook

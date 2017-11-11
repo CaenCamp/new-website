@@ -16,3 +16,11 @@ services:
     ports:
       - 9001:9001
     command: npm run storybook
+  website:
+    image: alekzonder/puppeteer:latest
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - 9000:9000
+    command: npm run serve

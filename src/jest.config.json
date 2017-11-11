@@ -1,0 +1,9 @@
+{
+    "name": "CaenCamp website unit tests",
+    "collectCoverage": false,
+    "moduleFileExtensions": ["js"],
+    "setupFiles": ["./setupTests.js"],
+    "testPathIgnorePatterns": ["/node_modules/", "/templates/", "/.cache"],
+    "testRegex": "src/.*\\.test\\.js$",
+    "verbose": true
+}
