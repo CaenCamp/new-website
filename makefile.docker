@@ -29,7 +29,6 @@ test-unit-watch: ## launch test unit  in watch mode
 
 test-e2e: ## launch test e2e
 	@echo " " && echo "** Start tests e2e"
-	@make start # > /dev/null 2>&1
 	@make build # > /dev/null 2>&1
-	@docker-compose run --rm website npm run e2e
-	@make stop # > /dev/null 2>&1
+	@docker-compose -f docker-compose-test.yml run --rm e2e
+	@docker-compose -f docker-compose-test.yml down

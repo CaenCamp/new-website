@@ -1,18 +1,18 @@
 version: '3'
 services:
-  gatsby:
+  website:
     image: node:8-alpine
     volumes:
       - .:/app
     working_dir: /app
     ports:
-      - 8000:8000
-    command: npm run develop
-  storybook:
-    image: node:8-alpine
+      - 9000:9000
+    command: npm run serve
+  e2e:
+    image: alekzonder/puppeteer:latest
     volumes:
       - .:/app
     working_dir: /app
-    ports:
-      - 9001:9001
-    command: npm run storybook
+    depends_on:
+      - website
+    command: npm run e2e
