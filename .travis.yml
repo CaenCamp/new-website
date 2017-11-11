@@ -1,18 +1,24 @@
 language: node_js
+
 node_js:
   - 8.5.0
+
 sudo: required
+
 services:
   - docker
+
 dist: trusty
+
 cache:
   directories:
     - node_modules
+
 before_install:
-  - sudo apt-get update
-  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
   - cp makefile.docker makefile
+
 before_script:
   - make install
+
 script:
   - make test
