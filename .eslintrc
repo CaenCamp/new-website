@@ -1,0 +1,42 @@
+{
+    "extends": [
+        "react-app",
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "prettier",
+        "prettier/react"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "plugins": ["import", "prettier"],
+    "env": {
+        "es6": true,
+        "jest": true,
+        "mocha": true,
+        "node": true,
+        "browser": true
+    },
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "tabWidth": 4,
+                "trailingComma": "all"
+            }
+        ],
+        "no-unused-vars": [
+            "error",
+            {
+                "ignoreRestSiblings": true
+            }
+        ],
+        "no-console": ["warn"]
+    }
+}
