@@ -16,3 +16,6 @@ services:
     depends_on:
       - website
     command: npm run e2e
+    environment:
+      - CAENCAMP_TEST_SERVER=http://website:9000
+

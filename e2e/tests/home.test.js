@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 import expect from 'expect';
 
-const appUrlBase = 'http://website:9000';
+const appUrlBase = process.env.CAENCAMP_TEST_SERVER || 'http://localhost:9000';
 const routes = {
     home: appUrlBase,
 };
@@ -23,9 +23,10 @@ beforeAll(async () => {
 describe('home page', () => {
     test('it should display Hello CaenCamp!', async () => {
         await page.goto(routes.home);
-        await page.screenshot({ path: 'example.png' });
         await page.waitForSelector('#hello');
-        const hello = await page.evaluate(() => document.querySelector('#hello').textContent);
+        const hello = await page.evaluate(
+            () => document.querySelector('#hello').textContent,
+        );
         expect(hello).toEqual('Hello CaenCamp!');
     });
 });
