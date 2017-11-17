@@ -60,6 +60,3 @@ typings/
 .cache/
 public
 yarn-error.log
-
-# To facilitate the choice of a dev with local node or with a docker
-makefile
