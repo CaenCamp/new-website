@@ -78,7 +78,7 @@ Donc, si à chaque bug rencontré quelqu'un [ouvre une issue](#ouvrir-une-issue)
 <h3 id="suggestions">Suggérer des améliorations ou de nouvelles fonctionnalités</h3>
 Les objectifs de la refonte du site sont donc : mettre en avant les talks passés ainsi que leur speaker, encourager les nouvelles propositions de talks et encourager les entreprises caennaises à nous accueillir.
 
-Les fonctionnalités prévues donc déjà présentes dans les [issues](https://github.com/CaenCamp/new-website/issues) ou sur le [board du projet](https://github.com/CaenCamp/new-website/projects/1) vous semblent peut-être inabouties ou insuffisantes ?
+Les fonctionnalités imaginées pour atteindres ces objectifs sont présentes dans les [issues](https://github.com/CaenCamp/new-website/issues) ou sur le [board du projet](https://github.com/CaenCamp/new-website/projects/1). Mais elles vous semblent peut-être inabouties ou insuffisantes ?
 
 Dans ce cas, ouvrez une nouvelle issue de type `feature` ou `improvement` en décrivant bien votre idée.
 
