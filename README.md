@@ -4,13 +4,13 @@
 
 Les CaenCamp.s sont une série de rencontres caennaises organisées par, animées par et à destination des développeurs. Cette initiative existe depuis 2012 et totalise déjà 33 rencontres.
 
-Il existe un site internet des [CaenCamp](http://www.caencamp.fr/), mais il commence sans doute à dater un petit peu et ne rend pas forcément justice à la richesse des rencontres qui s'y sont déjà produites.
+Il existe un site internet des [CaenCamp](http://www.caencamp.fr/), mais il commence sans doute à dater un peu et ne rend pas forcément justice à la richesse des talks qui s'y sont déjà passés.
 
-Ce projet se propose donc de refondre en partie le site existant, afin de rendre plus facilement accessible l'historique des rencontres et encourager les personnes intéressées à y participer.
+Ce projet se propose donc de reprendre en partie le site existant, afin de rendre plus facilement accessible l'historique des rencontres et encourager les personnes intéressées à y participer.
 
 ## Les principaux objectifs de la refonte
 
-L'objectif principal est évidemment de mettre en avant les talks passés en permettant de les classer par thématiques et on y ajoutant les éventuels slides et/ou vidéos existants.
+L'objectif principal est de mettre en avant les talks passés en permettant de les classer par thématiques et en y ajoutant les éventuels slides et/ou vidéos existants.
 
 Mais ce sera également l'occasion de mettre en avant les intervenants car ce sont eux qui font les CaenCamp.s.
 
@@ -30,7 +30,7 @@ Tout le code est donc disponible à tous via [Git](https://www.meetup.com/fr-FR/
 Merci à vous :+1:
 
 Et c'est très simple :
-* Si vous ne savez pas trop par où commencer, vous pouvez aller regarder les [issues](https://github.com/CaenCamp/new-website/issues): elles décrivent les taches à réaliser, classées par type (éditorial, code, design, integration, seo ...),
+* Si vous ne savez pas trop par où commencer, vous pouvez jeter un coup d'oeil aux [issues](https://github.com/CaenCamp/new-website/issues): elles décrivent les taches à réaliser classées par type (éditorial, code, design, integration, seo ...),
 * Une fois que vous savez quoi faire, vous pouvez consulter le [**guide du contributeur**](.github/CONTRIBUTING.md) pour vous lancer.
 
 Et si vous ne trouvez toujours pas quoi faire dans les issues existantes et/ou que vous avez d'autres idées, n'hésitez pas à créer une nouvelle issue.
