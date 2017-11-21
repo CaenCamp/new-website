@@ -1,11 +1,12 @@
 ---
-
-title: Introduction au développement par les tests
-layout: post
-categories: Actualités
-author: Clément
-author_link: http://twitter.com/clm_a
-
+title: "CaenCamp #6: Introduction au développement par les tests"
+slug: "edition-6-introduction-au-developpement-par-les-tests"
+date: "2012-11-12"
+description: "Introduction technique et méthodologique au développement par les tests"
+tags:
+    - tests
+author: clement-alexandre
+place: forum-digital
 ---
 
 #### Au programme
