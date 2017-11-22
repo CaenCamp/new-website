@@ -7,7 +7,7 @@ tags:
     - javascript
     - angular
     - rails
-author:
+craftsmen:
     - clement-alexandre
     - julien-anne
 place: campus-2

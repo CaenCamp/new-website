@@ -6,7 +6,7 @@ description: "Avec un tour d'horizon des technos du moment en 20 minutes, nous a
 tags:
     - javascript
     - devops
-author:
+speakers:
     - clement-alexandre
 place: forum-digital
 ---

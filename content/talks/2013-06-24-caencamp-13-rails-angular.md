@@ -10,7 +10,7 @@ tags:
     - tests
     - craftsmanship
     - rails
-author:
+speakers:
     - julien-anne
     - matthieu-hebert
 place: forum-digital

@@ -8,7 +8,7 @@ tags:
     - javascript
     - ember
     - angular
-author:
+craftsmen:
     - clement-alexandre
     - julien-anne
 place: campus-2

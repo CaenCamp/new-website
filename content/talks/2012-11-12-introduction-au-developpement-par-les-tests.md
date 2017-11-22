@@ -5,7 +5,7 @@ date: "2012-11-12"
 description: "Introduction technique et méthodologique au développement par les tests"
 tags:
     - tests
-author:
+speakers:
     - clement-alexandre
 place: forum-digital
 ---

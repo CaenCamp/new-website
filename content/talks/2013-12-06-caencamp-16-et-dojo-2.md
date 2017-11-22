@@ -5,7 +5,7 @@ date: "2013-12-19"
 description: "La gestion de projet est une discipline passionnante, surtout quand chaque projet est unique ou que le client n'a qu'une idée vague de ce qu'il veux."
 tags:
     - agile
-author:
+speakers:
     - mathieu-lallemand
 place: forum-digital
 ---

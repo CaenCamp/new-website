@@ -6,7 +6,7 @@ description: "Se réunir sans s'endormir et paiements pour développeurs avec Pa
 tags:
     - agile
     - paymill
-author:
+speakers:
     - frederic-leguedois
 place: forum-digital
 ---

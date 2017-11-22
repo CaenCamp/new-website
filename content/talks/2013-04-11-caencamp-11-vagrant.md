@@ -6,7 +6,7 @@ description: "Vagrant est le chaînon manquant entre VirtualBox et les environne
 tags:
     - vagrant
     - devops
-author:
+speakers:
     - clement-alexandre
 place: forum-digital
 ---

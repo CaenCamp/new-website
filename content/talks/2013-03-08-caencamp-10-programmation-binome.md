@@ -6,7 +6,7 @@ description: "Quelle drôle d’idée que deux personnes réalisent une tâche p
 tags:
     - pair-programing
     - craftsmanship
-author:
+speakers:
     - frederic-leguedois
 place: forum-digital
 ---

@@ -5,7 +5,7 @@ date: "2013-02-15"
 description: "Démonstration de l'utilité des submodules pour gérer les dépendances d'un projet  et de la facilité d'utilisation : avantages, inconvénients et examples d'utilisation. Le tout en live coding !"
 tags:
     - git
-author:
+speakers:
     - sylvain-zyssman
 place: forum-digital
 ---

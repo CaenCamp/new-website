@@ -6,7 +6,7 @@ description: "Apportez la structure MVC à vos applications single page !"
 tags:
     - javascript
     - backbone
-author:
+speakers:
     - sylvain-zyssman
 place: forum-digital
 ---
