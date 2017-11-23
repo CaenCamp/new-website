@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #12 : Backbone.js"
+edition: 12
+title: "Backbone.js"
 slug: "edition-12-backbone-js"
 date: "2013-05-17"
 description: "Apportez la structure MVC à vos applications single page !"

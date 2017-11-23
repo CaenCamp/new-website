@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #26 : Golden Master Testing"
+edition: 26
+title: "Golden Master Testing"
 slug: "edition-26-golden-master-testing"
 date: "2015-02-26"
 description: "Il est très difficile d’adopter les techniques classiques de tests unitaires sur une application non testée car son code n’a pas été prévu en conséquence."

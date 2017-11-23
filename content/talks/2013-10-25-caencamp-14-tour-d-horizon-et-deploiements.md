@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #14 : Tour d'horizon et Déploiements automatisés"
+edition: 14
+title: "Tour d'horizon et Déploiements automatisés"
 slug: "edition-14-tour-dhorizon-et-deploiements-automatises"
 date: "2013-10-25"
 description: "Avec un tour d'horizon des technos du moment en 20 minutes, nous allons recueillir les engouements et les cas d'utilisation des participants"

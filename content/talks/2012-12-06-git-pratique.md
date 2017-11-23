@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #7: Git pratique"
+edition: 7
+title: "Git pratique"
 slug: "edition-7-git-pratique"
 date: "2012-12-06"
 description: "Après la présentation de Git en octobre dernier, nous vous proposons d’aller plus loin dans l’utilisation au quotidien de cet outil : branches, rebasing, reset, commits partiels, etc."

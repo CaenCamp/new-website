@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #11 : Virtualisez vos environnements de développement avec Vagrant"
+edition: 11
+title: "Virtualisez vos environnements de développement avec Vagrant"
 slug: "edition-11-virtualisez-vos-environnements-de-developpement-avec-vagrant"
 date: "2013-04-11"
 description: "Vagrant est le chaînon manquant entre VirtualBox et les environnements hétérogènes sur lesquels un développeur amené à travailler pour ses projets"

@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #25 : Édition de Noël"
+edition: 25
+title: "Édition de Noël"
 slug: "edition-25-noel"
 date: "2014-12-18"
 description: "Le 18 décembre aura lieu le dernier CaenCamp de 2014, édition particulièrement chargée !"

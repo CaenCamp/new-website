@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #16 : Gestion agile de projet et Marché de Noël"
+edition: 16
+title: "Gestion agile de projet et Marché de Noël"
 slug: "edition-16-gestion-agile-de-projet-et-marche-de-noel"
 date: "2013-12-19"
 description: "La gestion de projet est une discipline passionnante, surtout quand chaque projet est unique ou que le client n'a qu'une idée vague de ce qu'il veux."

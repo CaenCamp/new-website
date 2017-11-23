@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #23 : SVG, format clé du responsive"
+edition: 23
+title: "SVG, format clé du responsive"
 slug: "edition-23-svg-format-cle-du-responsive"
 date: "2014-09-25"
 description: "Le format SVG est en plein essor depuis l'avènement du responsive design."

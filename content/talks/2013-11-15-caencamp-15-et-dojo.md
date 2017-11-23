@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #15 : Se réunir sans s'endormir et paiements pour développeurs"
+edition: 15
+title: "Se réunir sans s'endormir et paiements pour développeurs"
 slug: "edition-15-se-reunir-et-paiements"
 date: "2013-11-15"
 description: "Se réunir sans s'endormir et paiements pour développeurs avec Paymill."

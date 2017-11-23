@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #6: Introduction au développement par les tests"
+edition: 6
+title: "Introduction au développement par les tests"
 slug: "edition-6-introduction-au-developpement-par-les-tests"
 date: "2012-11-12"
 description: "Introduction technique et méthodologique au développement par les tests"

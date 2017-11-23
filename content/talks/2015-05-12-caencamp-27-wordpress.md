@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #27 : Peut-on travailler proprement avec Wordpress ?"
+edition: 27
+title: "Peut-on travailler proprement avec Wordpress ?"
 slug: "edition-27-peut-on-travailler-proprement-avec-wordpress"
 date: "2015-06-04"
 description: "Wordpress est un outil formidable très utilisé dans le monde. Mais peut-on l'intégrer dans un flux de production moderne ?"

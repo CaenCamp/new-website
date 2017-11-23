@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #24 : La programmation fonctionnelle avec Scala"
+edition: 24
+title: "La programmation fonctionnelle avec Scala"
 slug: "edition-24-la-programmation-fonctionnelle-avec-scala"
 date: "2014-10-30"
 description: "Découverte de la Programmation fonctionnelle et de Scala."

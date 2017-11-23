@@ -1,5 +1,6 @@
 ---
-title: "CaenCamp #13 : Rails + AngularJS + TDD + Pair Programming"
+edition: 13
+title: "Rails + AngularJS + TDD + Pair Programming"
 slug: "edition-13-rails-angular-tdd-pair-programming"
 date: "2013-06-24"
 description: "Prenez deux développeurs motivés, Julien Anne et Matthieu Hébert. Ajoutez de l'agile, du binômage, du TDD, du Rails et un peu d'AngularJS. Secouez le tout, laissez reposer une année et découvrez le retour d'expérience d'une équipe agile en live-coding."
@@ -10,6 +11,7 @@ tags:
     - tests
     - craftsmanship
     - rails
+    - ruby
 speakers:
     - julien-anne
     - matthieu-hebert
