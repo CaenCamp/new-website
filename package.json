@@ -26,10 +26,15 @@
         "gatsby": "1.9.119",
         "gatsby-link": "1.6.28",
         "gatsby-plugin-react-next": "1.0.4",
+        "gatsby-plugin-styled-components": "2.0.2",
+        "gatsby-plugin-typography": "1.7.10",
         "react": "16.1.1",
         "react-dom": "16.1.1",
         "storybook": "1.0.0",
-        "storybook-router": "0.3.2"
+        "storybook-router": "0.3.2",
+        "styled-components": "2.2.3",
+        "typography": "0.16.6",
+        "typography-theme-fairy-gates": "0.15.11"
     },
     "devDependencies": {
         "@storybook/addon-backgrounds": "3.2.16",
@@ -43,6 +48,7 @@
         "eslint": "4.11.0",
         "eslint-config-prettier": "2.7.0",
         "eslint-config-react-app": "2.0.1",
+        "eslint-loader": "1.9.0",
         "eslint-plugin-flowtype": "2.39.1",
         "eslint-plugin-import": "2.8.0",
         "eslint-plugin-jsx-a11y": "6.0.2",
