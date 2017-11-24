@@ -30,6 +30,7 @@
         "gatsby-plugin-typography": "1.7.10",
         "react": "16.1.1",
         "react-dom": "16.1.1",
+        "react-typography": "0.16.5",
         "storybook": "1.0.0",
         "storybook-router": "0.3.2",
         "styled-components": "2.2.3",
