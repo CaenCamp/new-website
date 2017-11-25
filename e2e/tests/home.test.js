@@ -21,13 +21,13 @@ beforeAll(async () => {
 });
 
 describe('home page', () => {
-    test('it should display Hello CaenCamp!', async () => {
+    test('it should display Welcome', async () => {
         await page.goto(routes.home);
-        await page.waitForSelector('#hello');
+        await page.waitForSelector('.welcome');
         const hello = await page.evaluate(
-            () => document.querySelector('#hello').textContent,
+            () => document.querySelector('.welcome').textContent,
         );
-        expect(hello).toEqual('Hello CaenCamp!');
+        expect(hello).toContain('Welcome to our new website.');
     });
 });
 

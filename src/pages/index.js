@@ -9,6 +9,6 @@ export default () => (
                 content="Welcome on the new CaenCamp site"
             />
         </Helmet>
-        <p>Welcome to our new website.</p>
+        <p className="welcome">Welcome to our new website.</p>
     </div>
 );

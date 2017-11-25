@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
-import Hello from '../components/Hello';
+import favicon from '../../static/favicon/favicon-16x16.png';
+import Header from '../components/Header';
 
 const Container = styled.div`
     display: flex;
@@ -17,7 +19,10 @@ class TemplateWrapper extends Component {
 
         return (
             <Container>
-                <Hello who="CaenCamp" />
+                <Helmet>
+                    <link rel="icon" href={favicon} type="image/x-icon" />
+                </Helmet>
+                <Header />
                 {children()}
             </Container>
         );
