@@ -6,18 +6,15 @@ import SideMenu from '../components/SideMenu';
 
 export default () => (
     <div>
-        <Helmet title="CaenCamp">
+        <Helmet title="CaenCamp: les talks">
             <meta
                 name="description"
-                content="Welcome on the new CaenCamp site"
+                content="Retrouvez tous les talks des CaenCamp"
             />
         </Helmet>
         <Content>
             <LeftColumn>
-                <h1 className="welcome">Welcome to our new website.</h1>
-                <p>
-                    <a href="/talks">Tous les talks</a>
-                </p>
+                <h1>Tous les talks</h1>
             </LeftColumn>
             <SideMenu />
         </Content>

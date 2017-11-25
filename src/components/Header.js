@@ -35,7 +35,7 @@ class MainHeader extends Component {
                     <Title id="mainTitle">CaenCamp</Title>
                 </a>
                 <Baseline id="baseLine">
-                    Ici la baseline des Caencamp quand on en aura une.
+                    Ici la baseline des Caencamp quand nous en aurons une.
                 </Baseline>
             </Header>
         );

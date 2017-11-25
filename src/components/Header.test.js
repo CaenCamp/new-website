@@ -24,7 +24,17 @@ describe('Header component', () => {
 
         expect(wrapper.find(Baseline).length).toEqual(1);
         expect(wrapper.find(Baseline).html()).toContain(
-            'Ici la baseline des Caencamp quand on en aura une.',
+            'Ici la baseline des Caencamp quand nous en aurons une.',
         );
+    });
+
+    test('it should display two links to home page', () => {
+        const wrapper = shallow(<Header />);
+        const links = wrapper.find('a');
+        expect(links.length).toEqual(2);
+        links.forEach(link => {
+            const href = link.prop('href');
+            expect(href).toEqual('/');
+        });
     });
 });

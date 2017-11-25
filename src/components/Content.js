@@ -19,5 +19,6 @@ export const LeftColumn = styled.div`
 export const RightColumn = styled.aside`
     padding: 1rem 0.5rem;
     flex: 1 0 0;
-    border-left: 1px dotted black;
+    display: flex;
+    flex-direction: column;
 `;
