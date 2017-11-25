@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 
 import favicon from '../../static/favicon/favicon-16x16.png';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Container = styled.div`
     display: flex;
@@ -24,6 +25,7 @@ class TemplateWrapper extends Component {
                 </Helmet>
                 <Header />
                 {children()}
+                <Footer />
             </Container>
         );
     }
