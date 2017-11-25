@@ -8,6 +8,10 @@ const Header = styled.header`
     flex-direction: row;
     align-items: center;
     width: 100%;
+    & a {
+        text-decoration: none;
+        background-image: none;
+    }
 `;
 export const Title = styled.h1`
     margin: 0;
@@ -24,8 +28,12 @@ class MainHeader extends Component {
     render() {
         return (
             <Header>
-                <Logo id="mainLogo" />
-                <Title id="mainTitle">CaenCamp</Title>
+                <a href="/">
+                    <Logo id="mainLogo" />
+                </a>
+                <a href="/">
+                    <Title id="mainTitle">CaenCamp</Title>
+                </a>
                 <Baseline id="baseLine">
                     Ici la baseline des Caencamp quand on en aura une.
                 </Baseline>
