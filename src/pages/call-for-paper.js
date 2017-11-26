@@ -9,7 +9,7 @@ export default () => (
         <Helmet title="CaenCamp: proposez un talk">
             <meta name="description" content="Participez CaenCamp" />
         </Helmet>
-        <Content>
+        <Content id="callForPaperContent">
             <LeftColumn>
                 <h1>Participez !</h1>
             </LeftColumn>

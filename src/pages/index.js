@@ -12,11 +12,13 @@ export default () => (
                 content="Welcome on the new CaenCamp site"
             />
         </Helmet>
-        <Content>
+        <Content id="homeContent">
             <LeftColumn>
                 <h1 className="welcome">Welcome to our new website.</h1>
                 <p>
-                    <a href="/talks">Tous les talks</a>
+                    <a className="linkToTalks" href="/talks">
+                        Tous les talks
+                    </a>
                 </p>
             </LeftColumn>
             <SideMenu />

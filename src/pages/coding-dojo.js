@@ -12,7 +12,7 @@ export default () => (
                 content="Affutez vos skills au Dojo des CaenCamp"
             />
         </Helmet>
-        <Content>
+        <Content id="dojoContent">
             <LeftColumn>
                 <h1>Le Dojo</h1>
             </LeftColumn>

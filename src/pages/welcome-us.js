@@ -9,7 +9,7 @@ export default () => (
         <Helmet title="CaenCamp: soutenez-nous">
             <meta name="description" content="Accueillez les CaenCamp" />
         </Helmet>
-        <Content>
+        <Content id="welcomeUsContent">
             <LeftColumn>
                 <h1>Accueillez nous</h1>
             </LeftColumn>

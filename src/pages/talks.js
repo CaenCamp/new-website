@@ -12,7 +12,7 @@ export default () => (
                 content="Retrouvez tous les talks des CaenCamp"
             />
         </Helmet>
-        <Content>
+        <Content id="talksContent">
             <LeftColumn>
                 <h1>Tous les talks</h1>
             </LeftColumn>
