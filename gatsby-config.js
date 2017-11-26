@@ -21,7 +21,7 @@ module.exports = {
             },
             {
                 title: 'Trello',
-                url: 'https://slack.com/intl/fr-fr',
+                url: 'https://trello.com/b/ROiO9tng/caencamp',
             },
             {
                 title: 'Facebook',
@@ -33,6 +33,14 @@ module.exports = {
         `gatsby-plugin-react-next`,
         `gatsby-plugin-styled-components`,
         'gatsby-plugin-react-helmet',
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `${__dirname}/content`,
+                name: 'talks',
+            },
+        },
+        `gatsby-transformer-remark`,
         {
             resolve: `gatsby-plugin-typography`,
             options: {
