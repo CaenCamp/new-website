@@ -37,6 +37,7 @@
                 "ignoreRestSiblings": true
             }
         ],
-        "no-console": ["warn"]
+        "no-console": ["warn"],
+        "jsx-a11y/href-no-hash": "off"
     }
 }

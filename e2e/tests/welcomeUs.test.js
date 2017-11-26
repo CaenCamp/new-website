@@ -9,16 +9,16 @@ beforeAll(async () => {
     browser = await getBrowser();
     page = await browser.newPage();
     await page.goto(appUrlBase);
-    await page.click(mainNavigationSelectors.home);
-    await page.waitForSelector('#homeContent');
+    await page.click(mainNavigationSelectors.welcomeUs);
+    await page.waitForSelector('#welcomeUsContent');
 });
 
-describe('home page', () => {
-    test('it should display Welcome', async () => {
+describe('Welcome Us page', () => {
+    test('it should display "Accueillez nous"', async () => {
         const hello = await page.evaluate(
-            () => document.querySelector('.welcome').textContent,
+            () => document.querySelector('#welcomeUsContent h1').textContent,
         );
-        expect(hello).toContain('Welcome to our new website.');
+        expect(hello).toContain('Accueillez nous');
     });
 });
 
