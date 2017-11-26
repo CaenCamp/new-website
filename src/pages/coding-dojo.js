@@ -18,7 +18,13 @@ export default ({ data }) => (
                 <ul>
                     {data.dojos.edges.map(dojo => (
                         <li key={dojo.node.id}>
-                            {dojo.node.frontmatter.title}
+                            <a
+                                href={`/coding-dojo/${
+                                    dojo.node.frontmatter.slug
+                                }`}
+                            >
+                                {dojo.node.frontmatter.title}
+                            </a>
                         </li>
                     ))}
                 </ul>
@@ -39,6 +45,7 @@ export const query = graphql`
                     id
                     frontmatter {
                         title
+                        slug
                     }
                 }
             }

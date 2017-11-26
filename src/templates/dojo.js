@@ -6,34 +6,34 @@ import locale from 'date-fns/locale/fr';
 import { SingleColumn } from '../components/Content';
 
 export default ({ data }) => {
-    const talk = data.markdownRemark;
+    const dojo = data.markdownRemark;
     return (
         <SingleColumn>
             <Helmet>
-                <title>{talk.frontmatter.title}</title>
+                <title>{dojo.frontmatter.title}</title>
                 <meta
                     name="description"
-                    content={talk.frontmatter.description}
+                    content={dojo.frontmatter.description}
                 />
-                <meta name="keywords" content={`${talk.frontmatter.tags}`} />
+                <meta name="keywords" content={`${dojo.frontmatter.tags}`} />
             </Helmet>
-            <a href="/talks">&lt;- Tous les talks</a>
+            <a href="/coding-dojo">&lt;- Retour au Dojo</a>
             <div>
-                <h1>{talk.frontmatter.title}</h1>
+                <h1>{dojo.frontmatter.title}</h1>
                 <p>
-                    {format(talk.frontmatter.date, 'DD MMMM YYYY', { locale })}
+                    {format(dojo.frontmatter.date, 'DD MMMM YYYY', { locale })}
                 </p>
-                <p>{`${talk.frontmatter.tags}`}</p>
-                <p>{talk.frontmatter.description}</p>
+                <p>{`${dojo.frontmatter.tags}`}</p>
+                <p>{dojo.frontmatter.description}</p>
             </div>
 
-            <div dangerouslySetInnerHTML={{ __html: talk.html }} />
+            <div dangerouslySetInnerHTML={{ __html: dojo.html }} />
         </SingleColumn>
     );
 };
 
 export const query = graphql`
-    query TalkQuery($slug: String!) {
+    query DojoQuery($slug: String!) {
         markdownRemark(frontmatter: { slug: { eq: $slug } }) {
             html
             frontmatter {
