@@ -19,7 +19,9 @@ export default ({ data }) => (
                     {data.talks.edges.map(talk => (
                         <li key={talk.node.id}>
                             Edition {talk.node.frontmatter.edition}:{' '}
-                            {talk.node.frontmatter.title}
+                            <a href={`talks/${talk.node.frontmatter.slug}`}>
+                                {talk.node.frontmatter.title}
+                            </a>
                         </li>
                     ))}
                 </ul>
@@ -41,6 +43,7 @@ export const query = graphql`
                     frontmatter {
                         edition
                         title
+                        slug
                     }
                 }
             }
