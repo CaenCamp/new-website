@@ -16,16 +16,19 @@ const Container = styled.div`
 
 class TemplateWrapper extends Component {
     render() {
-        const { children } = this.props;
+        const { children, data } = this.props;
 
         return (
             <Container>
                 <Helmet>
                     <link rel="icon" href={favicon} type="image/x-icon" />
                 </Helmet>
-                <Header />
+                <Header
+                    title={data.site.siteMetadata.title}
+                    baseLine={data.site.siteMetadata.baseline}
+                />
                 {children()}
-                <Footer />
+                <Footer socialLinks={data.site.siteMetadata.socialLinks} />
             </Container>
         );
     }
@@ -34,5 +37,20 @@ class TemplateWrapper extends Component {
 TemplateWrapper.propTypes = {
     children: PropTypes.func,
 };
+
+export const query = graphql`
+    query AboutQuery {
+        site {
+            siteMetadata {
+                title
+                baseline
+                socialLinks {
+                    title
+                    url
+                }
+            }
+        }
+    }
+`;
 
 export default TemplateWrapper;

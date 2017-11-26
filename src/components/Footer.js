@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Footer = styled.footer`
@@ -15,34 +15,13 @@ export const SocialLink = styled.a`
     font-size: 0.6rem;
 `;
 
-class MainFooter extends Component {
-    render() {
-        return (
-            <Footer>
-                <SocialLink href="https://www.meetup.com/CaenCamp">
-                    Meetup
+export default ({ socialLinks }) => (
+    <Footer>
+        {socialLinks.length > 0 &&
+            socialLinks.map(link => (
+                <SocialLink key={link.title} href={link.url}>
+                    {link.title}
                 </SocialLink>
-                <SocialLink href="https://github.com/CaenCamp">
-                    GitHub
-                </SocialLink>
-                <SocialLink href="https://twitter.com/caencamp">
-                    Twitter
-                </SocialLink>
-                <SocialLink href="https://www.youtube.com/channel/UCLX4DP_fDCZ4fsgbUZsGaUw">
-                    YouTube
-                </SocialLink>
-                <SocialLink href="https://trello.com/b/ROiO9tng/caencamp">
-                    Trello
-                </SocialLink>
-                <SocialLink href="https://slack.com/intl/fr-fr">
-                    Slack
-                </SocialLink>
-                <SocialLink href="https://www.facebook.com/CaenCamp/">
-                    Facebook
-                </SocialLink>
-            </Footer>
-        );
-    }
-}
-
-export default MainFooter;
+            ))}
+    </Footer>
+);
