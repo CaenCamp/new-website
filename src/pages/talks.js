@@ -19,7 +19,7 @@ export default ({ data }) => (
                     {data.talks.edges.map(talk => (
                         <li key={talk.node.id}>
                             Edition {talk.node.frontmatter.edition}:{' '}
-                            <a href={`talks/${talk.node.frontmatter.slug}`}>
+                            <a href={`/talks/${talk.node.frontmatter.slug}`}>
                                 {talk.node.frontmatter.title}
                             </a>
                         </li>
