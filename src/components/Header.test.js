@@ -13,19 +13,17 @@ describe('Header component', () => {
     });
 
     test('it should display a Title', () => {
-        const wrapper = shallow(<Header />);
+        const wrapper = shallow(<Header title="Test title" />);
 
         expect(wrapper.find(Title).length).toEqual(1);
-        expect(wrapper.find(Title).html()).toContain('CaenCamp');
+        expect(wrapper.find(Title).html()).toContain('Test title');
     });
 
     test('it should display a Baseline', () => {
-        const wrapper = shallow(<Header />);
+        const wrapper = shallow(<Header baseLine="Test baseline" />);
 
         expect(wrapper.find(Baseline).length).toEqual(1);
-        expect(wrapper.find(Baseline).html()).toContain(
-            'Ici la baseline des Caencamp quand nous en aurons une.',
-        );
+        expect(wrapper.find(Baseline).html()).toContain('Test baseline');
     });
 
     test('it should display two links to home page', () => {

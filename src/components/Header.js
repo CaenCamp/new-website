@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Logo from './Logo';
@@ -24,22 +24,14 @@ export const Baseline = styled.span`
     font-size: 0.8rem;
 `;
 
-class MainHeader extends Component {
-    render() {
-        return (
-            <Header>
-                <a href="/">
-                    <Logo id="mainLogo" />
-                </a>
-                <a href="/">
-                    <Title id="mainTitle">CaenCamp</Title>
-                </a>
-                <Baseline id="baseLine">
-                    Ici la baseline des Caencamp quand nous en aurons une.
-                </Baseline>
-            </Header>
-        );
-    }
-}
-
-export default MainHeader;
+export default ({ title = 'default Title', baseLine = 'default baseline' }) => (
+    <Header>
+        <a href="/">
+            <Logo id="mainLogo" />
+        </a>
+        <a href="/">
+            <Title id="mainTitle">{title}</Title>
+        </a>
+        <Baseline id="baseLine">{baseLine}</Baseline>
+    </Header>
+);

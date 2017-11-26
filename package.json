@@ -23,12 +23,15 @@
         "e2e": "jest --config ./e2e/jest.config.json"
     },
     "dependencies": {
+        "date-fns": "1.29.0",
         "gatsby": "1.9.119",
         "gatsby-link": "1.6.28",
         "gatsby-plugin-react-helmet": "2.0.1",
         "gatsby-plugin-react-next": "1.0.4",
         "gatsby-plugin-styled-components": "2.0.2",
         "gatsby-plugin-typography": "1.7.10",
+        "gatsby-source-filesystem": "1.5.8",
+        "gatsby-transformer-remark": "1.7.21",
         "react": "16.1.1",
         "react-dom": "16.1.1",
         "react-helmet": "5.2.0",
