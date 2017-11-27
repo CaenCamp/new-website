@@ -107,7 +107,7 @@ npm install
 Ensuite, voici la principale commande à connaitre :
 
 ```bash
-npm develop
+npm run develop
 ```
 
 Le projet est maintenant executé en mode développement (avec un [Webpack Dev Server)](https://webpack.github.io/docs/webpack-dev-server.html))  et vous pouvez voir le site à l'adresse http://localhost:8000. Chaque modification effectuée dans le code sera immédiatement impactée dans votre navigateur.
