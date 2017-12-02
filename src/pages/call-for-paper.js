@@ -16,7 +16,11 @@ export default ({ data }) => (
                 <ul>
                     {data.speakers.edges.map(speaker => (
                         <li key={speaker.node.id}>
-                            <a href={`/talks/${speaker.node.frontmatter.slug}`}>
+                            <a
+                                href={`/speakers/${
+                                    speaker.node.frontmatter.slug
+                                }`}
+                            >
                                 {speaker.node.frontmatter.firstName}{' '}
                                 {speaker.node.frontmatter.lastName}
                             </a>
@@ -41,6 +45,7 @@ export const query = graphql`
                     frontmatter {
                         firstName
                         lastName
+                        slug
                         links {
                             title
                             url
