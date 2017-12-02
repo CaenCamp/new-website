@@ -35,7 +35,7 @@ export default ({ data }) => {
 };
 
 export const query = graphql`
-    query SpeakersQuery {
+    query SpeakersTempQuery {
         talks: allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___edition] }
             filter: { fileAbsolutePath: { glob: "**/talks/**" } }
