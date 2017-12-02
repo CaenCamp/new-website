@@ -13,7 +13,7 @@ export default ({ data }) => {
 
     return (
         <div>
-            <Helmet title="CaenCamp: les talks">
+            <Helmet title="CaenCamp: les speakers">
                 <meta
                     name="description"
                     content="Tous les speakers des CaenCamp"
