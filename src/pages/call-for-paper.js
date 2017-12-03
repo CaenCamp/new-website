@@ -36,7 +36,7 @@ export default ({ data }) => (
 export const query = graphql`
     query SpeakersQuery {
         speakers: allMarkdownRemark(
-            sort: { order: DESC, fields: [frontmatter___lastName] }
+            sort: { order: ASC, fields: [frontmatter___lastName] }
             filter: { fileAbsolutePath: { glob: "**/speakers/**" } }
         ) {
             edges {
