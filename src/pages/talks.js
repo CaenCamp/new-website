@@ -3,29 +3,11 @@ import { Helmet } from 'react-helmet';
 
 import { Content, LeftColumn } from '../components/Content';
 import SideMenu from '../components/SideMenu';
-
-const formatTalkWithSpeakers = (talk, speakers) => ({
-    id: talk.node.id,
-    ...talk.node.frontmatter,
-    speakers: talk.node.frontmatter.speakers
-        .map(speaker => {
-            const findedSpeaker = speakers.find(
-                sp => sp.node.frontmatter.slug === speaker,
-            );
-            if (findedSpeaker) {
-                return `${findedSpeaker.node.frontmatter.firstName} ${
-                    findedSpeaker.node.frontmatter.lastName
-                }`;
-            } else {
-                return null;
-            }
-        })
-        .filter(sp => sp !== null),
-});
+import { formatTalkWithSpeakers } from '../utils/formatters';
 
 export default ({ data }) => {
     const talks = data.talks.edges.map(talk =>
-        formatTalkWithSpeakers(talk, data.speakers.edges),
+        formatTalkWithSpeakers(talk.node, data.speakers.edges),
     );
 
     return (
@@ -44,7 +26,13 @@ export default ({ data }) => {
                             <li key={talk.id}>
                                 Edition {talk.edition}:{' '}
                                 <a href={`/talks/${talk.slug}`}>{talk.title}</a>{' '}
-                                par {`${talk.speakers}`}
+                                par{' '}
+                                {talk.speakers.map(
+                                    speaker =>
+                                        `${speaker.firstName} ${
+                                            speaker.lastName
+                                        }, `,
+                                )}
                             </li>
                         ))}
                     </ul>
