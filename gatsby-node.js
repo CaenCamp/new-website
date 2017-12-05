@@ -4,6 +4,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     const { createPage } = boundActionCreators;
     const talkTemplate = path.resolve(`src/templates/talk.js`);
     const dojoTemplate = path.resolve(`src/templates/dojo.js`);
+    const speakerTemplate = path.resolve(`src/templates/speaker.js`);
 
     return graphql(`
         query AllSingleContents {
@@ -20,6 +21,17 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             }
             dojos: allMarkdownRemark(
                 filter: { fileAbsolutePath: { glob: "**/dojos/**" } }
+            ) {
+                edges {
+                    node {
+                        frontmatter {
+                            slug
+                        }
+                    }
+                }
+            }
+            speakers: allMarkdownRemark(
+                filter: { fileAbsolutePath: { glob: "**/speakers/**" } }
             ) {
                 edges {
                     node {
@@ -50,6 +62,17 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             createPage({
                 path: `coding-dojo/${node.frontmatter.slug}`,
                 component: dojoTemplate,
+                context: {
+                    // Data passed to context is available in page queries as GraphQL variables.
+                    slug: node.frontmatter.slug,
+                },
+            });
+        });
+
+        result.data.speakers.edges.forEach(({ node }) => {
+            createPage({
+                path: `speakers/${node.frontmatter.slug}`,
+                component: speakerTemplate,
                 context: {
                     // Data passed to context is available in page queries as GraphQL variables.
                     slug: node.frontmatter.slug,

@@ -3,33 +3,45 @@ import { Helmet } from 'react-helmet';
 
 import { Content, LeftColumn } from '../components/Content';
 import SideMenu from '../components/SideMenu';
+import { formatTalkWithSpeakers } from '../utils/formatters';
 
-export default ({ data }) => (
-    <div>
-        <Helmet title="CaenCamp: les talks">
-            <meta
-                name="description"
-                content="Retrouvez tous les talks des CaenCamp"
-            />
-        </Helmet>
-        <Content id="talksContent">
-            <LeftColumn>
-                <h1>Tous les talks</h1>
-                <ul>
-                    {data.talks.edges.map(talk => (
-                        <li key={talk.node.id}>
-                            Edition {talk.node.frontmatter.edition}:{' '}
-                            <a href={`/talks/${talk.node.frontmatter.slug}`}>
-                                {talk.node.frontmatter.title}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </LeftColumn>
-            <SideMenu />
-        </Content>
-    </div>
-);
+export default ({ data }) => {
+    const talks = data.talks.edges.map(talk =>
+        formatTalkWithSpeakers(talk.node, data.speakers.edges),
+    );
+
+    return (
+        <div>
+            <Helmet title="CaenCamp: les talks">
+                <meta
+                    name="description"
+                    content="Retrouvez tous les talks des CaenCamp"
+                />
+            </Helmet>
+            <Content id="talksContent">
+                <LeftColumn>
+                    <h1>Tous les talks</h1>
+                    <ul>
+                        {talks.map(talk => (
+                            <li key={talk.id}>
+                                Edition {talk.edition}:{' '}
+                                <a href={`/talks/${talk.slug}`}>{talk.title}</a>{' '}
+                                par{' '}
+                                {talk.speakers.map(
+                                    speaker =>
+                                        `${speaker.firstName} ${
+                                            speaker.lastName
+                                        }, `,
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                </LeftColumn>
+                <SideMenu />
+            </Content>
+        </div>
+    );
+};
 
 export const query = graphql`
     query TalksQuery {
@@ -43,6 +55,21 @@ export const query = graphql`
                     frontmatter {
                         edition
                         title
+                        slug
+                        speakers
+                    }
+                }
+            }
+        }
+        speakers: allMarkdownRemark(
+            filter: { fileAbsolutePath: { glob: "**/speakers/**" } }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        firstName
+                        lastName
                         slug
                     }
                 }

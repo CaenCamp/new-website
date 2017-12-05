@@ -13,7 +13,7 @@ stop: ## stop gatsby in docker
 	@docker-compose down
 
 logs: ## Display logs from docker
-	@docker-compose logs
+	@docker-compose logs -f
 
 build: ## build site with docker
 	@docker-compose run --rm gatsby npm run build
