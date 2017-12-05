@@ -10,7 +10,6 @@ export default ({ data }) => {
         data.talks.edges,
         data.dojos.edges,
     );
-    console.log(speaker);
     return (
         <SingleColumn>
             <Helmet>
@@ -61,7 +60,9 @@ export default ({ data }) => {
                     <ul>
                         {speaker.dojos.map(dojo => (
                             <li key={dojo.id}>
-                                <a href={`/talks/${dojo.slug}`}>{dojo.title}</a>
+                                <a href={`/coding-dojo/${dojo.slug}`}>
+                                    {dojo.title}
+                                </a>
                             </li>
                         ))}
                     </ul>
