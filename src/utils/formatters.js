@@ -20,6 +20,22 @@ export const formatTalkWithSpeakers = (talk, speakers) => ({
         .filter(sp => sp !== null),
 });
 
+export const formatDojoWithCraftsmen = (dojo, craftsmen) => ({
+    ...formatGraphContent(dojo),
+    craftsmen: dojo.frontmatter.craftsmen
+        .map(craftsman => {
+            const findedCraftsman = craftsmen.find(
+                sp => sp.node.frontmatter.slug === craftsman,
+            );
+            if (findedCraftsman) {
+                return formatGraphContent(findedCraftsman.node);
+            } else {
+                return null;
+            }
+        })
+        .filter(cm => cm !== null),
+});
+
 export const formatSpeakerWithTalksAndDojos = (speaker, talks, dojos) => ({
     ...formatGraphContent(speaker),
     talks: talks
