@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Content, LeftColumn } from '../components/Content';
 import SideMenu from '../components/SideMenu';
 import { formatTalkWithSpeakers } from '../utils/formatters';
+import { TalkListItem } from '../components/talks/listItem';
 
 export default ({ data }) => {
     const talks = data.talks.edges.map(talk =>
@@ -23,17 +24,7 @@ export default ({ data }) => {
                     <h1>Tous les talks</h1>
                     <ul>
                         {talks.map(talk => (
-                            <li key={talk.id}>
-                                Edition {talk.edition}:{' '}
-                                <a href={`/talks/${talk.slug}`}>{talk.title}</a>{' '}
-                                par{' '}
-                                {talk.speakers.map(
-                                    speaker =>
-                                        `${speaker.firstName} ${
-                                            speaker.lastName
-                                        }, `,
-                                )}
-                            </li>
+                            <TalkListItem key={talk.id} talk={talk} />
                         ))}
                     </ul>
                 </LeftColumn>
