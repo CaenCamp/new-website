@@ -19,3 +19,12 @@ export const formatTalkWithSpeakers = (talk, speakers) => ({
         })
         .filter(sp => sp !== null),
 });
+
+export const formatSpeakerWithTalks = (speaker, talks) => ({
+    ...formatGraphContent(speaker),
+    talks: talks
+        .map(talk => formatGraphContent(talk.node))
+        .filter(talk =>
+            talk.speakers.find(sp => sp === speaker.frontmatter.slug),
+        ),
+});

@@ -2,42 +2,60 @@ import Helmet from 'react-helmet';
 import React from 'react';
 
 import { SingleColumn } from '../components/Content';
+import { formatSpeakerWithTalks } from '../utils/formatters';
 
 export default ({ data }) => {
-    const speaker = data.markdownRemark;
+    const speaker = formatSpeakerWithTalks(data.rawSpeaker, data.talks.edges);
     return (
         <SingleColumn>
             <Helmet>
                 <title>
-                    {speaker.frontmatter.firstName}{' '}
-                    {speaker.frontmatter.lastName}
+                    {speaker.firstName} {speaker.lastName}
                 </title>
                 <meta name="description" content="A trouver" />
                 <meta name="keywords" content="A voir" />
             </Helmet>
             <a href="/call-for-paper">&lt;- Retour à la liste des speakers</a>
-            <div>
-                <h1>
-                    {speaker.frontmatter.firstName}{' '}
-                    {speaker.frontmatter.lastName}
-                </h1>
-                <ul>
-                    {speaker.frontmatter.links.map(link => (
-                        <li key={link.title}>
-                            <a href={link.url}>{link.title}</a>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+
+            <h1>
+                {speaker.firstName} {speaker.lastName}
+            </h1>
 
             <div dangerouslySetInnerHTML={{ __html: speaker.html }} />
+
+            {speaker.links.length > 0 && (
+                <div>
+                    <h2>Ses Liens</h2>
+                    <ul>
+                        {speaker.links.map(link => (
+                            <li key={link.title}>
+                                <a href={link.url}>{link.title}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+
+            {speaker.talks.length > 0 && (
+                <div>
+                    <h2>Ses talks</h2>
+                    <ul>
+                        {speaker.talks.map(talk => (
+                            <li key={talk.id}>
+                                Edition {talk.edition}:{' '}
+                                <a href={`/talks/${talk.slug}`}>{talk.title}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </SingleColumn>
     );
 };
 
 export const query = graphql`
-    query SpeakerQuery($slug: String!) {
-        markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+    query SpeakerBySlug($slug: String!) {
+        rawSpeaker: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
             html
             frontmatter {
                 firstName
@@ -45,6 +63,22 @@ export const query = graphql`
                 links {
                     title
                     url
+                }
+                slug
+            }
+        }
+        talks: allMarkdownRemark(
+            filter: { fileAbsolutePath: { glob: "**/talks/**" } }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        edition
+                        title
+                        slug
+                        speakers
+                    }
                 }
             }
         }
