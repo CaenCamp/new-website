@@ -2,10 +2,15 @@ import Helmet from 'react-helmet';
 import React from 'react';
 
 import { SingleColumn } from '../components/Content';
-import { formatSpeakerWithTalks } from '../utils/formatters';
+import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
 
 export default ({ data }) => {
-    const speaker = formatSpeakerWithTalks(data.rawSpeaker, data.talks.edges);
+    const speaker = formatSpeakerWithTalksAndDojos(
+        data.rawSpeaker,
+        data.talks.edges,
+        data.dojos.edges,
+    );
+    console.log(speaker);
     return (
         <SingleColumn>
             <Helmet>
@@ -49,6 +54,19 @@ export default ({ data }) => {
                     </ul>
                 </div>
             )}
+
+            {speaker.dojos.length > 0 && (
+                <div>
+                    <h2>Ses Dojos</h2>
+                    <ul>
+                        {speaker.dojos.map(dojo => (
+                            <li key={dojo.id}>
+                                <a href={`/talks/${dojo.slug}`}>{dojo.title}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </SingleColumn>
     );
 };
@@ -78,6 +96,20 @@ export const query = graphql`
                         title
                         slug
                         speakers
+                    }
+                }
+            }
+        }
+        dojos: allMarkdownRemark(
+            filter: { fileAbsolutePath: { glob: "**/dojos/**" } }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        title
+                        slug
+                        craftsmen
                     }
                 }
             }
