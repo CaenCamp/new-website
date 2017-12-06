@@ -7,7 +7,9 @@ import { SpeakerListItem } from '../components/speakers/listItem';
 import SideMenu from '../components/SideMenu';
 
 export default ({ data }) => {
-    const speakers = data.speakers.edges.map(formatSpeakerWithTalksAndDojos);
+    const speakers = data.speakers.edges.map(speaker =>
+        formatSpeakerWithTalksAndDojos(speaker),
+    );
     return (
         <div>
             <Helmet title="CaenCamp: proposez un talk">
