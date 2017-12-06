@@ -1,9 +1,9 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
+import React from 'react';
 
 import { Content, LeftColumn } from '../components/Content';
-import SideMenu from '../components/SideMenu';
 import { formatDojoWithCraftsmen } from '../utils/formatters';
+import SideMenu from '../components/SideMenu';
 
 export default ({ data }) => {
     const dojos = data.dojos.edges.map(dojo =>

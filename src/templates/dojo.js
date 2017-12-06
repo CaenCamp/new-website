@@ -1,10 +1,11 @@
-import Helmet from 'react-helmet';
-import React from 'react';
 import format from 'date-fns/format';
+import Helmet from 'react-helmet';
 import locale from 'date-fns/locale/fr';
+import React from 'react';
 
-import { SingleColumn } from '../components/Content';
 import { formatDojoWithCraftsmen } from '../utils/formatters';
+import { SingleColumn } from '../components/Content';
+import { SpeakerListItem } from '../components/speakers/listItem';
 
 export default ({ data }) => {
     const dojo = formatDojoWithCraftsmen(data.rawDojo, data.craftsmen.edges);
@@ -27,11 +28,10 @@ export default ({ data }) => {
                     <h3>Craftmen</h3>
                     <ul>
                         {dojo.craftsmen.map(craftman => (
-                            <li key={craftman.slug}>
-                                <a href={`/speakers/${craftman.slug}`}>
-                                    {craftman.firstName} {craftman.lastName}
-                                </a>
-                            </li>
+                            <SpeakerListItem
+                                key={craftman.slug}
+                                speaker={craftman}
+                            />
                         ))}
                     </ul>
                 </div>

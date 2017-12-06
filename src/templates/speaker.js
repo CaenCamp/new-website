@@ -1,8 +1,9 @@
 import Helmet from 'react-helmet';
 import React from 'react';
 
-import { SingleColumn } from '../components/Content';
 import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
+import { SingleColumn } from '../components/Content';
+import { TalkListItem } from '../components/talks/listItem';
 
 export default ({ data }) => {
     const speaker = formatSpeakerWithTalksAndDojos(
@@ -45,10 +46,7 @@ export default ({ data }) => {
                     <h2>Ses talks</h2>
                     <ul>
                         {speaker.talks.map(talk => (
-                            <li key={talk.id}>
-                                Edition {talk.edition}:{' '}
-                                <a href={`/talks/${talk.slug}`}>{talk.title}</a>
-                            </li>
+                            <TalkListItem key={talk.id} talk={talk} />
                         ))}
                     </ul>
                 </div>

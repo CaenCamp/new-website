@@ -1,10 +1,10 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
+import React from 'react';
 
 import { Content, LeftColumn } from '../components/Content';
-import SideMenu from '../components/SideMenu';
 import { formatTalkWithSpeakers } from '../utils/formatters';
 import { TalkListItem } from '../components/talks/listItem';
+import SideMenu from '../components/SideMenu';
 
 export default ({ data }) => {
     const talks = data.talks.edges.map(talk =>

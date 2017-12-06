@@ -36,7 +36,11 @@ export const formatDojoWithCraftsmen = (dojo, craftsmen) => ({
         .filter(cm => cm !== null),
 });
 
-export const formatSpeakerWithTalksAndDojos = (speaker, talks, dojos) => ({
+export const formatSpeakerWithTalksAndDojos = (
+    speaker,
+    talks = [],
+    dojos = [],
+) => ({
     ...formatGraphContent(speaker),
     talks: talks
         .map(talk => formatGraphContent(talk.node))
