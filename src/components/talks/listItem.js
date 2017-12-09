@@ -12,6 +12,6 @@ export const TalkListItem = ({ talk }) => (
     </li>
 );
 
-TalkListItem.PropTypes = {
+TalkListItem.propTypes = {
     talk: talkPropType,
 };

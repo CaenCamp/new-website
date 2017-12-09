@@ -10,6 +10,6 @@ export const SpeakerListItem = ({ speaker }) => (
     </li>
 );
 
-SpeakerListItem.PropTypes = {
+SpeakerListItem.propTypes = {
     speaker: speakerPropType,
 };

@@ -8,8 +8,9 @@ import SideMenu from '../components/SideMenu';
 
 export default ({ data }) => {
     const speakers = data.speakers.edges.map(speaker =>
-        formatSpeakerWithTalksAndDojos(speaker),
+        formatSpeakerWithTalksAndDojos(speaker.node),
     );
+
     return (
         <div>
             <Helmet title="CaenCamp: proposez un talk">
