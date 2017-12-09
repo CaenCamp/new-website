@@ -4,6 +4,7 @@ import React from 'react';
 import { Content, LeftColumn } from '../components/Content';
 import { formatDojoWithCraftsmen } from '../utils/formatters';
 import SideMenu from '../components/SideMenu';
+import { DojoListItem } from '../components/dojos/listItem';
 
 export default ({ data }) => {
     const dojos = data.dojos.edges.map(dojo =>
@@ -22,18 +23,7 @@ export default ({ data }) => {
                     <h1>Le Dojo</h1>
                     <ul>
                         {dojos.map(dojo => (
-                            <li key={dojo.id}>
-                                <a href={`/coding-dojo/${dojo.slug}`}>
-                                    {dojo.title}
-                                </a>{' '}
-                                avec{' '}
-                                {dojo.craftsmen.map(
-                                    craftman =>
-                                        `${craftman.firstName} ${
-                                            craftman.lastName
-                                        }, `,
-                                )}
-                            </li>
+                            <DojoListItem key={dojo.id} dojo={dojo} />
                         ))}
                     </ul>
                 </LeftColumn>

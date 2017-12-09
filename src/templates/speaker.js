@@ -4,6 +4,7 @@ import React from 'react';
 import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
 import { TalkListItem } from '../components/talks/listItem';
+import { DojoListItem } from '../components/dojos/listItem';
 
 export default ({ data }) => {
     const speaker = formatSpeakerWithTalksAndDojos(
@@ -46,7 +47,13 @@ export default ({ data }) => {
                     <h2>Ses talks</h2>
                     <ul>
                         {speaker.talks.map(talk => (
-                            <TalkListItem key={talk.id} talk={talk} />
+                            <TalkListItem
+                                key={talk.id}
+                                talk={{
+                                    ...talk,
+                                    speakers: [],
+                                }}
+                            />
                         ))}
                     </ul>
                 </div>
@@ -57,11 +64,13 @@ export default ({ data }) => {
                     <h2>Ses Dojos</h2>
                     <ul>
                         {speaker.dojos.map(dojo => (
-                            <li key={dojo.id}>
-                                <a href={`/coding-dojo/${dojo.slug}`}>
-                                    {dojo.title}
-                                </a>
-                            </li>
+                            <DojoListItem
+                                key={dojo.id}
+                                dojo={{
+                                    ...dojo,
+                                    craftsmen: [],
+                                }}
+                            />
                         ))}
                     </ul>
                 </div>
