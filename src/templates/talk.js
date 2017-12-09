@@ -1,10 +1,11 @@
-import Helmet from 'react-helmet';
-import React from 'react';
 import format from 'date-fns/format';
+import Helmet from 'react-helmet';
 import locale from 'date-fns/locale/fr';
+import React from 'react';
 
-import { SingleColumn } from '../components/Content';
 import { formatTalkWithSpeakers } from '../utils/formatters';
+import { SingleColumn } from '../components/Content';
+import { SpeakerListItem } from '../components/speakers/listItem';
 
 export default ({ data }) => {
     const talk = formatTalkWithSpeakers(data.rawTalk, data.speakers.edges);
@@ -24,11 +25,7 @@ export default ({ data }) => {
                 <h3>Speakers</h3>
                 <ul>
                     {talk.speakers.map(speaker => (
-                        <li key={speaker.slug}>
-                            <a href={`/speakers/${speaker.slug}`}>
-                                {speaker.firstName} {speaker.lastName}
-                            </a>
-                        </li>
+                        <SpeakerListItem key={speaker.slug} speaker={speaker} />
                     ))}
                 </ul>
             </div>

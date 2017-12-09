@@ -4,7 +4,7 @@ export const formatGraphContent = graphContent => ({
     ...graphContent.frontmatter,
 });
 
-export const formatTalkWithSpeakers = (talk, speakers) => ({
+export const formatTalkWithSpeakers = (talk, speakers = []) => ({
     ...formatGraphContent(talk),
     speakers: talk.frontmatter.speakers
         .map(speaker => {
@@ -20,7 +20,7 @@ export const formatTalkWithSpeakers = (talk, speakers) => ({
         .filter(sp => sp !== null),
 });
 
-export const formatDojoWithCraftsmen = (dojo, craftsmen) => ({
+export const formatDojoWithCraftsmen = (dojo, craftsmen = []) => ({
     ...formatGraphContent(dojo),
     craftsmen: dojo.frontmatter.craftsmen
         .map(craftsman => {
@@ -36,7 +36,11 @@ export const formatDojoWithCraftsmen = (dojo, craftsmen) => ({
         .filter(cm => cm !== null),
 });
 
-export const formatSpeakerWithTalksAndDojos = (speaker, talks, dojos) => ({
+export const formatSpeakerWithTalksAndDojos = (
+    speaker,
+    talks = [],
+    dojos = [],
+) => ({
     ...formatGraphContent(speaker),
     talks: talks
         .map(talk => formatGraphContent(talk.node))
