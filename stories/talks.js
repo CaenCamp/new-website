@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { TalkListItem } from '../src/components/talks/listItem';
 
-storiesOf('Talks Components', module).add('List item', () => (
+storiesOf('Talks Components', module).add('List item with speaker', () => (
     <TalkListItem
         talk={{
             title: 'Fake talk',
@@ -16,6 +16,17 @@ storiesOf('Talks Components', module).add('List item', () => (
                     slug: 'john-doe',
                 },
             ],
+        }}
+    />
+));
+
+storiesOf('Talks Components', module).add('List item without speaker', () => (
+    <TalkListItem
+        talk={{
+            title: 'Fake talk',
+            edition: 1,
+            slug: 'fake-slug',
+            speakers: [],
         }}
     />
 ));
