@@ -31,20 +31,19 @@ export default ({ data }) => {
                         Edition {lastTalk.edition}:{' '}
                         <a href={`/talks/${lastTalk.slug}`}>{lastTalk.title}</a>
                     </h4>
-                    <p>
-                        {lastTalk.speakers.length > 0 ? 'par ' : ''}
-                        {lastTalk.speakers.length > 0 &&
-                            lastTalk.speakers.map(
-                                speaker =>
-                                    `${speaker.firstName} ${speaker.lastName},
-                                    `,
-                            )}
-                    </p>
-                    <p>
+                    <p>{lastTalk.description}</p>
+                    {lastTalk.speakers.length > 0 ? 'par ' : ''}
+                    {lastTalk.speakers.length > 0 &&
+                        lastTalk.speakers.map(speaker => (
+                            <a href={`/speakers/{speaker.slug}`}>
+                                {speaker.firstName} {speaker.lastName}
+                            </a>
+                        ))}
+                    <h4>
                         <a className="linkToTalks" href="/talks">
                             Tous les talks
                         </a>
-                    </p>
+                    </h4>
                 </LeftColumn>
                 <SideMenu />
             </Content>
