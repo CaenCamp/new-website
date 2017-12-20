@@ -20,6 +20,13 @@ describe('home page', () => {
         );
         expect(hello).toContain('Welcome to our new website.');
     });
+
+    test('it should last talk', async () => {
+        const lastTalk = await page.evaluate(
+            () => document.querySelector('.lasttalk').textContent,
+        );
+        expect(lastTalk).toContain('Dernier talk');
+    });
 });
 
 afterAll(() => {
