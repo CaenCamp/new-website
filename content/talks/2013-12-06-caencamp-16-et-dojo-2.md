@@ -1,5 +1,6 @@
 ---
 edition: 16
+meetupId: null
 title: "Gestion agile de projet et Marché de Noël"
 slug: "edition-16-gestion-agile-de-projet-et-marche-de-noel"
 date: "2013-12-19"

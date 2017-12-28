@@ -1,5 +1,6 @@
 ---
 edition: 10
+meetupId: null
 title: "La programmation en binôme, c'est magique !"
 slug: "edition-10-la-programmation-en-binome-cest-magique"
 date: "2013-03-08"

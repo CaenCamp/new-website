@@ -1,5 +1,6 @@
 ---
 edition: 11
+meetupId: null
 title: "Virtualisez vos environnements de développement avec Vagrant"
 slug: "edition-11-virtualisez-vos-environnements-de-developpement-avec-vagrant"
 date: "2013-04-11"

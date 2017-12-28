@@ -1,5 +1,6 @@
 ---
 edition: 27
+meetupId: null
 title: "Peut-on travailler proprement avec Wordpress ?"
 slug: "edition-27-peut-on-travailler-proprement-avec-wordpress"
 date: "2015-06-04"

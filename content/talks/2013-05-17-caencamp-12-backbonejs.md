@@ -1,5 +1,6 @@
 ---
 edition: 12
+meetupId: null
 title: "Backbone.js"
 slug: "edition-12-backbone-js"
 date: "2013-05-17"

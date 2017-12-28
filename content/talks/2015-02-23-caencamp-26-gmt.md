@@ -1,5 +1,6 @@
 ---
 edition: 26
+meetupId: null
 title: "Golden Master Testing"
 slug: "edition-26-golden-master-testing"
 date: "2015-02-26"

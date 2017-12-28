@@ -1,5 +1,6 @@
 ---
 edition: 14
+meetupId: null
 title: "Tour d'horizon et Déploiements automatisés"
 slug: "edition-14-tour-dhorizon-et-deploiements-automatises"
 date: "2013-10-25"
