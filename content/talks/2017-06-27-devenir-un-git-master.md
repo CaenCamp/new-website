@@ -1,5 +1,6 @@
 ---
 edition: 31
+meetupId: 240781536
 title: "Devenir un git master"
 slug: "edition-31-devenir-un-git-master"
 date: "2017-06-27"

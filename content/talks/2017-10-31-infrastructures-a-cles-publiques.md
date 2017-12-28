@@ -1,5 +1,6 @@
 ---
 edition: 33
+meetupId: 244150334
 title: "Infrastructures à Clés Publiques"
 slug: "edition-33-infrastructures-a-cles-publiques"
 date: "2017-10-31"

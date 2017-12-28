@@ -1,5 +1,6 @@
 ---
 edition: 34
+meetupId: 245074990
 title: "Les réseaux de neurones: les comprendre et en créer avec TensorFlow et Keras"
 slug: "edition-34-reseaux-neurones-avec-tensorflow-et-keras"
 date: "2017-11-28"

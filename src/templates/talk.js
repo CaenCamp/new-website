@@ -7,6 +7,23 @@ import { formatTalkWithSpeakers } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
 import { SpeakerListItem } from '../components/speakers/listItem';
 
+const renderMeetupLink = meetupId => {
+    if (meetupId == null || meetupId == '') {
+        return '';
+    }
+
+    return (
+        <small>
+            {` - `}
+            <a
+                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${meetupId}/`}
+            >
+                Meetup
+            </a>
+        </small>
+    );
+}
+
 export default ({ data }) => {
     const talk = formatTalkWithSpeakers(data.rawTalk, data.speakers.edges);
     return (
@@ -18,7 +35,10 @@ export default ({ data }) => {
             </Helmet>
             <a href="/talks">&lt;- Tous les talks</a>
             <div>
-                <h1>{talk.title}</h1>
+                <h1>
+                    {talk.title}
+                    {renderMeetupLink(talk.meetupId)}
+                </h1>
                 <p>{format(talk.date, 'DD MMMM YYYY', { locale })}</p>
                 <p>{`${talk.tags}`}</p>
                 <p>{talk.description}</p>
@@ -41,6 +61,7 @@ export const query = graphql`
             html
             frontmatter {
                 title
+                meetupId
                 date
                 tags
                 description
