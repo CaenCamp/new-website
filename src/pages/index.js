@@ -35,7 +35,7 @@ export default ({ data }) => {
                     {lastTalk.speakers.length > 0 ? 'par ' : ''}
                     {lastTalk.speakers.length > 0 &&
                         lastTalk.speakers.map(speaker => (
-                            <a href={`/speakers/{speaker.slug}`}>
+                            <a href={`/speakers/${speaker.slug}`}>
                                 {speaker.firstName} {speaker.lastName}
                             </a>
                         ))}
