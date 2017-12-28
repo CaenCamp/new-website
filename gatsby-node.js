@@ -84,6 +84,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                 context: {
                     // Data passed to context is available in page queries as GraphQL variables.
                     slug: node.frontmatter.slug,
+                    meetupId: node.frontmatter.meetupId,
                 },
             });
         });
