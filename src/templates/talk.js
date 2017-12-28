@@ -8,7 +8,7 @@ import { SingleColumn } from '../components/Content';
 import { SpeakerListItem } from '../components/speakers/listItem';
 
 const renderMeetupLink = meetupId => {
-    if (meetupId == null || meetupId == '') {
+    if (meetupId === null || meetupId === '') {
         return '';
     }
 
@@ -22,6 +22,14 @@ const renderMeetupLink = meetupId => {
             </a>
         </small>
     );
+};
+
+const renderMeetupRSVP = meetup => {
+    if (meetup === null || meetup.yes_rsvp_count === null) {
+        return '';
+    }
+
+    return <p>{meetup.yes_rsvp_count} participants</p>;
 };
 
 export default ({ data }) => {
@@ -42,7 +50,7 @@ export default ({ data }) => {
                     {renderMeetupLink(talk.meetupId)}
                 </h1>
                 <p>{format(talk.date, 'DD MMMM YYYY', { locale })}</p>
-                <p>{meetup.yes_rsvp_count} participants</p>
+                {renderMeetupRSVP(meetup)}
                 <p>{`${talk.tags}`}</p>
                 <p>{talk.description}</p>
                 <h3>Speakers</h3>
