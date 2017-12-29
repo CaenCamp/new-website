@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet';
 import React from 'react';
 
 import { Content, LeftColumn } from '../components/Content';
-import { formatTalkWithSpeakers } from '../utils/formatters';
+import { formatTalkWithSpeakers, formatMeetup } from '../utils/formatters';
 import { TalkListItem } from '../components/talks/listItem';
 import SideMenu from '../components/SideMenu';
 
@@ -10,6 +10,11 @@ export default ({ data }) => {
     const talks = data.talks.edges.map(talk =>
         formatTalkWithSpeakers(talk.node, data.speakers.edges),
     );
+
+    let nextMeetup = null;
+    if (data.nextMeetup) {
+        nextMeetup = formatMeetup(data.nextMeetup);
+    }
 
     return (
         <div>
@@ -28,7 +33,7 @@ export default ({ data }) => {
                         ))}
                     </ul>
                 </LeftColumn>
-                <SideMenu />
+                <SideMenu meetup={nextMeetup} />
             </Content>
         </div>
     );
@@ -63,6 +68,18 @@ export const query = graphql`
                         lastName
                         slug
                     }
+                }
+            }
+        }
+        nextMeetup: allMeetupEvent(
+            limit: 1
+            filter: { status: { eq: "upcoming" } }
+        ) {
+            edges {
+                node {
+                    name
+                    link
+                    yes_rsvp_count
                 }
             }
         }

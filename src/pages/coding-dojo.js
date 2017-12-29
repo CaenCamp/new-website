@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet';
 import React from 'react';
 
 import { Content, LeftColumn } from '../components/Content';
-import { formatDojoWithCraftsmen } from '../utils/formatters';
+import { formatDojoWithCraftsmen, formatMeetup } from '../utils/formatters';
 import SideMenu from '../components/SideMenu';
 import { DojoListItem } from '../components/dojos/listItem';
 
@@ -10,6 +10,12 @@ export default ({ data }) => {
     const dojos = data.dojos.edges.map(dojo =>
         formatDojoWithCraftsmen(dojo.node, data.craftsmen.edges),
     );
+
+    let nextMeetup = null;
+    if (data.nextMeetup) {
+        nextMeetup = formatMeetup(data.nextMeetup);
+    }
+
     return (
         <div>
             <Helmet title="CaenCamp: les coding dojos">
@@ -27,7 +33,7 @@ export default ({ data }) => {
                         ))}
                     </ul>
                 </LeftColumn>
-                <SideMenu />
+                <SideMenu meetup={nextMeetup} />
             </Content>
         </div>
     );
@@ -61,6 +67,18 @@ export const query = graphql`
                         lastName
                         slug
                     }
+                }
+            }
+        }
+        nextMeetup: allMeetupEvent(
+            limit: 1
+            filter: { status: { eq: "upcoming" } }
+        ) {
+            edges {
+                node {
+                    name
+                    link
+                    yes_rsvp_count
                 }
             }
         }

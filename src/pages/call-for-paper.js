@@ -2,7 +2,10 @@ import { Helmet } from 'react-helmet';
 import React from 'react';
 
 import { Content, LeftColumn } from '../components/Content';
-import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
+import {
+    formatSpeakerWithTalksAndDojos,
+    formatMeetup,
+} from '../utils/formatters';
 import { SpeakerListItem } from '../components/speakers/listItem';
 import SideMenu from '../components/SideMenu';
 
@@ -10,6 +13,11 @@ export default ({ data }) => {
     const speakers = data.speakers.edges.map(speaker =>
         formatSpeakerWithTalksAndDojos(speaker.node),
     );
+
+    let nextMeetup = null;
+    if (data.nextMeetup) {
+        nextMeetup = formatMeetup(data.nextMeetup);
+    }
 
     return (
         <div>
@@ -29,7 +37,7 @@ export default ({ data }) => {
                         ))}
                     </ul>
                 </LeftColumn>
-                <SideMenu />
+                <SideMenu meetup={nextMeetup} />
             </Content>
         </div>
     );
@@ -53,6 +61,18 @@ export const query = graphql`
                             url
                         }
                     }
+                }
+            }
+        }
+        nextMeetup: allMeetupEvent(
+            limit: 1
+            filter: { status: { eq: "upcoming" } }
+        ) {
+            edges {
+                node {
+                    name
+                    link
+                    yes_rsvp_count
                 }
             }
         }
