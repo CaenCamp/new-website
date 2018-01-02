@@ -1,5 +1,6 @@
 ---
 edition: 29
+meetupId: 239134605
 title: "Architecture flux : Alternative au MVC ?"
 slug: "edition-29-architecture-flux-alternative-au-mvc"
 date: "2017-04-25"

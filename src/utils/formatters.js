@@ -55,3 +55,17 @@ export const formatSpeakerWithTalksAndDojos = (
             ),
         ),
 });
+
+export const formatMeetup = rawMeetup => {
+    let meetup = null;
+
+    if (rawMeetup === null) {
+        return meetup;
+    }
+
+    rawMeetup.edges.map(edge => {
+        meetup = edge.node;
+    });
+
+    return meetup;
+};

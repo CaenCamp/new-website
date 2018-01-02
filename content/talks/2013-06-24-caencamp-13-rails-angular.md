@@ -1,5 +1,6 @@
 ---
 edition: 13
+meetupId: null
 title: "Rails + AngularJS + TDD + Pair Programming"
 slug: "edition-13-rails-angular-tdd-pair-programming"
 date: "2013-06-24"

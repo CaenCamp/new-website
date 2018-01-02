@@ -1,5 +1,6 @@
 ---
 edition: 9
+meetupId: null
 title: "Git, comprendre les submodules"
 slug: "edition-9-git-comprendre-les-submodules"
 date: "2013-02-15"

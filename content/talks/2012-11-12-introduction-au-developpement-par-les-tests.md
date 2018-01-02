@@ -1,5 +1,6 @@
 ---
 edition: 6
+meetupId: null
 title: "Introduction au développement par les tests"
 slug: "edition-6-introduction-au-developpement-par-les-tests"
 date: "2012-11-12"

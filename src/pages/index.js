@@ -2,10 +2,10 @@ import { Helmet } from 'react-helmet';
 import React from 'react';
 
 import { Content, LeftColumn } from '../components/Content';
-import { formatTalkWithSpeakers } from '../utils/formatters';
+import { formatTalkWithSpeakers, formatMeetup } from '../utils/formatters';
 import SideMenu from '../components/SideMenu';
 
-export default ({ data }) => {
+export default ({ data, nextMeetup }) => {
     const talks = data.talks.edges.map(talk =>
         formatTalkWithSpeakers(talk.node, data.speakers.edges),
     );
@@ -13,6 +13,10 @@ export default ({ data }) => {
     let lastTalk = null;
     if (talks.length) {
         lastTalk = talks[0];
+    }
+
+    if (nextMeetup) {
+        nextMeetup = formatMeetup(nextMeetup);
     }
 
     return (
@@ -35,7 +39,7 @@ export default ({ data }) => {
                     {lastTalk.speakers.length > 0 ? 'par ' : ''}
                     {lastTalk.speakers.length > 0 &&
                         lastTalk.speakers.map(speaker => (
-                            <a href={`/speakers/{speaker.slug}`}>
+                            <a href={`/speakers/${speaker.slug}`}>
                                 {speaker.firstName} {speaker.lastName}
                             </a>
                         ))}
@@ -45,7 +49,7 @@ export default ({ data }) => {
                         </a>
                     </h4>
                 </LeftColumn>
-                <SideMenu />
+                <SideMenu meetup={nextMeetup} />
             </Content>
         </div>
     );

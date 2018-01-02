@@ -1,5 +1,6 @@
 ---
 edition: 25
+meetupId: null
 title: "Édition de Noël"
 slug: "edition-25-noel"
 date: "2014-12-18"

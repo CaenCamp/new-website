@@ -1,5 +1,6 @@
 ---
 edition: 7
+meetupId: null
 title: "Git pratique"
 slug: "edition-7-git-pratique"
 date: "2012-12-06"

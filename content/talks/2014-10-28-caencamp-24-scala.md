@@ -1,5 +1,6 @@
 ---
 edition: 24
+meetupId: null
 title: "La programmation fonctionnelle avec Scala"
 slug: "edition-24-la-programmation-fonctionnelle-avec-scala"
 date: "2014-10-30"

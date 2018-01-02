@@ -1,5 +1,6 @@
 ---
 edition: 30
+meetupId: 240062370
 title: "Premiers pas avec docker"
 slug: "edition-30-premiers-pas-avec-docker"
 date: "2017-05-30"

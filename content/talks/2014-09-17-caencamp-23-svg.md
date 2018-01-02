@@ -1,5 +1,6 @@
 ---
 edition: 23
+meetupId: null
 title: "SVG, format clé du responsive"
 slug: "edition-23-svg-format-cle-du-responsive"
 date: "2014-09-25"

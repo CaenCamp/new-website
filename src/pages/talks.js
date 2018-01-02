@@ -2,14 +2,18 @@ import { Helmet } from 'react-helmet';
 import React from 'react';
 
 import { Content, LeftColumn } from '../components/Content';
-import { formatTalkWithSpeakers } from '../utils/formatters';
+import { formatTalkWithSpeakers, formatMeetup } from '../utils/formatters';
 import { TalkListItem } from '../components/talks/listItem';
 import SideMenu from '../components/SideMenu';
 
-export default ({ data }) => {
+export default ({ data, nextMeetup }) => {
     const talks = data.talks.edges.map(talk =>
         formatTalkWithSpeakers(talk.node, data.speakers.edges),
     );
+
+    if (nextMeetup) {
+        nextMeetup = formatMeetup(nextMeetup);
+    }
 
     return (
         <div>
@@ -28,7 +32,7 @@ export default ({ data }) => {
                         ))}
                     </ul>
                 </LeftColumn>
-                <SideMenu />
+                <SideMenu meetup={nextMeetup} />
             </Content>
         </div>
     );

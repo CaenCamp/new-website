@@ -3,12 +3,39 @@ import Helmet from 'react-helmet';
 import locale from 'date-fns/locale/fr';
 import React from 'react';
 
-import { formatTalkWithSpeakers } from '../utils/formatters';
+import { formatTalkWithSpeakers, formatMeetup } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
 import { SpeakerListItem } from '../components/speakers/listItem';
 
+const renderMeetupLink = meetupId => {
+    if (meetupId === null || meetupId === '') {
+        return '';
+    }
+
+    return (
+        <small>
+            {` - `}
+            <a
+                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${meetupId}/`}
+            >
+                Meetup
+            </a>
+        </small>
+    );
+};
+
+const renderMeetupRSVP = meetup => {
+    if (meetup === null || meetup.yes_rsvp_count === null) {
+        return '';
+    }
+
+    return <p>{meetup.yes_rsvp_count} participants</p>;
+};
+
 export default ({ data }) => {
     const talk = formatTalkWithSpeakers(data.rawTalk, data.speakers.edges);
+    const meetup = formatMeetup(data.meetup);
+
     return (
         <SingleColumn>
             <Helmet>
@@ -18,8 +45,12 @@ export default ({ data }) => {
             </Helmet>
             <a href="/talks">&lt;- Tous les talks</a>
             <div>
-                <h1>{talk.title}</h1>
+                <h1>
+                    {talk.title}
+                    {renderMeetupLink(talk.meetupId)}
+                </h1>
                 <p>{format(talk.date, 'DD MMMM YYYY', { locale })}</p>
+                {renderMeetupRSVP(meetup)}
                 <p>{`${talk.tags}`}</p>
                 <p>{talk.description}</p>
                 <h3>Speakers</h3>
@@ -36,11 +67,12 @@ export default ({ data }) => {
 };
 
 export const query = graphql`
-    query TalkBySlug($slug: String!) {
+    query TalkBySlug($slug: String!, $meetupId: String) {
         rawTalk: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
             html
             frontmatter {
                 title
+                meetupId
                 date
                 tags
                 description
@@ -58,6 +90,17 @@ export const query = graphql`
                         lastName
                         slug
                     }
+                }
+            }
+        }
+        meetup: allMeetupEvent(
+            limit: 1
+            filter: { id: { eq: $meetupId }, status: { eq: "past" } }
+        ) {
+            edges {
+                node {
+                    name
+                    yes_rsvp_count
                 }
             }
         }

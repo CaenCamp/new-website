@@ -1,4 +1,33 @@
 const path = require(`path`);
+const axios = require('axios');
+const crypto = require('crypto');
+
+exports.sourceNodes = async ({ boundActionCreators }) => {
+    const { createNode } = boundActionCreators;
+    const url = `https://api.meetup.com/CaenCamp/events?scroll=future_or_past`;
+    const data = await axios.get(url);
+
+    data.data.forEach((event, i) => {
+        const meetupEventNode = {
+            ...event,
+            children: [],
+            parent: `__SOURCE__`,
+            content: JSON.stringify(event),
+            internal: {
+                type: `MeetupEvent`,
+                contentDigest: crypto
+                    .createHash(`md5`)
+                    .update(JSON.stringify(event))
+                    .digest(`hex`),
+            },
+            order: i,
+        };
+
+        createNode(meetupEventNode);
+    });
+
+    return;
+};
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
     const { createPage } = boundActionCreators;
@@ -15,6 +44,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                     node {
                         frontmatter {
                             slug
+                            meetupId
                         }
                     }
                 }
@@ -54,6 +84,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                 context: {
                     // Data passed to context is available in page queries as GraphQL variables.
                     slug: node.frontmatter.slug,
+                    meetupId: node.frontmatter.meetupId,
                 },
             });
         });
