@@ -23,7 +23,7 @@
         "e2e": "jest --config ./e2e/jest.config.json"
     },
     "dependencies": {
-        "axios": "^0.17.1",
+        "axios": "0.17.1",
         "date-fns": "1.29.0",
         "gatsby": "1.9.128",
         "gatsby-link": "1.6.30",
