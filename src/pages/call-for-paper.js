@@ -9,14 +9,13 @@ import {
 import { SpeakerListItem } from '../components/speakers/listItem';
 import SideMenu from '../components/SideMenu';
 
-export default ({ data }) => {
+export default ({ data, nextMeetup }) => {
     const speakers = data.speakers.edges.map(speaker =>
         formatSpeakerWithTalksAndDojos(speaker.node),
     );
 
-    let nextMeetup = null;
-    if (data.nextMeetup) {
-        nextMeetup = formatMeetup(data.nextMeetup);
+    if (nextMeetup) {
+        nextMeetup = formatMeetup(nextMeetup);
     }
 
     return (
@@ -61,18 +60,6 @@ export const query = graphql`
                             url
                         }
                     }
-                }
-            }
-        }
-        nextMeetup: allMeetupEvent(
-            limit: 1
-            filter: { status: { eq: "upcoming" } }
-        ) {
-            edges {
-                node {
-                    name
-                    link
-                    yes_rsvp_count
                 }
             }
         }

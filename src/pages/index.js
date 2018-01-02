@@ -5,7 +5,7 @@ import { Content, LeftColumn } from '../components/Content';
 import { formatTalkWithSpeakers, formatMeetup } from '../utils/formatters';
 import SideMenu from '../components/SideMenu';
 
-export default ({ data }) => {
+export default ({ data, nextMeetup }) => {
     const talks = data.talks.edges.map(talk =>
         formatTalkWithSpeakers(talk.node, data.speakers.edges),
     );
@@ -15,9 +15,8 @@ export default ({ data }) => {
         lastTalk = talks[0];
     }
 
-    let nextMeetup = null;
-    if (data.nextMeetup) {
-        nextMeetup = formatMeetup(data.nextMeetup);
+    if (nextMeetup) {
+        nextMeetup = formatMeetup(nextMeetup);
     }
 
     return (
@@ -86,18 +85,6 @@ export const query = graphql`
                         lastName
                         slug
                     }
-                }
-            }
-        }
-        nextMeetup: allMeetupEvent(
-            limit: 1
-            filter: { status: { eq: "upcoming" } }
-        ) {
-            edges {
-                node {
-                    name
-                    link
-                    yes_rsvp_count
                 }
             }
         }

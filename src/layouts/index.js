@@ -27,7 +27,10 @@ class TemplateWrapper extends Component {
                     title={data.site.siteMetadata.title}
                     baseLine={data.site.siteMetadata.baseline}
                 />
-                {children()}
+                {children({
+                    ...this.props,
+                    nextMeetup: data.nextMeetup || null,
+                })}
                 <Footer socialLinks={data.site.siteMetadata.socialLinks} />
             </Container>
         );
@@ -47,6 +50,18 @@ export const query = graphql`
                 socialLinks {
                     title
                     url
+                }
+            }
+        }
+        nextMeetup: allMeetupEvent(
+            limit: 1
+            filter: { status: { eq: "upcoming" } }
+        ) {
+            edges {
+                node {
+                    name
+                    link
+                    yes_rsvp_count
                 }
             }
         }
