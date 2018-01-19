@@ -4,14 +4,29 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
 import favicon from '../../static/favicon/favicon-16x16.png';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import FooterContent from '../components/Footer';
+import HeaderContent from '../components/Header';
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    max-width: 1024px;
+    height: 100%;
+    display: grid;
+    grid-gap: 3px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 5rem 1fr auto;
+    grid-template-areas:
+        'h h h h h h h h h h h h'
+        '. . c c c c c c c c . .'
+        'f f f f f f f f f f f f';
+`;
+const Header = styled.header`
+    grid-area: h;
+`;
+
+const Content = styled.section`
+    grid-area: c;
+`;
+const Footer = styled.footer`
+    grid-area: f;
 `;
 
 class TemplateWrapper extends Component {
@@ -23,15 +38,20 @@ class TemplateWrapper extends Component {
                 <Helmet>
                     <link rel="icon" href={favicon} type="image/x-icon" />
                 </Helmet>
-                <Header
-                    title={data.site.siteMetadata.title}
-                    baseLine={data.site.siteMetadata.baseline}
-                />
-                {children({
-                    ...this.props,
-                    nextMeetup: data.nextMeetup || null,
-                })}
-                <Footer socialLinks={data.site.siteMetadata.socialLinks} />
+                <Header>
+                    <HeaderContent />
+                </Header>
+                <Content>
+                    {children({
+                        ...this.props,
+                        nextMeetup: data.nextMeetup || null,
+                    })}
+                </Content>
+                <Footer>
+                    <FooterContent
+                        socialLinks={data.site.siteMetadata.socialLinks}
+                    />
+                </Footer>
             </Container>
         );
     }

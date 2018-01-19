@@ -8,6 +8,8 @@ const Footer = styled.footer`
     width: 100%;
     text-align: center;
     justify-content: space-around;
+    padding: 1rem 0;
+    background-color: #f6f7f8;
 `;
 export const SocialLink = styled.a`
     margin: 0;

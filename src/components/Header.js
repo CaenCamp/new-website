@@ -2,36 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Logo from './Logo';
+import Nav from './Nav';
 
-const Header = styled.header`
+const HeaderContent = styled.div`
+    align-items: center;
+    background-color: #fff;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    height: 5rem;
+    left: 0;
+    padding: 1rem;
+    position: fixed;
+    right: 0;
+    top: 0;
     width: 100%;
-    & a {
-        text-decoration: none;
-        background-image: none;
-    }
-`;
-export const Title = styled.h1`
-    margin: 0;
-    padding: 0;
-`;
-export const Baseline = styled.span`
-    margin: 0;
-    padding: 0.7rem 0 0 2rem;
-    font-style: italic;
-    font-size: 0.8rem;
+    z-index: 1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 `;
 
-export default ({ title = 'default Title', baseLine = 'default baseline' }) => (
-    <Header>
-        <a href="/">
-            <Logo id="mainLogo" />
-        </a>
-        <a href="/">
-            <Title id="mainTitle">{title}</Title>
-        </a>
-        <Baseline id="baseLine">{baseLine}</Baseline>
-    </Header>
+export default () => (
+    <HeaderContent>
+        <div>
+            <a href="/">
+                <Logo id="mainLogo" />
+            </a>
+        </div>
+        <Nav />
+    </HeaderContent>
 );
