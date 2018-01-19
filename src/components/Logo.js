@@ -4,10 +4,10 @@ import logo from '../../static/logo.png';
 export default styled.img.attrs({
     src: logo,
 })`
-    height: 3rem;
+    height: 5rem;
     @media (max-width: 600px) {
-        height: 1.5rem;
+        height: 3rem;
     }
     margin: 0;
-    padding: 0 0.5rem;
+    padding: 0 5rem;
 `;

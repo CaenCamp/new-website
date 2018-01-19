@@ -1,24 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'gatsby-link';
 
 const Nav = styled.nav`
     margin-top: 0;
     margin-left: auto;
+    margin-right: 5rem;
     a {
+        font-size: 2rem;
         display: inline-block;
-        color: #333;
-        padding: 0.5rem 0.75rem;
-        &:hover {
-            background-color: #eee;
-            color: #555;
-        }
+        color: #696969;
+        padding: 1rem 0;
+        font-variant: small-caps;
+        margin-right: 2rem;
+        font-weight: bold;
     }
 `;
 
+const activeLinkStyle = {
+    fontSize: 'bold',
+    borderBottom: '2px solid #193744',
+    color: 'black',
+};
+
 export default () => (
     <Nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <Link to="/call-for-paper" activeStyle={activeLinkStyle}>
+            les speakers
+        </Link>
+        <Link to="/welcome-us" activeStyle={activeLinkStyle}>
+            les talks
+        </Link>
+        <Link to="/coding-dojo" activeStyle={activeLinkStyle}>
+            les dojos
+        </Link>
+        <Link to="/coding-dojo" activeStyle={activeLinkStyle}>
+            les partenaires
+        </Link>
     </Nav>
 );

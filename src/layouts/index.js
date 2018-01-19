@@ -7,10 +7,11 @@ import favicon from '../../static/favicon/favicon-16x16.png';
 import FooterContent from '../components/Footer';
 import HeaderContent from '../components/Header';
 
+import './reset.css';
+
 const Container = styled.div`
     height: 100%;
     display: grid;
-    grid-gap: 3px;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 5rem 1fr auto;
     grid-template-areas:
@@ -20,13 +21,19 @@ const Container = styled.div`
 `;
 const Header = styled.header`
     grid-area: h;
+    z-index: 9;
+    position: 1;
 `;
 
 const Content = styled.section`
     grid-area: c;
+    z-index: 8;
+    position: 2;
+    padding: 3rem;
 `;
 const Footer = styled.footer`
     grid-area: f;
+    position: 3;
 `;
 
 class TemplateWrapper extends Component {

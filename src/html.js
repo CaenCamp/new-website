@@ -20,6 +20,7 @@ module.exports = class HTML extends React.Component {
                         content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"
                     />
                     {this.props.headComponents}
+                    <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans|Work+Sans" rel="stylesheet">
                 </head>
                 <body>
                     {this.props.preBodyComponents}

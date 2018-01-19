@@ -14,7 +14,7 @@ const Footer = styled.footer`
 export const SocialLink = styled.a`
     margin: 0;
     padding: 0;
-    font-size: 0.6rem;
+    font-size: 1rem;
 `;
 
 export default ({ socialLinks }) => (
