@@ -1,9 +1,8 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
 
-import { Content, LeftColumn } from '../components/Content';
+import { Content, SingleColumn } from '../components/Content';
 import { formatDojoWithCraftsmen, formatMeetup } from '../utils/formatters';
-import SideMenu from '../components/SideMenu';
 import { DojoListItem } from '../components/dojos/listItem';
 
 export default ({ data, nextMeetup }) => {
@@ -24,15 +23,14 @@ export default ({ data, nextMeetup }) => {
                 />
             </Helmet>
             <Content id="dojoContent">
-                <LeftColumn>
+                <SingleColumn>
                     <h1>Le Dojo</h1>
                     <ul>
                         {dojos.map(dojo => (
                             <DojoListItem key={dojo.id} dojo={dojo} />
                         ))}
                     </ul>
-                </LeftColumn>
-                <SideMenu meetup={nextMeetup} />
+                </SingleColumn>
             </Content>
         </div>
     );

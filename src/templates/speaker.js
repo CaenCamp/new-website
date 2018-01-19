@@ -21,7 +21,7 @@ export default ({ data }) => {
                 <meta name="description" content="A trouver" />
                 <meta name="keywords" content="A voir" />
             </Helmet>
-            <a href="/call-for-paper">&lt;- Retour à la liste des speakers</a>
+            <a href="/speakers">&lt;- Retour à la liste des speakers</a>
 
             <h1>
                 {speaker.firstName} {speaker.lastName}

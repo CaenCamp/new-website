@@ -25,16 +25,16 @@ const activeLinkStyle = {
 
 export default () => (
     <Nav>
-        <Link to="/call-for-paper" activeStyle={activeLinkStyle}>
+        <Link to="/speakers" activeStyle={activeLinkStyle}>
             les speakers
         </Link>
-        <Link to="/welcome-us" activeStyle={activeLinkStyle}>
+        <Link to="talks" activeStyle={activeLinkStyle}>
             les talks
         </Link>
         <Link to="/coding-dojo" activeStyle={activeLinkStyle}>
             les dojos
         </Link>
-        <Link to="/coding-dojo" activeStyle={activeLinkStyle}>
+        <Link to="/partnerships" activeStyle={activeLinkStyle}>
             les partenaires
         </Link>
     </Nav>
