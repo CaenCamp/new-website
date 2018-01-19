@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'gatsby-link';
 
 import Logo from './Logo';
 import Nav from './Nav';
@@ -20,9 +21,9 @@ const HeaderContent = styled.div`
 export default () => (
     <HeaderContent>
         <div>
-            <a href="/">
-                <Logo id="mainLogo" />
-            </a>
+            <Link to="/">
+                <Logo />
+            </Link>
         </div>
         <Nav />
     </HeaderContent>

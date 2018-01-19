@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { Helmet } from 'react-helmet';
+import 'font-awesome/css/font-awesome.css';
 
 import favicon from '../../static/favicon/favicon-16x16.png';
 import FooterContent from '../components/Footer';
 import HeaderContent from '../components/Header';
-
-import './reset.css';
+import theme from '../utils/theme';
 
 const Container = styled.div`
     height: 100%;
@@ -41,25 +41,27 @@ class TemplateWrapper extends Component {
         const { children, data } = this.props;
 
         return (
-            <Container>
-                <Helmet>
-                    <link rel="icon" href={favicon} type="image/x-icon" />
-                </Helmet>
-                <Header>
-                    <HeaderContent />
-                </Header>
-                <Content>
-                    {children({
-                        ...this.props,
-                        nextMeetup: data.nextMeetup || null,
-                    })}
-                </Content>
-                <Footer>
-                    <FooterContent
-                        socialLinks={data.site.siteMetadata.socialLinks}
-                    />
-                </Footer>
-            </Container>
+            <ThemeProvider theme={theme}>
+                <Container>
+                    <Helmet>
+                        <link rel="icon" href={favicon} type="image/x-icon" />
+                    </Helmet>
+                    <Header>
+                        <HeaderContent />
+                    </Header>
+                    <Content>
+                        {children({
+                            ...this.props,
+                            nextMeetup: data.nextMeetup || null,
+                        })}
+                    </Content>
+                    <Footer>
+                        <FooterContent
+                            socialLinks={data.site.siteMetadata.socialLinks}
+                        />
+                    </Footer>
+                </Container>
+            </ThemeProvider>
         );
     }
 }

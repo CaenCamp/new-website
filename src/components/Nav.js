@@ -9,7 +9,7 @@ const Nav = styled.nav`
     a {
         font-size: 2rem;
         display: inline-block;
-        color: #696969;
+        color: ${({ theme }) => theme.grey};
         padding: 1rem 0;
         font-variant: small-caps;
         margin-right: 2rem;
@@ -25,10 +25,13 @@ const activeLinkStyle = {
 
 export default () => (
     <Nav>
+        <Link exact to="/" activeStyle={activeLinkStyle}>
+            accueil
+        </Link>
         <Link to="/speakers" activeStyle={activeLinkStyle}>
             les speakers
         </Link>
-        <Link to="talks" activeStyle={activeLinkStyle}>
+        <Link to="/talks" activeStyle={activeLinkStyle}>
             les talks
         </Link>
         <Link to="/coding-dojo" activeStyle={activeLinkStyle}>

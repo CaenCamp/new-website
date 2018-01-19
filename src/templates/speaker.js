@@ -1,4 +1,5 @@
 import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
 import React from 'react';
 
 import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
@@ -21,7 +22,7 @@ export default ({ data }) => {
                 <meta name="description" content="A trouver" />
                 <meta name="keywords" content="A voir" />
             </Helmet>
-            <a href="/speakers">&lt;- Retour à la liste des speakers</a>
+            <Link to="/speakers">&lt;- Retour à la liste des speakers</Link>
 
             <h1>
                 {speaker.firstName} {speaker.lastName}

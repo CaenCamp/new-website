@@ -3,7 +3,11 @@
     "description": "CaenCamp",
     "version": "2.0.0",
     "license": "MIT",
-    "keywords": ["caencamp", "caen", "meetup"],
+    "keywords": [
+        "caencamp",
+        "caen",
+        "meetup"
+    ],
     "bugs": {
         "url": "https://github.com/CaenCamp/new-website/issues"
     },
@@ -21,6 +25,7 @@
     "dependencies": {
         "axios": "0.17.1",
         "date-fns": "1.29.0",
+        "font-awesome": "4.7.0",
         "gatsby": "1.9.157",
         "gatsby-link": "1.6.34",
         "gatsby-plugin-react-helmet": "2.0.3",
@@ -32,6 +37,7 @@
         "prop-types": "15.6.0",
         "react": "16.2.0",
         "react-dom": "16.2.0",
+        "react-fontawesome": "1.6.1",
         "react-helmet": "5.2.0",
         "react-typography": "0.16.13",
         "storybook": "1.0.0",
