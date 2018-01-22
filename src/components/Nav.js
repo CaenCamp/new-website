@@ -7,10 +7,10 @@ const Nav = styled.nav`
     margin-left: auto;
     margin-right: 5rem;
     a {
-        font-size: 2rem;
+        font-size: 1.4rem;
         display: inline-block;
         color: ${({ theme }) => theme.grey};
-        padding: 1rem 0;
+        padding: 1.6rem 0;
         font-variant: small-caps;
         margin-right: 2rem;
         font-weight: bold;
@@ -21,6 +21,7 @@ const activeLinkStyle = {
     fontSize: 'bold',
     borderBottom: '2px solid #193744',
     color: 'black',
+    outline: 'none',
 };
 
 export default () => (

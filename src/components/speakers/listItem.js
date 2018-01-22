@@ -7,8 +7,8 @@ import Links from './Links';
 
 export const Item = styled.div`
     border: 1px solid ${({ theme }) => theme.greyLight};
-    height: 260px;
-    width: 180px;
+    height: 280px;
+    width: 190px;
     margin: 1rem;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -24,18 +24,21 @@ export const Profile = styled.img`
     border-radius: 50%;
     width: 115px;
     height: 115px;
+    margin-bottom: 0.8rem;
 `;
 
 export const Name = styled.h3`
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     text-align: center;
+    padding: 0;
+    margin: 0.3rem 0;
 `;
 
 export const Introduction = styled.p`
     text-align: center;
     font-size: 1rem;
     padding: 0;
-    margin: 1rem 0;
+    margin: 0.2rem 0 0;
     color: ${({ theme }) => theme.black};
 `;
 
