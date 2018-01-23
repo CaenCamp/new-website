@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import { talkPropType } from '../../utils/caenCampPropTypes';
 import Calendar from './Calendar';
+import MinimalView from '../speakers/MinimalView';
+import Tags from './Tags';
 
 export const Item = styled.div`
     border: 1px solid ${({ theme }) => theme.greyLight};
@@ -32,21 +34,26 @@ const Resume = styled.p`
     font-style: italic;
 `;
 
+const Speakers = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+`;
+
 export const TalkListItem = ({ talk }) => (
     <Item>
         <Link to={`/talks/${talk.slug}`}>
             <Calendar date={talk.date} edition={talk.edition} />
             <div>
                 <Title>{talk.title}</Title>
-                <Resume>{talk.description}</Resume>
-                <p>
-                    {talk.speakers.length > 0 ? 'par ' : ''}
+                <Speakers>
                     {talk.speakers.length > 0 &&
-                        talk.speakers.map(
-                            speaker =>
-                                `${speaker.firstName} ${speaker.lastName}, `,
-                        )}
-                </p>
+                        talk.speakers.map(speaker => (
+                            <MinimalView speaker={speaker} />
+                        ))}
+                </Speakers>
+                <Resume>{talk.description}</Resume>
+                <Tags tags={talk.tags} />
             </div>
         </Link>
     </Item>

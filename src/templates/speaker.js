@@ -87,6 +87,8 @@ export const query = graphql`
             frontmatter {
                 firstName
                 lastName
+                picture
+                resume
                 links {
                     title
                     url
@@ -105,6 +107,9 @@ export const query = graphql`
                         title
                         slug
                         speakers
+                        date
+                        tags
+                        description
                     }
                 }
             }

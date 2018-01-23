@@ -51,12 +51,13 @@ export const query = graphql`
                 node {
                     id
                     frontmatter {
-                        edition
-                        title
-                        slug
-                        speakers
                         date
                         description
+                        edition
+                        slug
+                        speakers
+                        tags
+                        title
                     }
                 }
             }
@@ -70,6 +71,11 @@ export const query = graphql`
                     frontmatter {
                         firstName
                         lastName
+                        links {
+                            title
+                            url
+                        }
+                        picture
                         slug
                     }
                 }
