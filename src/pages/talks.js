@@ -1,9 +1,18 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
+import styled from 'styled-components';
 
 import { Content, SingleColumn } from '../components/Content';
 import { formatTalkWithSpeakers } from '../utils/formatters';
 import { TalkListItem } from '../components/talks/listItem';
+
+const TalksContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: top;
+    justify-content: left;
+`;
 
 export default ({ data }) => {
     const talks = data.talks.edges.map(talk =>
@@ -21,11 +30,11 @@ export default ({ data }) => {
             <Content id="talksContent">
                 <SingleColumn>
                     <h1>Tous les talks</h1>
-                    <ul>
+                    <TalksContainer>
                         {talks.map(talk => (
                             <TalkListItem key={talk.id} talk={talk} />
                         ))}
-                    </ul>
+                    </TalksContainer>
                 </SingleColumn>
             </Content>
         </div>
@@ -46,6 +55,8 @@ export const query = graphql`
                         title
                         slug
                         speakers
+                        date
+                        description
                     }
                 }
             }

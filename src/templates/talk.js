@@ -1,5 +1,6 @@
 import format from 'date-fns/format';
 import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
 import locale from 'date-fns/locale/fr';
 import React from 'react';
 
@@ -43,7 +44,7 @@ export default ({ data }) => {
                 <meta name="description" content={talk.description} />
                 <meta name="keywords" content={`${talk.tags}`} />
             </Helmet>
-            <a href="/talks">&lt;- Tous les talks</a>
+            <Link to="/talks">&lt;- Tous les talks</Link>
             <div>
                 <h1>
                     {talk.title}
