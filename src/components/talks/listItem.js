@@ -21,6 +21,10 @@ export const Item = styled.div`
     }
 `;
 
+const Description = styled.div`
+    margin-left: 2rem;
+`;
+
 const Title = styled.h3`
     font-size: 2rem;
     margin: 0;
@@ -44,7 +48,7 @@ export const TalkListItem = ({ talk }) => (
     <Item>
         <Link to={`/talks/${talk.slug}`}>
             <Calendar date={talk.date} edition={talk.edition} />
-            <div>
+            <Description>
                 <Title>{talk.title}</Title>
                 <Speakers>
                     {talk.speakers.length > 0 &&
@@ -54,7 +58,7 @@ export const TalkListItem = ({ talk }) => (
                 </Speakers>
                 <Resume>{talk.description}</Resume>
                 <Tags tags={talk.tags} />
-            </div>
+            </Description>
         </Link>
     </Item>
 );

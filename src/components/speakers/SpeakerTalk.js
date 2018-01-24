@@ -1,60 +1,42 @@
-import Link from 'gatsby-link';
 import React from 'react';
 import styled from 'styled-components';
-
-import { speakerPropType } from '../../utils/caenCampPropTypes';
-import Links from './Links';
+import Link from 'gatsby-link';
 
 export const Item = styled.div`
+    text-align: center;
     border: 1px solid ${({ theme }) => theme.greyLight};
-    height: 290px;
-    width: 190px;
-    margin: 1rem;
-    padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: 2px 2px 5px rgba(235, 235, 235, 0.5);
+    margin: 1rem 0;
     a {
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 1rem 0;
     }
 `;
 
 export const Profile = styled.img`
     border-radius: 50%;
-    width: 115px;
-    height: 115px;
-    margin-bottom: 0.8rem;
+    width: 60px;
+    height: 60px;
 `;
 
-export const Name = styled.h3`
-    font-size: 1.2rem;
-    text-align: center;
-    padding: 0;
-    margin: 0.3rem 0;
-`;
-
-export const Introduction = styled.p`
-    text-align: center;
+export const Name = styled.span`
     font-size: 1rem;
-    padding: 0;
-    margin: 0.2rem 0 0;
+    text-align: center;
+    padding-top: 1rem;
     color: ${({ theme }) => theme.black};
+    font-variant: small-caps;
 `;
 
-export const SpeakerListItem = ({ speaker }) => (
+export default ({ speaker }) => (
     <Item>
         <Link to={`/speakers/${speaker.slug}`}>
             <Profile src={`/speakers/${speaker.picture}`} />
             <Name>
                 {speaker.firstName} {speaker.lastName}
             </Name>
-            <Introduction>{speaker.resume}</Introduction>
-            <Links links={speaker.links} />
         </Link>
     </Item>
 );
-
-SpeakerListItem.propTypes = {
-    speaker: speakerPropType,
-};

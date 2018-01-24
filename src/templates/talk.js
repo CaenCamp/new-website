@@ -1,12 +1,45 @@
-import format from 'date-fns/format';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
-import locale from 'date-fns/locale/fr';
 import React from 'react';
+import styled from 'styled-components';
 
 import { formatTalkWithSpeakers, formatMeetup } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
-import { SpeakerListItem } from '../components/speakers/listItem';
+import SpeakerTalk from '../components/speakers/SpeakerTalk';
+import Calendar from '../components/talks/Calendar';
+import Tags from '../components/talks/Tags';
+
+const StyledLink = styled(Link)`
+    color: ${({ theme }) => theme.black};
+`;
+
+const TalkContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    margin: 4rem 0;
+`;
+
+const DateAndSpeakers = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+`;
+
+const Description = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const Title = styled.h1`
+    font-size: 2rem;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    color: ${({ theme }) => theme.black};
+`;
 
 const renderMeetupLink = meetupId => {
     if (meetupId === null || meetupId === '') {
@@ -44,25 +77,25 @@ export default ({ data }) => {
                 <meta name="description" content={talk.description} />
                 <meta name="keywords" content={`${talk.tags}`} />
             </Helmet>
-            <Link to="/talks">&lt;- Tous les talks</Link>
-            <div>
-                <h1>
-                    {talk.title}
-                    {renderMeetupLink(talk.meetupId)}
-                </h1>
-                <p>{format(talk.date, 'DD MMMM YYYY', { locale })}</p>
-                {renderMeetupRSVP(meetup)}
-                <p>{`${talk.tags}`}</p>
-                <p>{talk.description}</p>
-                <h3>Speakers</h3>
-                <ul>
+            <StyledLink to="/talks">
+                <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
+                liste
+            </StyledLink>
+            <TalkContainer>
+                <DateAndSpeakers>
+                    <Calendar date={talk.date} edition={talk.edition} />
                     {talk.speakers.map(speaker => (
-                        <SpeakerListItem key={speaker.slug} speaker={speaker} />
+                        <SpeakerTalk key={speaker.slug} speaker={speaker} />
                     ))}
-                </ul>
-            </div>
-
-            <div dangerouslySetInnerHTML={{ __html: talk.html }} />
+                </DateAndSpeakers>
+                <Description>
+                    <Title>{talk.title}</Title>
+                    <Tags tags={talk.tags} />
+                    <div dangerouslySetInnerHTML={{ __html: talk.html }} />
+                </Description>
+            </TalkContainer>
+            {renderMeetupLink(talk.meetupId)}
+            {renderMeetupRSVP(meetup)}
         </SingleColumn>
     );
 };
@@ -78,6 +111,7 @@ export const query = graphql`
                 tags
                 description
                 speakers
+                edition
             }
         }
         speakers: allMarkdownRemark(

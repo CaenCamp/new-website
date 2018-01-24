@@ -21,6 +21,10 @@ export const Item = styled.div`
     }
 `;
 
+const Description = styled.div`
+    margin-left: 2rem;
+`;
+
 const Title = styled.h3`
     font-size: 2rem;
     margin: 0;
@@ -44,7 +48,7 @@ export const DojoListItem = ({ dojo }) => (
     <Item>
         <Link to={`/coding-dojo/${dojo.slug}`}>
             <Calendar date={dojo.date} edition={dojo.edition} />
-            <div>
+            <Description>
                 <Title>{dojo.title}</Title>
                 <Speakers>
                     {dojo.craftsmen.length > 0 &&
@@ -54,7 +58,7 @@ export const DojoListItem = ({ dojo }) => (
                 </Speakers>
                 <Resume>{dojo.description}</Resume>
                 <Tags tags={dojo.tags} />
-            </div>
+            </Description>
         </Link>
     </Item>
 );

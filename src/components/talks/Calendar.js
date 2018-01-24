@@ -9,7 +9,6 @@ const Container = styled.div`
     color: ${({ theme }) => theme.white};
     padding: 0;
     width: 80px;
-    margin-right: 2rem;
 `;
 const DateContainer = styled.div`
     border-radius: 0.5rem;
