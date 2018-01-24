@@ -10,6 +10,7 @@ tags:
 speakers:
     - clement-alexandre
 place: forum-digital
+video : null
 ---
 
 #### Au programme

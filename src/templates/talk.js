@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 import React from 'react';
 import styled from 'styled-components';
 
-import { formatTalkWithSpeakers, formatMeetup } from '../utils/formatters';
+import { formatTalkWithSpeakers } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
 import SpeakerTalk from '../components/speakers/SpeakerTalk';
 import Calendar from '../components/talks/Calendar';

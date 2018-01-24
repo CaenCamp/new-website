@@ -8,8 +8,9 @@ description: "Le format SVG est en plein essor depuis l'avènement du responsive
 tags:
     - svg
 speakers:
-    - matthieu-sadouni
+    - pierre-emmanuel-fringant
 place: forum-digital
+video : https://vimeo.com/107227980
 ---
 
 Le format SVG est en plein essor depuis l'avènement du responsive design.

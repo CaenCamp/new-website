@@ -11,6 +11,7 @@ tags:
 speakers:
     - matthieu-sadouni
 place: forum-digital
+video : null
 ---
 
 # Édition spéciale de Noël !

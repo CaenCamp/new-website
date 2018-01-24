@@ -11,6 +11,7 @@ tags:
 speakers:
     - sylvain-zyssman
 place: forum-digital
+video : null
 ---
 
 #### Au programme

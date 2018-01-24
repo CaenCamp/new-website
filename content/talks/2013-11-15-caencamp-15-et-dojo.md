@@ -11,6 +11,7 @@ tags:
 speakers:
     - frederic-leguedois
 place: forum-digital
+video : null
 ---
 
 ### 1e partie : Se réunir sans s'endormir

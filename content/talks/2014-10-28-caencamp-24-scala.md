@@ -10,6 +10,7 @@ tags:
 speakers:
     - korbik
 place: forum-digital
+video : null
 ---
 
 Pour ce CaenCamp, [@Korbik](http://twitter.com/korbik) nous propose de découvrir la Programmation

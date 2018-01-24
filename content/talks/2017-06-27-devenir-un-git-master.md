@@ -10,6 +10,7 @@ tags:
 speakers:
     - antoine-lelaisant
 place: imie
+video : null
 ---
 
 Git c'est bien, le maîtriser pleinement, c'est mieux. En effet, git ne se résume pas à faire des
