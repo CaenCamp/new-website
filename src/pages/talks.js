@@ -57,6 +57,7 @@ export const query = graphql`
                         speakers
                         tags
                         title
+                        video
                     }
                 }
             }

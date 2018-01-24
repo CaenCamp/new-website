@@ -153,6 +153,7 @@ export const query = graphql`
                         date
                         tags
                         description
+                        video
                     }
                 }
             }

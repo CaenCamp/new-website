@@ -57,7 +57,7 @@ export const TalkListItem = ({ talk }) => (
                         ))}
                 </Speakers>
                 <Resume>{talk.description}</Resume>
-                <Tags tags={talk.tags} />
+                <Tags tags={talk.video ? ['video', ...talk.tags] : talk.tags} />
             </Description>
         </Link>
     </Item>

@@ -2,6 +2,7 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import React from 'react';
 import styled from 'styled-components';
+import ReactPlayer from 'react-player';
 
 import { formatTalkWithSpeakers } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
@@ -41,6 +42,10 @@ export const Title = styled.h1`
     color: ${({ theme }) => theme.black};
 `;
 
+const VideoContainer = styled.div`
+    margin: 2rem auto;
+`;
+
 export const MeetupLink = styled.a`
     color: ${({ theme }) => theme.black};
 `;
@@ -78,6 +83,11 @@ export default ({ data }) => {
                 <Description>
                     <Title>{talk.title}</Title>
                     <Tags tags={talk.tags} />
+                    {talk.video && (
+                        <VideoContainer>
+                            <ReactPlayer url={talk.video} />
+                        </VideoContainer>
+                    )}
                     <div dangerouslySetInnerHTML={{ __html: talk.html }} />
                 </Description>
             </TalkContainer>
@@ -97,6 +107,7 @@ export const query = graphql`
                 description
                 speakers
                 edition
+                video
             }
         }
         speakers: allMarkdownRemark(
