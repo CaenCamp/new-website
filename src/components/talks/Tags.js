@@ -57,4 +57,6 @@ const Tag = styled.li`
     }
 `;
 
-export default ({ tags }) => <Tags>{tags.map(tag => <Tag>{tag}</Tag>)}</Tags>;
+export default ({ tags }) => (
+    <Tags>{tags.map(tag => <Tag key={tag}>{tag}</Tag>)}</Tags>
+);

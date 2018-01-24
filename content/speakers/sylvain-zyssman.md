@@ -14,3 +14,5 @@ links:
     - title: perso
       url: https://about.me/sylzys
 ---
+
+Développeur Web et applicatif freelance passionné, et pâtissier à mes heures, je suis passé par plusieurs boîtes avant de me mettre à mon compte. Très attaché à la qualité Web et au partage des connaissances en général, je participe et organise plusieurs événements sur notre chère Côte Normande.

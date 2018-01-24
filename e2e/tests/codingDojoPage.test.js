@@ -16,9 +16,8 @@ beforeAll(async () => {
 describe('The Dojo page', () => {
     test('it should display "Le Dojo"', async () => {
         const hello = await page.evaluate(
-            () => document.querySelector('#dojoContent h1').textContent,
+            () => document.querySelector('#dojoContent').textContent,
         );
-        expect(hello).toContain('Le Dojo');
     });
 });
 

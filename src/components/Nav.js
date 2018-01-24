@@ -38,8 +38,5 @@ export default () => (
         <Link to="/coding-dojo" activeStyle={activeLinkStyle}>
             les dojos
         </Link>
-        <Link to="/partnerships" activeStyle={activeLinkStyle}>
-            les partenaires
-        </Link>
     </Nav>
 );
