@@ -61,6 +61,12 @@ export const query = graphql`
                     frontmatter {
                         firstName
                         lastName
+                        picture
+                        resume
+                        links {
+                            title
+                            url
+                        }
                         slug
                     }
                 }

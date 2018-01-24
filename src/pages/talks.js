@@ -29,7 +29,6 @@ export default ({ data }) => {
             </Helmet>
             <Content id="talksContent">
                 <SingleColumn>
-                    <h1>Tous les talks</h1>
                     <TalksContainer>
                         {talks.map(talk => (
                             <TalkListItem key={talk.id} talk={talk} />

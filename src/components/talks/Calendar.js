@@ -24,20 +24,20 @@ const DateContainer = styled.div`
 `;
 const Day = styled.span`
     width: 100%;
-    font-size: 2rem;
+    font-size: 1rem;
     margin: 0;
     padding: 0;
 `;
 const Month = styled.span`
     width: 100%;
-    font-size: 1.4rem;
-    font-variant: small-caps;
+    font-size: 1.8rem;
+    text-transform: uppercase;
     margin: 0;
     padding: 0;
 `;
 const Year = styled.span`
     width: 100%;
-    font-size: 1rem;
+    font-size: 1.4rem;
     margin-bottom: 0.5rem;
 `;
 const Edition = styled.div`

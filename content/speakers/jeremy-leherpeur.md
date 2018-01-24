@@ -12,5 +12,3 @@ links:
     - title: linkedin
       url: https://www.linkedin.com/in/jeremyleherpeur/
 ---
-
-A faire

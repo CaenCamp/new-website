@@ -1,18 +1,23 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
+import styled from 'styled-components';
 
 import { Content, SingleColumn } from '../components/Content';
-import { formatDojoWithCraftsmen, formatMeetup } from '../utils/formatters';
+import { formatDojoWithCraftsmen } from '../utils/formatters';
 import { DojoListItem } from '../components/dojos/listItem';
 
-export default ({ data, nextMeetup }) => {
+export const DojoContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: top;
+    justify-content: left;
+`;
+
+export default ({ data }) => {
     const dojos = data.dojos.edges.map(dojo =>
         formatDojoWithCraftsmen(dojo.node, data.craftsmen.edges),
     );
-
-    if (nextMeetup) {
-        nextMeetup = formatMeetup(nextMeetup);
-    }
 
     return (
         <div>
@@ -24,12 +29,11 @@ export default ({ data, nextMeetup }) => {
             </Helmet>
             <Content id="dojoContent">
                 <SingleColumn>
-                    <h1>Le Dojo</h1>
-                    <ul>
+                    <DojoContainer>
                         {dojos.map(dojo => (
                             <DojoListItem key={dojo.id} dojo={dojo} />
                         ))}
-                    </ul>
+                    </DojoContainer>
                 </SingleColumn>
             </Content>
         </div>
@@ -49,6 +53,10 @@ export const query = graphql`
                         title
                         slug
                         craftsmen
+                        date
+                        description
+                        tags
+                        edition
                     }
                 }
             }
@@ -62,6 +70,7 @@ export const query = graphql`
                     frontmatter {
                         firstName
                         lastName
+                        picture
                         slug
                     }
                 }

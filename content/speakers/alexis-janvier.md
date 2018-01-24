@@ -15,4 +15,4 @@ links:
       url: http://alexisjanvier.net
 ---
 
-A faire
+Full-stack web developer at marmelab. Alexis worked on so many websites that he's a great software architect. He also loves horse riding.

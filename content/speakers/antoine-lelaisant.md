@@ -12,5 +12,3 @@ links:
     - title: linkedin
       url: https://www.linkedin.com/in/antoine-lelaisant-766278a4/
 ---
-
-A faire

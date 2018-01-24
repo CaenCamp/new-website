@@ -1,7 +1,8 @@
 ---
-title: "Coding Dojo #2 : EmberJS/AngularJS, les mains dans le cambouis"
+title: "EmberJS/AngularJS, les mains dans le cambouis"
 slug: "dojo-2-emberjs-angularjs"
 date: "2013-12-16"
+edition: 2
 description: "Après la réalisation succincte d'un back-end de Kanban, nous allons nous commencer à itérer sur la partie front-end. Nous nous aiderons soit d'AngularJS soit d'EmberJS, en fonction du choix des
 participants."
 tags:

@@ -10,8 +10,8 @@ export const Item = styled.div`
 
 export const Profile = styled.img`
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     margin-right: 0.5rem;
 `;
 

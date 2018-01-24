@@ -26,7 +26,6 @@ export default ({ data }) => {
             </Helmet>
             <Content id="callForPaperContent">
                 <SingleColumn>
-                    <h1>Ils ont fait les CaenCamp.s</h1>
                     <SpeakerContainer>
                         {speakers.map(speaker => (
                             <SpeakerListItem
