@@ -41,34 +41,12 @@ export const Title = styled.h1`
     color: ${({ theme }) => theme.black};
 `;
 
-const renderMeetupLink = meetupId => {
-    if (meetupId === null || meetupId === '') {
-        return '';
-    }
-
-    return (
-        <small>
-            {` - `}
-            <a
-                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${meetupId}/`}
-            >
-                Meetup
-            </a>
-        </small>
-    );
-};
-
-const renderMeetupRSVP = meetup => {
-    if (meetup === null || meetup.yes_rsvp_count === null) {
-        return '';
-    }
-
-    return <p>{meetup.yes_rsvp_count} participants</p>;
-};
+export const MeetupLink = styled.a`
+    color: ${({ theme }) => theme.black};
+`;
 
 export default ({ data }) => {
     const talk = formatTalkWithSpeakers(data.rawTalk, data.speakers.edges);
-    const meetup = formatMeetup(data.meetup);
 
     return (
         <SingleColumn>
@@ -87,6 +65,15 @@ export default ({ data }) => {
                     {talk.speakers.map(speaker => (
                         <SpeakerTalk key={speaker.slug} speaker={speaker} />
                     ))}
+                    {talk.meetupId && (
+                        <MeetupLink
+                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                talk.meetupId
+                            }/`}
+                        >
+                            <i className="fa fa-meetup fa-5x" />
+                        </MeetupLink>
+                    )}
                 </DateAndSpeakers>
                 <Description>
                     <Title>{talk.title}</Title>
@@ -94,8 +81,6 @@ export default ({ data }) => {
                     <div dangerouslySetInnerHTML={{ __html: talk.html }} />
                 </Description>
             </TalkContainer>
-            {renderMeetupLink(talk.meetupId)}
-            {renderMeetupRSVP(meetup)}
         </SingleColumn>
     );
 };
