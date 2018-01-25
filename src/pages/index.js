@@ -1,22 +1,33 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
+import isPast from 'date-fns/is_past';
+import styled from 'styled-components';
 
-import { Content, LeftColumn } from '../components/Content';
-import { formatTalkWithSpeakers, formatMeetup } from '../utils/formatters';
-import SideMenu from '../components/SideMenu';
+import { Content, SingleColumn } from '../components/Content';
+import { formatTalkWithSpeakers } from '../utils/formatters';
+import { TalkListItem } from '../components/talks/listItem';
+import CaenCamp from '../components/CaenCamp';
 
-export default ({ data, nextMeetup }) => {
+const TalksContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: top;
+    justify-content: left;
+`;
+
+export default ({ data }) => {
     const talks = data.talks.edges.map(talk =>
         formatTalkWithSpeakers(talk.node, data.speakers.edges),
     );
 
     let lastTalk = null;
-    if (talks.length) {
+    let nextTalk = null;
+    if (isPast(new Date(talks[0].date))) {
         lastTalk = talks[0];
-    }
-
-    if (nextMeetup) {
-        nextMeetup = formatMeetup(nextMeetup);
+    } else {
+        lastTalk = talks[1];
+        nextTalk = talks[0];
     }
 
     return (
@@ -28,28 +39,26 @@ export default ({ data, nextMeetup }) => {
                 />
             </Helmet>
             <Content id="homeContent">
-                <LeftColumn>
-                    <h1 className="welcome">Welcome to our new website.</h1>
-                    <h2 className="lasttalk">Dernier talk</h2>
-                    <h4>
-                        Edition {lastTalk.edition}:{' '}
-                        <a href={`/talks/${lastTalk.slug}`}>{lastTalk.title}</a>
-                    </h4>
-                    <p>{lastTalk.description}</p>
-                    {lastTalk.speakers.length > 0 ? 'par ' : ''}
-                    {lastTalk.speakers.length > 0 &&
-                        lastTalk.speakers.map(speaker => (
-                            <a href={`/speakers/${speaker.slug}`}>
-                                {speaker.firstName} {speaker.lastName}
-                            </a>
-                        ))}
-                    <h4>
-                        <a className="linkToTalks" href="/talks">
-                            Tous les talks
-                        </a>
-                    </h4>
-                </LeftColumn>
-                <SideMenu meetup={nextMeetup} />
+                <SingleColumn>
+                    <CaenCamp
+                        talks={data.talks.edges.length}
+                        speakers={data.speakers.edges.length}
+                        dojos={data.dojos.edges.length}
+                        partners="3"
+                    />
+                    {nextTalk && (
+                        <TalksContainer>
+                            <h2>Prochain talk</h2>
+                            <TalkListItem talk={nextTalk} />
+                        </TalksContainer>
+                    )}
+                    {lastTalk && (
+                        <TalksContainer>
+                            <h2>Dernier talk</h2>
+                            <TalkListItem talk={lastTalk} />
+                        </TalksContainer>
+                    )}
+                </SingleColumn>
             </Content>
         </div>
     );
@@ -58,18 +67,20 @@ export default ({ data, nextMeetup }) => {
 export const query = graphql`
     query LastTalkQuery {
         talks: allMarkdownRemark(
-            limit: 1
             sort: { order: DESC, fields: [frontmatter___edition] }
             filter: { fileAbsolutePath: { glob: "**/talks/**" } }
         ) {
             edges {
                 node {
                     frontmatter {
-                        edition
-                        title
-                        slug
+                        date
                         description
+                        edition
+                        slug
                         speakers
+                        tags
+                        title
+                        video
                     }
                 }
             }
@@ -83,8 +94,22 @@ export const query = graphql`
                     frontmatter {
                         firstName
                         lastName
+                        links {
+                            title
+                            url
+                        }
+                        picture
                         slug
                     }
+                }
+            }
+        }
+        dojos: allMarkdownRemark(
+            filter: { fileAbsolutePath: { glob: "**/dojos/**" } }
+        ) {
+            edges {
+                node {
+                    id
                 }
             }
         }

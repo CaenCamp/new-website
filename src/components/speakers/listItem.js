@@ -50,7 +50,7 @@ export const SpeakerListItem = ({ speaker }) => (
                 {speaker.firstName} {speaker.lastName}
             </Name>
             <Introduction>{speaker.resume}</Introduction>
-            {speaker.links.length > 0 && <Links links={speaker.links} />}
+            <Links links={speaker.links} />
         </Link>
     </Item>
 );
