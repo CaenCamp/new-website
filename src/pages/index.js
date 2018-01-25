@@ -42,7 +42,7 @@ export default ({ data }) => {
             <Content id="homeContent">
                 <SingleColumn>
                     <CaenCamp
-                        talks={data.talks.edges.length}
+                        talks={talks[0].edition}
                         speakers={data.speakers.edges.length}
                         dojos={data.dojos.edges.length}
                         partners="3"

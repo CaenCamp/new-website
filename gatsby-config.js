@@ -4,16 +4,16 @@ module.exports = {
         baseline: 'Ici la baseline des Caencamp quand nous en aurons une.',
         socialLinks: [
             {
-                title: 'Meetup',
-                url: 'https://www.meetup.com/CaenCamp',
+                title: 'Twitter',
+                url: 'https://twitter.com/caencamp',
             },
             {
                 title: 'GitHub',
                 url: 'https://github.com/CaenCamp',
             },
             {
-                title: 'Twitter',
-                url: 'https://twitter.com/caencamp',
+                title: 'Meetup',
+                url: 'https://www.meetup.com/CaenCamp',
             },
             {
                 title: 'YouTube',
@@ -26,6 +26,10 @@ module.exports = {
             {
                 title: 'Facebook',
                 url: 'https://www.facebook.com/CaenCamp/',
+            },
+            {
+                title: 'Rss',
+                url: 'https://www.meetup.com/fr-FR/CaenCamp/events/rss/',
             },
         ],
     },
