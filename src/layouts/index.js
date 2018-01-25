@@ -8,6 +8,7 @@ import favicon from '../../static/favicon/favicon-16x16.png';
 import FooterContent from '../components/Footer';
 import HeaderContent from '../components/Header';
 import theme from '../utils/theme';
+import Logo from '../components/Logo';
 
 const Container = styled.div`
     height: 100%;
@@ -18,6 +19,20 @@ const Container = styled.div`
         'h h h h h h h h h h h h'
         '. . c c c c c c c c . .'
         'f f f f f f f f f f f f';
+    @media (max-width: 799px) {
+        display: none;
+    }
+`;
+const NotReady = styled.div`
+    display: none;
+    @media (max-width: 799px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
 `;
 const Header = styled.header`
     grid-area: h;
@@ -29,7 +44,7 @@ const Content = styled.section`
     grid-area: c;
     z-index: 8;
     position: 2;
-    padding: 3rem;
+    padding: 3rem 0;
 `;
 const Footer = styled.footer`
     grid-area: f;
@@ -42,25 +57,38 @@ class TemplateWrapper extends Component {
 
         return (
             <ThemeProvider theme={theme}>
-                <Container>
-                    <Helmet>
-                        <link rel="icon" href={favicon} type="image/x-icon" />
-                    </Helmet>
-                    <Header>
-                        <HeaderContent />
-                    </Header>
-                    <Content>
-                        {children({
-                            ...this.props,
-                            nextMeetup: data.nextMeetup || null,
-                        })}
-                    </Content>
-                    <Footer>
-                        <FooterContent
-                            socialLinks={data.site.siteMetadata.socialLinks}
-                        />
-                    </Footer>
-                </Container>
+                <div>
+                    <NotReady>
+                        <Logo />
+                        <span>
+                            Toutes nos excuses, le site n'est pas encore prêt
+                            pour cette résultion d'écran :(
+                        </span>
+                    </NotReady>
+                    <Container>
+                        <Helmet>
+                            <link
+                                rel="icon"
+                                href={favicon}
+                                type="image/x-icon"
+                            />
+                        </Helmet>
+                        <Header>
+                            <HeaderContent />
+                        </Header>
+                        <Content>
+                            {children({
+                                ...this.props,
+                                nextMeetup: data.nextMeetup || null,
+                            })}
+                        </Content>
+                        <Footer>
+                            <FooterContent
+                                socialLinks={data.site.siteMetadata.socialLinks}
+                            />
+                        </Footer>
+                    </Container>
+                </div>
             </ThemeProvider>
         );
     }
