@@ -22,7 +22,6 @@ const LinksContainer = styled.div`
 export default class Links extends Component {
     render() {
         const { links } = this.props;
-        console.log(links);
         return (
             <LinksContainer>
                 {links.length > 0 &&
