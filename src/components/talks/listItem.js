@@ -1,13 +1,13 @@
 import Link from 'gatsby-link';
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import isPast from 'date-fns/is_past';
 
-import { talkPropType } from '../../utils/caenCampPropTypes';
 import Calendar from './Calendar';
 import MinimalView from '../speakers/MinimalView';
 import Tags from './Tags';
 
-export const Item = styled.div`
+const Item = styled.div`
     border: 1px solid ${({ theme }) => theme.greyLight};
     width: 100%;
     margin: 1rem;
@@ -44,25 +44,68 @@ const Speakers = styled.div`
     align-items: left;
 `;
 
-export const TalkListItem = ({ talk }) => (
-    <Item>
-        <Link to={`/talks/${talk.slug}`}>
-            <Calendar date={talk.date} edition={talk.edition} />
-            <Description>
-                <Title>{talk.title}</Title>
-                <Speakers>
-                    {talk.speakers.length > 0 &&
-                        talk.speakers.map(speaker => (
-                            <MinimalView speaker={speaker} />
-                        ))}
-                </Speakers>
-                <Resume>{talk.description}</Resume>
-                <Tags tags={talk.video ? ['video', ...talk.tags] : talk.tags} />
-            </Description>
-        </Link>
-    </Item>
-);
+const Registration = styled.div`
+    margin-left: 2rem;
+    a {
+        color: ${({ theme }) => theme.blue};
+        text-align: center;
+        font-variant: small-caps;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        padding: 0 2rem;
+        -webkit-transition: color 0.2s;
+        &:hover {
+            color: crimson;
+        }
+    }
+`;
 
-TalkListItem.propTypes = {
-    talk: talkPropType,
-};
+export default class ListItem extends Component {
+    handleClick = event => {
+        event.stopPropagation();
+        event.nativeEvent.stopImmediatePropagation();
+    };
+
+    render() {
+        const { talk } = this.props;
+        return (
+            <Item>
+                <Link to={`/talks/${talk.slug}`}>
+                    <Calendar date={talk.date} edition={talk.edition} />
+                    <Description>
+                        <Title>{talk.title}</Title>
+                        <Speakers>
+                            {talk.speakers.length > 0 &&
+                                talk.speakers.map(speaker => (
+                                    <MinimalView speaker={speaker} />
+                                ))}
+                        </Speakers>
+                        <Resume>{talk.description}</Resume>
+                        <Tags
+                            tags={
+                                talk.video ? ['video', ...talk.tags] : talk.tags
+                            }
+                        />
+                    </Description>
+                    {!isPast(new Date(talk.date)) &&
+                        talk.meetupId && (
+                            <Registration>
+                                <a
+                                    href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                        talk.meetupId
+                                    }/`}
+                                    onClick={this.handleClick}
+                                >
+                                    <i className="fa fa-meetup fa-5x" />
+                                    <p>Inscrivez-vous !</p>
+                                </a>
+                            </Registration>
+                        )}
+                </Link>
+            </Item>
+        );
+    }
+}

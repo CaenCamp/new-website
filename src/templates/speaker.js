@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
-import { TalkListItem } from '../components/talks/listItem';
+import TalkListItem from '../components/talks/listItem';
 import { DojoListItem } from '../components/dojos/listItem';
 import Links from '../components/speakers/Links';
 

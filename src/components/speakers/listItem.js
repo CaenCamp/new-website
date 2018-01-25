@@ -9,7 +9,7 @@ export const Item = styled.div`
     border: 1px solid ${({ theme }) => theme.greyLight};
     height: 290px;
     width: 190px;
-    margin: 1rem;
+    margin: 1rem 1rem 1rem 0;
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: 2px 2px 5px rgba(235, 235, 235, 0.5);

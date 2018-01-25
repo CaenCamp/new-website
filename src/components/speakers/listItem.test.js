@@ -3,7 +3,7 @@ import expect from 'expect';
 import { shallow } from 'enzyme';
 import Link from 'gatsby-link';
 
-//import { SpeakerListItem } from './listItem';
+//import SpeakerListItem from './listItem';
 
 describe('speaker list item', () => {
     test('it should display a link to the speaker page', () => {

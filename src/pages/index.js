@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { Content, SingleColumn } from '../components/Content';
 import { formatTalkWithSpeakers } from '../utils/formatters';
-import { TalkListItem } from '../components/talks/listItem';
+import TalkListItem from '../components/talks/listItem';
 import CaenCamp from '../components/CaenCamp';
 
 const TalksContainer = styled.div`
@@ -81,6 +81,7 @@ export const query = graphql`
                         tags
                         title
                         video
+                        meetupId
                     }
                 }
             }
