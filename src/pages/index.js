@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet';
 import React from 'react';
 import isPast from 'date-fns/is_past';
 import styled from 'styled-components';
+import 'font-awesome/css/font-awesome.css';
 
 import { Content, SingleColumn } from '../components/Content';
 import { formatTalkWithSpeakers } from '../utils/formatters';
