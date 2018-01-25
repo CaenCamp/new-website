@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { Helmet } from 'react-helmet';
-import 'font-awesome/css/font-awesome.css';
 
 import favicon from '../../static/favicon/favicon-16x16.png';
 import FooterContent from '../components/Footer';

@@ -28,6 +28,7 @@ module.exports = class HTML extends React.Component {
                         href="https://fonts.googleapis.com/css?family=Roboto"
                         rel="stylesheet"
                     />
+                    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
                 </head>
                 <body>
                     {this.props.preBodyComponents}
