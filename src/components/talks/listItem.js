@@ -1,18 +1,111 @@
-import React from 'react';
+import Link from 'gatsby-link';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import isPast from 'date-fns/is_past';
 
-import { talkPropType } from '../../utils/caenCampPropTypes';
+import Calendar from './Calendar';
+import MinimalView from '../speakers/MinimalView';
+import Tags from './Tags';
 
-export const TalkListItem = ({ talk }) => (
-    <li>
-        Edition {talk.edition}: <a href={`/talks/${talk.slug}`}>{talk.title}</a>{' '}
-        {talk.speakers.length > 0 ? 'par ' : ''}
-        {talk.speakers.length > 0 &&
-            talk.speakers.map(
-                speaker => `${speaker.firstName} ${speaker.lastName}, `,
-            )}
-    </li>
-);
+const Item = styled.div`
+    border: 1px solid ${({ theme }) => theme.greyLight};
+    width: 100%;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 5px rgba(235, 235, 235, 0.5);
+    a {
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+    }
+`;
 
-TalkListItem.propTypes = {
-    talk: talkPropType,
-};
+const Description = styled.div`
+    margin-left: 2rem;
+`;
+
+const Title = styled.h3`
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+`;
+
+const Resume = styled.p`
+    color: ${({ theme }) => theme.black};
+    margin: 1rem 0;
+    padding: 0;
+    font-style: italic;
+`;
+
+const Speakers = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+`;
+
+const Registration = styled.div`
+    margin-left: 2rem;
+    a {
+        color: ${({ theme }) => theme.blue};
+        text-align: center;
+        font-variant: small-caps;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        padding: 0 2rem;
+        -webkit-transition: color 0.2s;
+        &:hover {
+            color: crimson;
+        }
+    }
+`;
+
+export default class ListItem extends Component {
+    handleClick = event => {
+        event.stopPropagation();
+        event.nativeEvent.stopImmediatePropagation();
+    };
+
+    render() {
+        const { talk } = this.props;
+        return (
+            <Item>
+                <Link to={`/talks/${talk.slug}`}>
+                    <Calendar date={talk.date} edition={talk.edition} />
+                    <Description>
+                        <Title>{talk.title}</Title>
+                        <Speakers>
+                            {talk.speakers.length > 0 &&
+                                talk.speakers.map(speaker => (
+                                    <MinimalView speaker={speaker} />
+                                ))}
+                        </Speakers>
+                        <Resume>{talk.description}</Resume>
+                        <Tags
+                            tags={
+                                talk.video ? ['video', ...talk.tags] : talk.tags
+                            }
+                        />
+                    </Description>
+                    {!isPast(new Date(talk.date)) &&
+                        talk.meetupId && (
+                            <Registration>
+                                <a
+                                    href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                        talk.meetupId
+                                    }/`}
+                                    onClick={this.handleClick}
+                                >
+                                    <i className="fa fa-meetup fa-5x" />
+                                    <p>Inscrivez-vous !</p>
+                                </a>
+                            </Registration>
+                        )}
+                </Link>
+            </Item>
+        );
+    }
+}

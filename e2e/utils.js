@@ -17,7 +17,7 @@ export const getBrowser = async () => {
 export const mainNavigationSelectors = {
     callForPaper: 'a.linkToCallForPaper',
     dojo: 'a.linkToCodingDojo',
-    home: '#mainLogo',
+    home: 'header img',
     talks: 'a.linkToTalks',
     welcomeUs: 'a.linkToWelcomeUs',
 };

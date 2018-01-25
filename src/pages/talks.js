@@ -1,19 +1,23 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
+import styled from 'styled-components';
 
-import { Content, LeftColumn } from '../components/Content';
-import { formatTalkWithSpeakers, formatMeetup } from '../utils/formatters';
-import { TalkListItem } from '../components/talks/listItem';
-import SideMenu from '../components/SideMenu';
+import { Content, SingleColumn } from '../components/Content';
+import { formatTalkWithSpeakers } from '../utils/formatters';
+import TalkListItem from '../components/talks/listItem';
 
-export default ({ data, nextMeetup }) => {
+const TalksContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: top;
+    justify-content: left;
+`;
+
+export default ({ data }) => {
     const talks = data.talks.edges.map(talk =>
         formatTalkWithSpeakers(talk.node, data.speakers.edges),
     );
-
-    if (nextMeetup) {
-        nextMeetup = formatMeetup(nextMeetup);
-    }
 
     return (
         <div>
@@ -24,15 +28,13 @@ export default ({ data, nextMeetup }) => {
                 />
             </Helmet>
             <Content id="talksContent">
-                <LeftColumn>
-                    <h1>Tous les talks</h1>
-                    <ul>
+                <SingleColumn>
+                    <TalksContainer>
                         {talks.map(talk => (
                             <TalkListItem key={talk.id} talk={talk} />
                         ))}
-                    </ul>
-                </LeftColumn>
-                <SideMenu meetup={nextMeetup} />
+                    </TalksContainer>
+                </SingleColumn>
             </Content>
         </div>
     );
@@ -48,10 +50,15 @@ export const query = graphql`
                 node {
                     id
                     frontmatter {
+                        date
+                        description
                         edition
-                        title
                         slug
                         speakers
+                        tags
+                        title
+                        video
+                        meetupId
                     }
                 }
             }
@@ -65,6 +72,11 @@ export const query = graphql`
                     frontmatter {
                         firstName
                         lastName
+                        links {
+                            title
+                            url
+                        }
+                        picture
                         slug
                     }
                 }

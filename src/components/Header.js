@@ -1,37 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'gatsby-link';
 
 import Logo from './Logo';
+import Nav from './Nav';
 
-const Header = styled.header`
+const HeaderContent = styled.div`
+    align-items: center;
+    background-color: #fff;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
     width: 100%;
-    & a {
-        text-decoration: none;
-        background-image: none;
-    }
-`;
-export const Title = styled.h1`
-    margin: 0;
-    padding: 0;
-`;
-export const Baseline = styled.span`
-    margin: 0;
-    padding: 0.7rem 0 0 2rem;
-    font-style: italic;
-    font-size: 0.8rem;
+    border-bottom: 1px solid #ececec;
 `;
 
-export default ({ title = 'default Title', baseLine = 'default baseline' }) => (
-    <Header>
-        <a href="/">
-            <Logo id="mainLogo" />
-        </a>
-        <a href="/">
-            <Title id="mainTitle">{title}</Title>
-        </a>
-        <Baseline id="baseLine">{baseLine}</Baseline>
-    </Header>
+export default () => (
+    <HeaderContent>
+        <div>
+            <Link to="/">
+                <Logo />
+            </Link>
+        </div>
+        <Nav />
+    </HeaderContent>
 );

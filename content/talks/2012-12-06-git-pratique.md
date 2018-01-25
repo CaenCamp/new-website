@@ -10,6 +10,7 @@ tags:
 speakers:
     - matthieu-sadouni
 place: forum-digital
+video : https://vimeo.com/56992853
 ---
 
 #### Au programme

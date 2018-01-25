@@ -2,9 +2,15 @@
 firstName: "Clément"
 lastName: "Alexandre"
 slug: "clement-alexandre"
+resume: "Directeur général de @margotteuse, développeur web et instigateur du @caencamp"
+picture: "clement-alexandre.jpg"
 links:
-    - title: Twitter
+    - title: twitter
       url: https://twitter.com/clm_a
+    - title: github
+      url: https://github.com/clm-a
+    - title: linkedin
+      url: https://www.linkedin.com/in/clementalexandre2133
 ---
 
 Après un an dans une startup parisienne en tant que développeur en chef où j'ai beaucoup appris,

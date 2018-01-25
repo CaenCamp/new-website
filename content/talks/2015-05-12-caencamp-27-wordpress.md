@@ -11,6 +11,7 @@ tags:
 speakers:
     - pierre-emmanuel-fringant
 place: forum-digital
+video : null
 ---
 
 Wordpress est un outil formidable très utilisé dans le monde. Cette popularité doit certainement

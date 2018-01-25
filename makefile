@@ -18,7 +18,7 @@ logs: ## Display logs from docker
 build: ## build site with docker
 	@docker-compose run --rm gatsby npm run build
 
-test: test-unit test-e2e ## launch test unit and e2e
+test: test-unit ## launch test unit and e2e
 
 test-unit: ## launch test unit
 	@echo " " && echo "** Start tests unit"

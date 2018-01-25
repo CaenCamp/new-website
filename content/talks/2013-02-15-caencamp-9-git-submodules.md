@@ -10,6 +10,7 @@ tags:
 speakers:
     - sylvain-zyssman
 place: forum-digital
+video : null
 ---
 
 Pour le CaenCamp de février, [Sylvain Zyssman](https://twitter.com/sylzys) nous présentera

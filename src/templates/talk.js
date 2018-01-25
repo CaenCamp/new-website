@@ -1,40 +1,57 @@
-import format from 'date-fns/format';
 import Helmet from 'react-helmet';
-import locale from 'date-fns/locale/fr';
+import Link from 'gatsby-link';
 import React from 'react';
+import styled from 'styled-components';
+import ReactPlayer from 'react-player';
 
-import { formatTalkWithSpeakers, formatMeetup } from '../utils/formatters';
+import { formatTalkWithSpeakers } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
-import { SpeakerListItem } from '../components/speakers/listItem';
+import SpeakerTalk from '../components/speakers/SpeakerTalk';
+import Calendar from '../components/talks/Calendar';
+import Tags from '../components/talks/Tags';
 
-const renderMeetupLink = meetupId => {
-    if (meetupId === null || meetupId === '') {
-        return '';
-    }
+const StyledLink = styled(Link)`
+    color: ${({ theme }) => theme.black};
+`;
 
-    return (
-        <small>
-            {` - `}
-            <a
-                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${meetupId}/`}
-            >
-                Meetup
-            </a>
-        </small>
-    );
-};
+const TalkContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    margin: 4rem 0;
+`;
 
-const renderMeetupRSVP = meetup => {
-    if (meetup === null || meetup.yes_rsvp_count === null) {
-        return '';
-    }
+const DateAndSpeakers = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+`;
 
-    return <p>{meetup.yes_rsvp_count} participants</p>;
-};
+const Description = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const Title = styled.h1`
+    font-size: 2rem;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    color: ${({ theme }) => theme.black};
+`;
+
+const VideoContainer = styled.div`
+    margin: 2rem auto;
+`;
+
+export const MeetupLink = styled.a`
+    color: ${({ theme }) => theme.black};
+`;
 
 export default ({ data }) => {
     const talk = formatTalkWithSpeakers(data.rawTalk, data.speakers.edges);
-    const meetup = formatMeetup(data.meetup);
 
     return (
         <SingleColumn>
@@ -43,25 +60,37 @@ export default ({ data }) => {
                 <meta name="description" content={talk.description} />
                 <meta name="keywords" content={`${talk.tags}`} />
             </Helmet>
-            <a href="/talks">&lt;- Tous les talks</a>
-            <div>
-                <h1>
-                    {talk.title}
-                    {renderMeetupLink(talk.meetupId)}
-                </h1>
-                <p>{format(talk.date, 'DD MMMM YYYY', { locale })}</p>
-                {renderMeetupRSVP(meetup)}
-                <p>{`${talk.tags}`}</p>
-                <p>{talk.description}</p>
-                <h3>Speakers</h3>
-                <ul>
+            <StyledLink to="/talks">
+                <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
+                liste
+            </StyledLink>
+            <TalkContainer>
+                <DateAndSpeakers>
+                    <Calendar date={talk.date} edition={talk.edition} />
                     {talk.speakers.map(speaker => (
-                        <SpeakerListItem key={speaker.slug} speaker={speaker} />
+                        <SpeakerTalk key={speaker.slug} speaker={speaker} />
                     ))}
-                </ul>
-            </div>
-
-            <div dangerouslySetInnerHTML={{ __html: talk.html }} />
+                    {talk.meetupId && (
+                        <MeetupLink
+                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                talk.meetupId
+                            }/`}
+                        >
+                            <i className="fa fa-meetup fa-5x" />
+                        </MeetupLink>
+                    )}
+                </DateAndSpeakers>
+                <Description>
+                    <Title>{talk.title}</Title>
+                    <Tags tags={talk.tags} />
+                    {talk.video && (
+                        <VideoContainer>
+                            <ReactPlayer url={talk.video} />
+                        </VideoContainer>
+                    )}
+                    <div dangerouslySetInnerHTML={{ __html: talk.html }} />
+                </Description>
+            </TalkContainer>
         </SingleColumn>
     );
 };
@@ -77,6 +106,8 @@ export const query = graphql`
                 tags
                 description
                 speakers
+                edition
+                video
             }
         }
         speakers: allMarkdownRemark(
@@ -88,6 +119,12 @@ export const query = graphql`
                     frontmatter {
                         firstName
                         lastName
+                        links {
+                            title
+                            url
+                        }
+                        picture
+                        resume
                         slug
                     }
                 }

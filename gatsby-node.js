@@ -79,7 +79,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
         result.data.talks.edges.forEach(({ node }) => {
             createPage({
-                path: `talks/${node.frontmatter.slug}`,
+                path: `/talks/${node.frontmatter.slug}`,
                 component: talkTemplate,
                 context: {
                     // Data passed to context is available in page queries as GraphQL variables.
@@ -91,7 +91,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
         result.data.dojos.edges.forEach(({ node }) => {
             createPage({
-                path: `coding-dojo/${node.frontmatter.slug}`,
+                path: `/coding-dojo/${node.frontmatter.slug}`,
                 component: dojoTemplate,
                 context: {
                     // Data passed to context is available in page queries as GraphQL variables.
@@ -102,7 +102,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
         result.data.speakers.edges.forEach(({ node }) => {
             createPage({
-                path: `speakers/${node.frontmatter.slug}`,
+                path: `/speakers/${node.frontmatter.slug}`,
                 component: speakerTemplate,
                 context: {
                     // Data passed to context is available in page queries as GraphQL variables.

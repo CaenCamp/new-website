@@ -1,7 +1,8 @@
 ---
-title: "Coding Dojo #1 : Ruby on Rails / AngularJS : les mains dans le cambouis"
+title: "Ruby on Rails / AngularJS : les mains dans le cambouis"
 slug: "dojo-1-ruby-on-rails-angularjs-les-mains-dans-le-cambouis"
 date: "2013-11-25"
+edition: 1
 description: "Rails est un framework qui est devenu, en dix ans, l'un des outils de conception web de référence."
 tags:
     - javascript

@@ -1,17 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TypographyStyle } from 'react-typography';
-
-import typography from './utils/typography';
-
-let stylesStr;
-if (process.env.NODE_ENV === 'production') {
-    try {
-        stylesStr = require('!raw-loader!../public/styles.css');
-    } catch (e) {
-        console.log(e);
-    }
-}
 
 module.exports = class HTML extends React.Component {
     static propTypes = {
@@ -22,15 +10,6 @@ module.exports = class HTML extends React.Component {
     };
 
     render() {
-        let css;
-        if (process.env.NODE_ENV === `production`) {
-            css = (
-                <style
-                    id="gatsby-inlined-css"
-                    dangerouslySetInnerHTML={{ __html: stylesStr }}
-                />
-            );
-        }
         return (
             <html>
                 <head>
@@ -41,8 +20,18 @@ module.exports = class HTML extends React.Component {
                         content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"
                     />
                     {this.props.headComponents}
-                    <TypographyStyle typography={typography} />
-                    {css}
+                    <link
+                        href="https://fonts.googleapis.com/css?family=Work+Sans"
+                        rel="stylesheet"
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css?family=Roboto"
+                        rel="stylesheet"
+                    />
+                    <link
+                        rel="stylesheet"
+                        href="path/to/font-awesome/css/font-awesome.min.css"
+                    />
                 </head>
                 <body>
                     {this.props.preBodyComponents}

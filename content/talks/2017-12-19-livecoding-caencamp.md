@@ -12,6 +12,7 @@ tags:
 speakers:
     - alexis-janvier
 place: forum-digital
+video : null
 ---
 
 Le thème cette dernière édition 2017 est largement influencé par le projet de refonte du site. La reprise des anciennes éditions nous a fait redécouvrir une excellente initiative lancée dès 2013 par Clément Alexandre: les coding Dojos.

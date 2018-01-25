@@ -1,10 +1,10 @@
 ---
-firstName: "Korbik"
-lastName: "BonneQuestion"
+firstName: ""
+lastName: "Korbik"
 slug: "korbik"
+resume: "Scala & Java Architect for living. Photo, Coffee, Wine and beers for the rest"
+picture: "korbik.jpg"
 links:
-    - title: Twitter
-      url: https://twitter.com/caencamp
+    - title: twitter
+      url: https://twitter.com/korbik
 ---
-
-A faire

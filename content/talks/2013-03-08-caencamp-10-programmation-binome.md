@@ -1,16 +1,19 @@
 ---
 edition: 10
 meetupId: null
-title: "La programmation en binôme, c'est magique !"
+title: "Structurez vos données avec les microdata / La programmation en binôme, c'est magique !"
 slug: "edition-10-la-programmation-en-binome-cest-magique"
 date: "2013-03-08"
-description: "Quelle drôle d’idée que deux personnes réalisent une tâche pouvant être réalisée par une seule personne ? Cela ne multiplie-t-il pas les coûts par deux ?"
+description: "Présentation des microdata puis quelle drôle d’idée que deux personnes réalisent une tâche pouvant être réalisée par une seule personne ? Cela ne multiplie-t-il pas les coûts par deux ?"
 tags:
     - pair-programing
     - craftsmanship
+    - microdata
 speakers:
     - frederic-leguedois
+    - pierre-emmanuel-fringant
 place: forum-digital
+video : https://vimeo.com/61805644
 ---
 
 Le CaenCamp de mars sera agile : à l'occasion du

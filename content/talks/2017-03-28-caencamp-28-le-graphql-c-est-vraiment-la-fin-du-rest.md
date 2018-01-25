@@ -10,6 +10,7 @@ tags:
 speakers:
     - alexis-janvier
 place: forum-digital
+video : null
 ---
 
 Alexis Janvier fera une intervention sur le GraphQL: parfois présenté comme le successeur des API

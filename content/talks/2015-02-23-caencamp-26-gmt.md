@@ -11,6 +11,7 @@ speakers:
     - matthieu-sadouni
     - pierre-emmanuel-fringant
 place: forum-digital
+video : null
 ---
 
 En marge du [printemps agile](http://www.club-agile-caen.fr/printempsagile/),

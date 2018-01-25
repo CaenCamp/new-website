@@ -1,10 +1,57 @@
 import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
 import React from 'react';
+import styled from 'styled-components';
 
 import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
-import { TalkListItem } from '../components/talks/listItem';
+import TalkListItem from '../components/talks/listItem';
 import { DojoListItem } from '../components/dojos/listItem';
+import Links from '../components/speakers/Links';
+
+const StyledLink = styled(Link)`
+    color: ${({ theme }) => theme.black};
+`;
+
+const SpeakerContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    margin: 4rem 0;
+`;
+
+export const Profile = styled.img`
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 0 1rem;
+`;
+
+const SpeakerBio = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 0;
+    padding: 0;
+`;
+
+export const Name = styled.h1`
+    font-size: 2rem;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    color: ${({ theme }) => theme.black};
+`;
+
+const TalksContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const DojoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
 export default ({ data }) => {
     const speaker = formatSpeakerWithTalksAndDojos(
@@ -21,59 +68,55 @@ export default ({ data }) => {
                 <meta name="description" content="A trouver" />
                 <meta name="keywords" content="A voir" />
             </Helmet>
-            <a href="/call-for-paper">&lt;- Retour à la liste des speakers</a>
-
-            <h1>
-                {speaker.firstName} {speaker.lastName}
-            </h1>
-
-            <div dangerouslySetInnerHTML={{ __html: speaker.html }} />
-
-            {speaker.links.length > 0 && (
-                <div>
-                    <h2>Ses Liens</h2>
-                    <ul>
-                        {speaker.links.map(link => (
-                            <li key={link.title}>
-                                <a href={link.url}>{link.title}</a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+            <StyledLink to="/speakers">
+                <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
+                liste
+            </StyledLink>
+            <SpeakerContainer>
+                <SpeakerBio>
+                    <Profile src={`/speakers/${speaker.picture}`} />
+                    <Links links={speaker.links} />
+                </SpeakerBio>
+                <SpeakerBio>
+                    <Name>
+                        {speaker.firstName} {speaker.lastName}
+                    </Name>
+                    <div dangerouslySetInnerHTML={{ __html: speaker.html }} />
+                </SpeakerBio>
+            </SpeakerContainer>
 
             {speaker.talks.length > 0 && (
-                <div>
-                    <h2>Ses talks</h2>
-                    <ul>
-                        {speaker.talks.map(talk => (
-                            <TalkListItem
-                                key={talk.id}
-                                talk={{
-                                    ...talk,
-                                    speakers: [],
-                                }}
-                            />
-                        ))}
-                    </ul>
-                </div>
+                <TalksContainer>
+                    <h2>
+                        {speaker.talks.length === 1 ? 'Son Talk' : 'Ses Talks'}
+                    </h2>
+                    {speaker.talks.map(talk => (
+                        <TalkListItem
+                            key={talk.id}
+                            talk={{
+                                ...talk,
+                                speakers: [],
+                            }}
+                        />
+                    ))}
+                </TalksContainer>
             )}
 
             {speaker.dojos.length > 0 && (
-                <div>
-                    <h2>Ses Dojos</h2>
-                    <ul>
-                        {speaker.dojos.map(dojo => (
-                            <DojoListItem
-                                key={dojo.id}
-                                dojo={{
-                                    ...dojo,
-                                    craftsmen: [],
-                                }}
-                            />
-                        ))}
-                    </ul>
-                </div>
+                <DojoContainer>
+                    <h2>
+                        {speaker.dojos.length === 1 ? 'Son Dojo' : 'Ses Dojos'}
+                    </h2>
+                    {speaker.dojos.map(dojo => (
+                        <DojoListItem
+                            key={dojo.id}
+                            dojo={{
+                                ...dojo,
+                                craftsmen: [],
+                            }}
+                        />
+                    ))}
+                </DojoContainer>
             )}
         </SingleColumn>
     );
@@ -86,6 +129,8 @@ export const query = graphql`
             frontmatter {
                 firstName
                 lastName
+                picture
+                resume
                 links {
                     title
                     url
@@ -95,6 +140,7 @@ export const query = graphql`
         }
         talks: allMarkdownRemark(
             filter: { fileAbsolutePath: { glob: "**/talks/**" } }
+            sort: { order: DESC, fields: [frontmatter___edition] }
         ) {
             edges {
                 node {
@@ -104,12 +150,17 @@ export const query = graphql`
                         title
                         slug
                         speakers
+                        date
+                        tags
+                        description
+                        video
                     }
                 }
             }
         }
         dojos: allMarkdownRemark(
             filter: { fileAbsolutePath: { glob: "**/dojos/**" } }
+            sort: { order: DESC, fields: [frontmatter___edition] }
         ) {
             edges {
                 node {
@@ -118,6 +169,10 @@ export const query = graphql`
                         title
                         slug
                         craftsmen
+                        date
+                        description
+                        tags
+                        edition
                     }
                 }
             }

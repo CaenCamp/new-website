@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import Header, { Title, Baseline } from './Header';
 import Logo from './Logo';
 
-describe('Header component', () => {
+describe.skip('Header component', () => {
     test('it should display a logo', () => {
         const wrapper = shallow(<Header />);
 
