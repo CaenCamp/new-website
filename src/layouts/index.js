@@ -61,7 +61,7 @@ class TemplateWrapper extends Component {
                         <Logo />
                         <span>
                             Toutes nos excuses, le site n'est pas encore prêt
-                            pour cette résultion d'écran :(
+                            pour cette résolution d'écran :(
                         </span>
                     </NotReady>
                     <Container>

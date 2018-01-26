@@ -23,3 +23,7 @@ Cette session est ouverte à tous.
 
 Rendez-vous jeudi 28 mars à 18h30 au
 [Forum Digital](http://forum-digital.fr/fr/acces-et-localisation-du-forum-digital-de-caen-colombelles.-gc16.html)
+
+## Les slides
+
+<iframe src="//slides.com/alexisjanvier-1/graphql-4/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>

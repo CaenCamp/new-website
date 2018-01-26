@@ -19,6 +19,9 @@ injectGlobal`
   a:active {
     outline: none;
   }
+  iframe {
+    margin 1rem auto;
+  }
 `;
 
 export default {

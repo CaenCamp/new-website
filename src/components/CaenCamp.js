@@ -58,7 +58,7 @@ export default ({ talks, speakers, dojos }) => (
         <Overview>
             <h2>Qu’est-ce que les CaenCamp.s ?</h2>
             <p>
-                Ce sont des moments de rencontres organisés sur{' '}
+                Ce sont des moments de rencontre organisés sur{' '}
                 <strong>Caen</strong>, par et pour toutes les personnes qui
                 aiment ou trouvent un intérêt dans le{' '}
                 <strong>code et la programmation</strong>.<br />
