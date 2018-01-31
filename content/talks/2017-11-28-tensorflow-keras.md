@@ -13,6 +13,7 @@ speakers:
     - pierre-labadille
 place: forum-digital
 video : https://www.youtube.com/watch?v=tlpzpyTBFQc
+published: true
 ---
 
 Au delà d'une simple description des moyens techniques permettant d'établir une garantie de

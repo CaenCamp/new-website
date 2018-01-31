@@ -139,7 +139,10 @@ export const query = graphql`
             }
         }
         talks: allMarkdownRemark(
-            filter: { fileAbsolutePath: { glob: "**/talks/**" } }
+            filter: {
+                fileAbsolutePath: { glob: "**/talks/**" }
+                frontmatter: { published: { eq: true } }
+            }
             sort: { order: DESC, fields: [frontmatter___edition] }
         ) {
             edges {

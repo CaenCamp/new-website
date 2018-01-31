@@ -14,6 +14,7 @@ speakers:
     - pierre-emmanuel-fringant
 place: forum-digital
 video : https://vimeo.com/61805644
+published: true
 ---
 
 Le CaenCamp de mars sera agile : à l'occasion du

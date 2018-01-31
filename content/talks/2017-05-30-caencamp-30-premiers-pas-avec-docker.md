@@ -12,6 +12,7 @@ speakers:
     - jeremy-leherpeur
 place: forum-digital
 video : null
+published: true
 ---
 
 > Docker est un logiciel libre qui automatise le déploiement d'applications dans des conteneurs

@@ -12,6 +12,7 @@ speakers:
     - clement-alexandre
 place: forum-digital
 video : null
+published: true
 ---
 
 ### 1e partie : Tour d'horizon : 20 technos en 20'

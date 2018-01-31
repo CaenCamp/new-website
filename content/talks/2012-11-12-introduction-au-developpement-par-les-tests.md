@@ -11,6 +11,7 @@ speakers:
     - clement-alexandre
 place: forum-digital
 video : null
+published: true
 ---
 
 #### Au programme

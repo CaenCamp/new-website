@@ -69,7 +69,10 @@ export const query = graphql`
     query LastTalkQuery {
         talks: allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___edition] }
-            filter: { fileAbsolutePath: { glob: "**/talks/**" } }
+            filter: {
+                fileAbsolutePath: { glob: "**/talks/**" }
+                frontmatter: { published: { eq: true } }
+            }
         ) {
             edges {
                 node {

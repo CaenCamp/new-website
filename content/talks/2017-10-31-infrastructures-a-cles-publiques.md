@@ -11,6 +11,7 @@ speakers:
     - romain-tartiere
 place: forum-digital
 video : https://www.youtube.com/watch?v=9zNAUFtw7Ac
+published: true
 ---
 
 Au delà d'une simple description des moyens techniques permettant d'établir une garantie de

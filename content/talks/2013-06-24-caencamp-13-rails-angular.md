@@ -18,6 +18,7 @@ speakers:
     - matthieu-hebert
 place: forum-digital
 video : null
+published: true
 ---
 
 On termine l'année en beauté : Prenez deux développeurs motivés, Julien Anne et Matthieu Hébert.

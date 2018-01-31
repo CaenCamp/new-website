@@ -12,6 +12,7 @@ speakers:
     - matthieu-sadouni
 place: forum-digital
 video : null
+published: true
 ---
 
 # Édition spéciale de Noël !

@@ -11,6 +11,7 @@ speakers:
     - mathieu-lallemand
 place: forum-digital
 video : null
+published: true
 ---
 
 ### 1e partie : Comment vivre heureux dans l'incertitude trépidante de la gestion de projets.

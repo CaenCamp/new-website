@@ -12,6 +12,7 @@ speakers:
     - clement-lebiez
 place: forum-digital
 video : null
+published: true
 ---
 
 Clément Lebiez viendra nous parler de _Flux_.

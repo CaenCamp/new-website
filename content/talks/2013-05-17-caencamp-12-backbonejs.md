@@ -12,6 +12,7 @@ speakers:
     - sylvain-zyssman
 place: forum-digital
 video : null
+published: true
 ---
 
 #### Au programme

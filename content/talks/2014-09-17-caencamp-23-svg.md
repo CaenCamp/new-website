@@ -11,6 +11,7 @@ speakers:
     - pierre-emmanuel-fringant
 place: forum-digital
 video : https://vimeo.com/107227980
+published: true
 ---
 
 Le format SVG est en plein essor depuis l'avènement du responsive design.
