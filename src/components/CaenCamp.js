@@ -71,9 +71,12 @@ export default ({ talks, speakers, dojos }) => (
                 <Link to="/coding-dojo">dojos</Link>.
             </p>
             <p>
-                Les CaenCamp.s ne vivent que par l’investissement des membres de
-                sa communauté et ne dépendent d’aucune chapelle ni d’aucune
-                entreprise. Nous tenons cependant à remercier le{' '}
+                Les CaenCamp.s ne vivent que par{' '}
+                <Link to="/call-for-speakers">
+                    l’investissement des membres de sa communauté
+                </Link>{' '}
+                et ne dépendent d’aucune chapelle ni d’aucune entreprise. Nous
+                tenons cependant à remercier le{' '}
                 <a href="http://www.forum-digital.fr/">forum digital</a> d’avoir
                 accueilli une majorité de nos rencontres.
             </p>
