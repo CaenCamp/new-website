@@ -11,7 +11,7 @@ const Form = styled.form`
     background-color: ${({ theme }) => theme.greyLight};
     width: 70%;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 2rem;
 `;
 
 const InputContainer = styled.ul`
@@ -100,6 +100,14 @@ const CustomSelect = styled.div`
     }
 `;
 
+const Title = styled.h1`
+    font-size: 2rem;
+`;
+const Intro = styled.p`
+    font-size: 1.3rem;
+    padding: 1rem 0;
+`;
+
 export default () => (
     <div>
         <Helmet title="CaenCamp: proposez un talk">
@@ -107,7 +115,13 @@ export default () => (
         </Helmet>
         <Content id="callForPaperContent">
             <SingleColumn>
-                <h1>Participez !</h1>
+                <Title>Call for speakers</Title>
+                <Intro>
+                    Les bonnes raisons de faire un talk sont multiples et
+                    internet regorge de posts de blog les énumérant.<br /> Mais
+                    une chose est certaine : la communauté en profitera et vous
+                    en profiterez. Alors n’hésitez pas à proposer un sujet ;)
+                </Intro>
                 <Form
                     method="POST"
                     action="https://formspree.io/contact@alexisjanvier.net"
@@ -135,10 +149,10 @@ export default () => (
                             <CustomSelect>
                                 <select id="format" name="format" required>
                                     <option value="short" selected>
-                                        lightning talk (5min)
+                                        Lightning talk (5min)
                                     </option>
                                     <option value="talk">
-                                        Talk standard (environ 45min)
+                                        Talk standard (environ 30min)
                                     </option>
                                 </select>
                             </CustomSelect>
