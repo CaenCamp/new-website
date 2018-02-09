@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../../static/logo.png';
+import logo from '../../static/logoFondBlanc.png';
 
 export default styled.img.attrs({
     src: logo,
@@ -10,5 +10,5 @@ export default styled.img.attrs({
         height: 169px;
     }
     margin: 0;
-    padding: 0 5rem;
+    padding: 0.5rem 5rem 0 5rem;
 `;
