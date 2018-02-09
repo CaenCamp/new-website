@@ -8,7 +8,7 @@ export default () => (
         <Title>Call for speakers</Title>
         <p>
             Faites vivre les CaenCamp.s grâce à votre expérience:{' '}
-            <Link to="/call-for-speakers">proposez un sujet un talk !</Link>
+            <Link to="/call-for-speakers">proposez un sujet de talk !</Link>
         </p>
     </CodeContainer>
 );
