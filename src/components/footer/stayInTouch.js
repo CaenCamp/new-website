@@ -6,7 +6,7 @@ const ContactContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    width: 33%;
+    width: 30%;
     text-align: left;
     p {
         margin: 0;

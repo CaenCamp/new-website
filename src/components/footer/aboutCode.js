@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CodeContainer = styled.div`
+export const CodeContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    width: 33%;
+    width: 30%;
     text-align: left;
     p {
         margin: 0;

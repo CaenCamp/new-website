@@ -28,7 +28,7 @@ export default class Links extends Component {
                     links.map(link => (
                         <a key={link.title} href={link.url}>
                             <i
-                                className={`fa fa-${link.title.toLowerCase()} fa-3x`}
+                                className={`fa fa-${link.title.toLowerCase()} fa-2x`}
                             />
                         </a>
                     ))}
