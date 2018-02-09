@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import AboutCode from './footer/aboutCode';
+import CallForSpeakers from './footer/callForSpeakers';
 import StayInTouch from './footer/stayInTouch';
 
 const Footer = styled.footer`
@@ -27,6 +28,7 @@ export const Copyright = styled.div`
 export default ({ socialLinks }) => (
     <Footer>
         <StayInTouch links={socialLinks} />
+        <CallForSpeakers />
         <AboutCode />
         <Copyright>@caencamp 2018</Copyright>
     </Footer>
