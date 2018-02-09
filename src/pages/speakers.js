@@ -1,10 +1,17 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'gatsby-link';
 
 import { Content, SingleColumn } from '../components/Content';
 import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
-import { SpeakerListItem } from '../components/speakers/listItem';
+import {
+    SpeakerListItem,
+    Item,
+    Profile,
+    Name,
+    Introduction,
+} from '../components/speakers/listItem';
 
 export const SpeakerContainer = styled.div`
     display: flex;
@@ -33,6 +40,16 @@ export default ({ data }) => {
                                 speaker={speaker}
                             />
                         ))}
+                        <Item>
+                            <Link to="/call-for-speakers">
+                                <Profile src="/speakers/you.jpg" />
+                                <Name>Vous</Name>
+                                <Introduction>
+                                    Rejoignez les autres speakers ! Proposez un
+                                    sujet de talk.
+                                </Introduction>
+                            </Link>
+                        </Item>
                     </SpeakerContainer>
                 </SingleColumn>
             </Content>
