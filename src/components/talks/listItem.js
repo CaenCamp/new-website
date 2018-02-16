@@ -80,7 +80,10 @@ export default class ListItem extends Component {
                         <Speakers>
                             {talk.speakers.length > 0 &&
                                 talk.speakers.map(speaker => (
-                                    <MinimalView speaker={speaker} />
+                                    <MinimalView
+                                        speaker={speaker}
+                                        key={speaker.slug}
+                                    />
                                 ))}
                         </Speakers>
                         <Resume>{talk.description}</Resume>
