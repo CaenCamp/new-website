@@ -12,7 +12,7 @@ tags:
 speakers:
     - alexis-janvier
 place: forum-digital
-video : null
+video: null
 published: true
 ---
 
