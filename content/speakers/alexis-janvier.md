@@ -15,4 +15,8 @@ links:
       url: http://alexisjanvier.net
 ---
 
-Full-stack web developer at marmelab. Alexis worked on so many websites that he's a great software architect. He also loves horse riding.
+Sensibilisé très tôt à l’informatique grâce au ZX81 de mon père, j’ai pourtant suivi des études de biologie et commencé à travailler dans la médiation scientifique. Mais j’ai découvert en 2002 mon terrain de jeu favori : le web.
+
+Après un passage par la case freelance, j’ai continué ma carrière comme programmeur Php au sein de plusieurs entreprises, puis comme directeur technique au sein d’une startup, pour devenir Lead Dev Php en agence.
+
+Aujourd’hui, j’ai le grand plaisir d’exercer mon métier de développeur au sein de Marmelab, depuis Caen où quand ma famille, le travail, la mer et l’équitation me laissent du temps, je participe à l’organisation des CaenCamp.
