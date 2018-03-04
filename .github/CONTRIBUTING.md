@@ -154,6 +154,8 @@ Voici l'organisation des principaux répertoires du projet :
 
 Si vous n'avez encore jamais fait de Pull Request (PR), la lecture du tutorial Github [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/) est sûrement un bon point de départ.
 
+Si vous n'aviez pas encore de compte Github, en voici une [bonne introduction](https://flaviocopes.com/github-guide/).
+
 ### le git flow
 
 Pour le projet, nous utilisons le workflow suivant :
