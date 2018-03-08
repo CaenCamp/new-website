@@ -63,12 +63,14 @@ export default ({ talks, speakers, dojos }) => (
                 aiment ou trouvent un intérêt dans le{' '}
                 <strong>code et la programmation</strong>.<br />
                 Une rencontre régulière est organisée{' '}
-                <strong>chaque dernier mardi du mois</strong> avec une sujet
-                présenté par un <Link to="/speakers">speaker</Link> de la
-                communauté sur un format classique de{' '}
-                <Link to="/talks">talk</Link>. Mais d’autres rencontres peuvent
-                librement s’organiser, comme les{' '}
-                <Link to="/coding-dojo">dojos</Link>.
+                <strong>chaque dernier mardi du mois</strong> avec un{' '}
+                <Link to="/talks">sujet</Link> présenté par un{' '}
+                <Link to="/speakers">speaker</Link> de la communauté, précédé
+                par un{' '}
+                <a href="https://medium.com/@ckoster22/why-your-company-should-be-doing-lightning-talks-c84b32e8f82b">
+                    lightning talk
+                </a>. Mais d’autres rencontres peuvent librement s’organiser,
+                comme les <Link to="/coding-dojo">dojos</Link>.
             </p>
             <p>
                 Les CaenCamp.s ne vivent que par{' '}
