@@ -8,17 +8,30 @@ const CaenCampContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        justify-content: center;
+    }
     h2 {
         font-size: 2.5rem;
+        @media (max-width: ${props => props.theme.mobileSize}) {
+            font-size: 1.6rem;
+        }
     }
     p {
         font-size: 1.3rem;
         line-height: 1.8rem;
+        @media (max-width: ${props => props.theme.mobileSize}) {
+            font-size: 1rem;
+            line-height: 1.3rem;
+        }
     }
 `;
 const Overview = styled.div`
     text-align: left;
     width: 65%;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        width: 95%;
+    }
     a {
         color: ${({ theme }) => theme.black};
         font-weight: bold;
@@ -34,6 +47,9 @@ const Stats = styled.div`
     flex-direction: column;
     align-items: center;
     margin: 6rem 2rem 0 2rem;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        display: none;
+    }
 `;
 
 const StyledLink = styled(Link)`

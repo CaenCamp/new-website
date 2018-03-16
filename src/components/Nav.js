@@ -14,6 +14,14 @@ const Nav = styled.nav`
         font-variant: small-caps;
         margin-right: 2rem;
         font-weight: bold;
+        @media (max-width: ${props => props.theme.mobileSize}) {
+            font-size: 1rem;
+            padding: 0.5rem;
+            margin-right: 0;
+        }
+    }
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        margin: 0;
     }
 `;
 

@@ -18,6 +18,10 @@ export const Item = styled.div`
         flex-direction: column;
         align-items: center;
     }
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        width: 100%;
+        height: auto;
+    }
 `;
 
 export const Profile = styled.img`
@@ -25,6 +29,10 @@ export const Profile = styled.img`
     width: 115px;
     height: 115px;
     margin-bottom: 0.8rem;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        width: 75px;
+        height: 75px;
+    }
 `;
 
 export const Name = styled.h3`
