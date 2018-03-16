@@ -18,6 +18,13 @@ const Item = styled.div`
         display: flex;
         flex-direction: row;
         align-items: left;
+        @media (max-width: ${props => props.theme.mobileSize}) {
+            flex-direction: column;
+        }
+    }
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        margin: 0.5rem;
+        padding: 0.2rem;
     }
 `;
 
@@ -29,6 +36,10 @@ const Title = styled.h3`
     font-size: 2rem;
     margin: 0;
     padding: 0;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        font-size: 1.4rem;
+        margin: 0.8rem 0;
+    }
 `;
 
 const Resume = styled.p`
@@ -59,6 +70,14 @@ const Registration = styled.div`
         -webkit-transition: color 0.2s;
         &:hover {
             color: crimson;
+        }
+        @media (max-width: ${props => props.theme.mobileSize}) {
+            padding: 0;
+        }
+        i {
+            @media (max-width: ${props => props.theme.mobileSize}) {
+                display: none;
+            }
         }
     }
 `;

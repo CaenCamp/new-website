@@ -7,7 +7,7 @@ import Calendar from '../talks/Calendar';
 import MinimalView from '../speakers/MinimalView';
 import Tags from '../talks/Tags';
 
-export const Item = styled.div`
+const Item = styled.div`
     border: 1px solid ${({ theme }) => theme.greyLight};
     width: 100%;
     margin: 1rem;
@@ -18,6 +18,13 @@ export const Item = styled.div`
         display: flex;
         flex-direction: row;
         align-items: left;
+        @media (max-width: ${props => props.theme.mobileSize}) {
+            flex-direction: column;
+        }
+    }
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        margin: 0.5rem;
+        padding: 0.2rem;
     }
 `;
 
@@ -29,6 +36,10 @@ const Title = styled.h3`
     font-size: 2rem;
     margin: 0;
     padding: 0;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        font-size: 1.4rem;
+        margin: 0.8rem 0;
+    }
 `;
 
 const Resume = styled.p`

@@ -29,6 +29,9 @@ const CaenCampContainer = styled.div`
 const Overview = styled.div`
     text-align: left;
     width: 65%;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        width: 95%;
+    }
     a {
         color: ${({ theme }) => theme.black};
         font-weight: bold;

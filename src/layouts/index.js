@@ -19,10 +19,10 @@ const Container = styled.div`
         'f f f f f f f f f f f f';
     @media (max-width: ${props => props.theme.mobileSize}) {
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1rem 1fr auto;
+        grid-template-rows: 0.2rem 1fr auto;
         grid-template-areas:
             'h h h'
-            '. c .'
+            'c c c'
             'f f f';
     }
 `;
@@ -39,7 +39,7 @@ const Content = styled.section`
     position: 2;
     padding: 3rem 0;
     @media (max-width: ${props => props.theme.mobileSize}) {
-        padding: 4rem 0;
+        padding: 5rem 0;
     }
 `;
 const Footer = styled.footer`
