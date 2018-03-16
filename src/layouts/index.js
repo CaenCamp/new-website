@@ -18,21 +18,8 @@ const Container = styled.div`
         'h h h h h h h h h h h h'
         '. . c c c c c c c c . .'
         'f f f f f f f f f f f f';
-    @media (max-width: 799px) {
-        display: none;
-    }
 `;
-const NotReady = styled.div`
-    display: none;
-    @media (max-width: 799px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        text-align: center;
-    }
-`;
+
 const Header = styled.header`
     grid-area: h;
     z-index: 9;
@@ -57,13 +44,6 @@ class TemplateWrapper extends Component {
         return (
             <ThemeProvider theme={theme}>
                 <div>
-                    <NotReady>
-                        <Logo />
-                        <span>
-                            Toutes nos excuses, le site n'est pas encore prêt
-                            pour cette résolution d'écran :(
-                        </span>
-                    </NotReady>
                     <Container>
                         <Helmet>
                             <link
