@@ -7,6 +7,7 @@ import ReactPlayer from 'react-player';
 import { formatTalkWithSpeakers } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
 import SpeakerTalk from '../components/speakers/SpeakerTalk';
+import { SpeakerListItem } from '../components/speakers/listItem';
 import Calendar from '../components/talks/Calendar';
 import Tags from '../components/talks/Tags';
 
@@ -19,6 +20,10 @@ const TalkContainer = styled.div`
     flex-direction: row;
     align-items: left;
     margin: 4rem 0;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        flex-direction: column;
+        margin: 1rem 0;
+    }
 `;
 
 const DateAndSpeakers = styled.div`
@@ -27,6 +32,19 @@ const DateAndSpeakers = styled.div`
     align-items: center;
     justify-content: center;
     margin-right: 2rem;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        display: none;
+    }
+`;
+const DateAndSpeakersMobile = styled.div`
+    display: none;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
 `;
 
 const Description = styled.div`
@@ -43,11 +61,22 @@ export const Title = styled.h1`
 `;
 
 const VideoContainer = styled.div`
-    margin: 2rem auto;
+    position: relative;
+    padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+    margin-bottom: 1rem;
 `;
-
+const StyledReactPlayer = styled(ReactPlayer)`
+    position: absolute;
+    top: 0;
+    left: 0;
+`;
 export const MeetupLink = styled.a`
     color: ${({ theme }) => theme.black};
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
 `;
 
 export default ({ data }) => {
@@ -85,11 +114,30 @@ export default ({ data }) => {
                     <Tags tags={talk.tags} />
                     {talk.video && (
                         <VideoContainer>
-                            <ReactPlayer url={talk.video} />
+                            <StyledReactPlayer
+                                url={talk.video}
+                                width="100%"
+                                height="100%"
+                            />
                         </VideoContainer>
                     )}
                     <div dangerouslySetInnerHTML={{ __html: talk.html }} />
                 </Description>
+                <DateAndSpeakersMobile>
+                    <Calendar date={talk.date} edition={talk.edition} />
+                    {talk.meetupId && (
+                        <MeetupLink
+                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                talk.meetupId
+                            }/`}
+                        >
+                            <i className="fa fa-meetup" />
+                        </MeetupLink>
+                    )}
+                    {talk.speakers.map(speaker => (
+                        <SpeakerListItem key={speaker.slug} speaker={speaker} />
+                    ))}
+                </DateAndSpeakersMobile>
             </TalkContainer>
         </SingleColumn>
     );
