@@ -16,6 +16,9 @@ const HeaderContent = styled.div`
     top: 0;
     width: 100%;
     border-bottom: 1px solid #ececec;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        flex-direction: column;
+    }
 `;
 
 export default () => (

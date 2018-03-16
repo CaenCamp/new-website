@@ -7,7 +7,6 @@ import favicon from '../../static/favicon/favicon-16x16.png';
 import FooterContent from '../components/Footer';
 import HeaderContent from '../components/Header';
 import theme from '../utils/theme';
-import Logo from '../components/Logo';
 
 const Container = styled.div`
     height: 100%;
@@ -18,6 +17,14 @@ const Container = styled.div`
         'h h h h h h h h h h h h'
         '. . c c c c c c c c . .'
         'f f f f f f f f f f f f';
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1rem 1fr auto;
+        grid-template-areas:
+            'h h h'
+            '. c .'
+            'f f f';
+    }
 `;
 
 const Header = styled.header`
@@ -31,6 +38,9 @@ const Content = styled.section`
     z-index: 8;
     position: 2;
     padding: 3rem 0;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        padding: 4rem 0;
+    }
 `;
 const Footer = styled.footer`
     grid-area: f;
