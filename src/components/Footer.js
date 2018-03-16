@@ -13,10 +13,13 @@ const Footer = styled.footer`
     align-items: center;
     align-contents: center;
     text-align: center;
-    padding: 1rem 0;
+    padding: 1rem 10%;
     background-color: #f6f7f8;
-    padding-left: 10%;
-    padding-right: 10%;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        flex-direction: column;
+        padding: 0.5rem;
+        margin: 0;
+    }
 `;
 export const Copyright = styled.div`
     text-align: center;
