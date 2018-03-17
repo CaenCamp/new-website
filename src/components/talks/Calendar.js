@@ -9,10 +9,12 @@ const Container = styled.div`
     color: ${({ theme }) => theme.white};
     padding: 0;
     width: 80px;
+    height: 103px;
     @media (max-width: ${props => props.theme.mobileSize}) {
         border-radius: 0;
         background-color: ${({ theme }) => theme.white};
         width: 100%;
+        height: auto;
     }
 `;
 const DateContainer = styled.div`
