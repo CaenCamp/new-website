@@ -3,7 +3,7 @@ edition: 33
 meetupId: 244150334
 title: "Infrastructures à Clés Publiques"
 slug: "edition-33-infrastructures-a-cles-publiques"
-date: "2017-10-31"
+date: "2017-10-31 18:30:00"
 description: "Nous irons au delà d'une simple description des moyens techniques permettant d'établir une garantie de confiance dans la validité d'une identité numérique."
 tags:
     - security

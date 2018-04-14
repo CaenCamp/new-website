@@ -3,7 +3,7 @@ edition: 30
 meetupId: 240062370
 title: "Premiers pas avec docker"
 slug: "edition-30-premiers-pas-avec-docker"
-date: "2017-05-30"
+date: "2017-05-30 18:30:00"
 description: "Vous n'avez toujours pas une flotte de conteneurs sur votre laptop ? Venez découvrir pourquoi certains n'installent même plus PHP ou MySQL sur leur machine."
 tags:
     - devops

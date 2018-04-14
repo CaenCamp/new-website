@@ -3,7 +3,7 @@ edition: 29
 meetupId: 239134605
 title: "Architecture flux : Alternative au MVC ?"
 slug: "edition-29-architecture-flux-alternative-au-mvc"
-date: "2017-04-25"
+date: "2017-04-25 18:30:00"
 description: "Flux n'est pas un framework, mais plutôt une architecture, une façon de penser permettant de résoudre les problèmes de scalabilité et de maintenance que l'on peut rencontrer dans le développement d'applications webs volumineuses."
 tags:
     - javascript

@@ -3,7 +3,7 @@ edition: 35
 meetupId: 245721606
 title: "Live coding autour de la refonte du site des CaenCamp"
 slug: "edition-35-livecoding-refonte-site-caencamp"
-date: "2017-12-19"
+date: "2017-12-19 18:30:00"
 description: "Soirée live coding autour de la refonte du site aidé d'outils open-source et de la plateforme Github."
 tags:
     - livecoding

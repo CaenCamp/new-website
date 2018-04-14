@@ -3,7 +3,7 @@ edition: 28
 meetupId: 238126056
 title: "Le GraphQL, c'est vraiment la fin du REST ?"
 slug: "edition-28-le-graphql-cest-vraiment-la-fin-du-rest"
-date: "2017-03-28"
+date: "2017-03-28 18:30:00"
 description: "Parfois présenté comme le successeur des API Rest, le graphQL fait briller les yeux de nombreux développeurs."
 tags:
     - graphql

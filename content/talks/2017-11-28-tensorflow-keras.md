@@ -3,7 +3,7 @@ edition: 34
 meetupId: 245074990
 title: "Les réseaux de neurones: les comprendre et en créer avec TensorFlow et Keras"
 slug: "edition-34-reseaux-neurones-avec-tensorflow-et-keras"
-date: "2017-11-28"
+date: "2017-11-28 18:30:00"
 description: "Présentation du monde du deep learning, de son vocabulaire, fonctionnement et de ces concepts pour amener la présentation des différentes étapes de création d'un réseau de neurones."
 tags:
     - deep-learning
