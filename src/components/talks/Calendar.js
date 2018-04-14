@@ -9,7 +9,7 @@ const Container = styled.div`
     color: ${({ theme }) => theme.white};
     padding: 0;
     width: 80px;
-    height: 103px;
+    height: ${props => (props.displaySchedules ? '122px' : '103px')};
     @media (max-width: ${props => props.theme.mobileSize}) {
         border-radius: 0;
         background-color: ${({ theme }) => theme.white};
@@ -89,17 +89,33 @@ const Edition = styled.div`
     }
 `;
 
+const Schedule = styled.span`
+    width: 100%;
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: none;
+        width: auto;
+        margin: 0 0.2rem;
+    }
+`;
+
 export default ({ date, edition }) => {
-    const [day, month, year] = format(date, 'DD-MMM-YYYY', { locale }).split(
-        '-',
-    );
+    const [day, month, year, schedules] = format(date, 'DD-MMM-YYYY-HH:mm', {
+        locale,
+    }).split('-');
+    const displaySchedules = parseInt(year, 10) >= 2017;
     return (
-        <Container>
+        <Container displaySchedules={displaySchedules}>
             <Edition># {edition}</Edition>
             <DateContainer>
                 <Day>{day}</Day>
                 <Month>{month}</Month>
                 <Year>{year}</Year>
+                {displaySchedules && <Schedule>{schedules}</Schedule>}
             </DateContainer>
         </Container>
     );
