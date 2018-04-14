@@ -3,7 +3,7 @@ edition: 31
 meetupId: 240781536
 title: "Devenir un git master"
 slug: "edition-31-devenir-un-git-master"
-date: "2017-06-27"
+date: "2017-06-27 18:30:00"
 description: "Git c'est bien, le maîtriser pleinement, c'est mieux."
 tags:
     - git
