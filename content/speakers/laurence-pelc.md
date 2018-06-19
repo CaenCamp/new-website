@@ -5,6 +5,8 @@ slug: "laurence-pelc"
 resume: "Développeuse back-end chez Legallais"
 picture: "laurence-pelc.jpg"
 links:
+    - title: twitter
+      url: https://twitter.com/LaurencePelc
     - title: linkedin
       url: https://fr.linkedin.com/in/laurencepelc
 ---
