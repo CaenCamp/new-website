@@ -12,7 +12,7 @@ speakers:
     - laurence-pelc
     - guillaume-darbonne
 place: forum-digital
-video: 
+video: https://www.youtube.com/watch?v=58YDGuj30d0
 published: true
 ---
 
@@ -29,5 +29,7 @@ L’objectif de cette présentation sera d’introduire Elasticsearch et ses cas
 #### Guillaume Darbonne
 
 Guillaume viendra nous parler de l'un de ses outils favoris: [Meteor](https://www.meteor.com/)
+
+<iframe width="280" height="157" src="https://www.youtube.com/embed/d4H4J00t3hI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ![Meteor](/talks/meteor.png)

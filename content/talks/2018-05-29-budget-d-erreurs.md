@@ -12,7 +12,7 @@ speakers:
     - kevin-maschtaler
     - alexis-janvier
 place: forum-digital
-video :
+video : https://www.youtube.com/watch?v=GxOgHgXzISc
 published: true
 ---
 
