@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
+import LogoCCC from '../components/LogoCCC';
 
 const Nav = styled.nav`
     margin-top: 0;
@@ -43,8 +44,8 @@ export default () => (
         <Link to="/talks" activeStyle={activeLinkStyle}>
             les talks
         </Link>
-        <Link to="/coding-dojo" activeStyle={activeLinkStyle}>
-            les dojos
+        <Link to="/coding-caen-camp" activeStyle={activeLinkStyle}>
+            <LogoCCC />
         </Link>
     </Nav>
 );
