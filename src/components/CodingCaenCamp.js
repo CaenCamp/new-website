@@ -54,23 +54,6 @@ const Stats = styled.div`
     }
 `;
 
-const StyledLink = styled(Link)`
-    color: ${({ theme }) => theme.black};
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    margin-bottom: 1rem;
-    -webkit-transition: color 0.2s;
-    &:hover {
-        color: crimson;
-    }
-    span {
-        margin-left: 1rem;
-        font-size: 2rem;
-    }
-`;
-
 export default () => (
     <CaenCampContainer>
         <Stats>

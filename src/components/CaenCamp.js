@@ -85,17 +85,17 @@ export default ({ talks, speakers, dojos }) => (
                 par un{' '}
                 <a href="https://medium.com/@ckoster22/why-your-company-should-be-doing-lightning-talks-c84b32e8f82b">
                     lightning talk
-                </a>. Mais d’autres rencontres peuvent librement s’organiser,
+                </a>. Mais d{"'"}autres rencontres peuvent librement s{"'"}organiser,
                 comme les{' '}
                 <Link to="/coding-caen-camp">Coding Caen Camp (CCC)</Link>.
             </p>
             <p>
                 Les CaenCamp.s ne vivent que par{' '}
                 <Link to="/call-for-speakers">
-                    l’investissement des membres de sa communauté
+                    l{"'"}investissement des membres de sa communauté
                 </Link>{' '}
-                et ne dépendent d’aucune chapelle ni d’aucune entreprise. Nous
-                tenons cependant à remercier le{' '}
+                et ne dépendent d{"'"}aucune chapelle ni d{"'"}aucune
+                entreprise. Nous tenons cependant à remercier le{' '}
                 <a href="http://www.forum-digital.fr/">Forum Digital</a> d’avoir
                 accueilli une majorité de nos rencontres, ainsi que{' '}
                 <a href="https://www.hey-coworking.com/">HEY! coworking</a> pour
@@ -103,7 +103,7 @@ export default ({ talks, speakers, dojos }) => (
                 <Link to="/coding-caen-camp">CCC</Link>.
             </p>
             <p>
-                Sans forme d’organisation formelle, les CaenCamp.s existent
+                Sans forme d{"'"}organisation formelle, les CaenCamp.s existent
                 pourtant depuis <strong>2012</strong>.
             </p>
         </Overview>
