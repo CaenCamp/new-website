@@ -6,6 +6,7 @@ import Link from 'gatsby-link';
 import { Content, SingleColumn } from '../components/Content';
 import CCC from '../components/CodingCaenCamp';
 import { formatGraphContent } from '../utils/formatters';
+import { CampListItem } from '../components/cccs/list-item';
 
 export const Thanks = styled.div`
     display: flex;
@@ -29,16 +30,10 @@ export default ({ data }) => {
             <Content id="dojoContent">
                 <SingleColumn>
                     <CCC />
-                    <ul>
-                        {cccs &&
-                            cccs.map(camp => (
-                                <li key={camp.id}>
-                                    <Link to={`/coding-caen-camp/${camp.slug}`}>
-                                        {camp.title}
-                                    </Link>
-                                </li>
-                            ))}
-                    </ul>
+                    {cccs &&
+                        cccs.map(camp => (
+                            <CampListItem key={camp.id} camp={camp} />
+                        ))}
                     <Thanks>
                         <p>
                             Un grand merci à Emmanuelle et Sylvain de{' '}
