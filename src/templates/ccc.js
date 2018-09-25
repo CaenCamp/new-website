@@ -11,19 +11,30 @@ const StyledLink = styled(Link)`
     color: ${({ theme }) => theme.black};
 `;
 
-const DojoContainer = styled.div`
+const CampContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: left;
     margin: 4rem 0;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
 `;
 
 const DateAndSpeakers = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     margin-right: 2rem;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
 `;
 
 const Description = styled.div`
@@ -35,8 +46,26 @@ export const Title = styled.h1`
     font-size: 2rem;
     text-align: left;
     padding: 0;
-    margin: 0;
+    margin: 0 0 1.5rem 0;
     color: ${({ theme }) => theme.black};
+`;
+
+const Image = styled.img`
+    margin: 1rem;
+    height: auto;
+    width: auto;
+    max-width: 15rem;
+    max-height: 15rem;
+    float: right;
+`;
+
+const MeetupLink = styled.a`
+    color: ${({ theme }) => theme.black};
+    font-size: 5rem;
+    margin-top: 2rem;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        margin-top: 0.5rem;
+    }
 `;
 
 export default ({ data }) => {
@@ -51,15 +80,28 @@ export default ({ data }) => {
                 <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
                 liste
             </StyledLink>
-            <DojoContainer>
+            <CampContainer>
                 <DateAndSpeakers>
                     <Calendar date={camp.date} edition={camp.edition} />
+                    {camp.meetupId && (
+                        <MeetupLink
+                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                camp.meetupId
+                                }/`}
+                        >
+                            <i className="fa fa-meetup" />
+                        </MeetupLink>
+                    )}
                 </DateAndSpeakers>
                 <Description>
                     <Title>{camp.title}</Title>
-                    <div dangerouslySetInnerHTML={{ __html: camp.html }} />
+                    <div>
+                        <Image src={`/ccc/${camp.image}`} />
+                        <div>{camp.description}</div>
+                        <div dangerouslySetInnerHTML={{ __html: camp.html }} />
+                    </div>
                 </Description>
-            </DojoContainer>
+            </CampContainer>
         </SingleColumn>
     );
 };
@@ -69,11 +111,12 @@ export const query = graphql`
         rawCamp: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
             html
             frontmatter {
-                title
                 date
                 description
-                image
                 edition
+                image
+                meetupId
+                title
             }
         }
     }

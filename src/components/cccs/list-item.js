@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { campPropType } from '../../utils/caenCampPropTypes';
+import Date from './date';
 
 const Item = styled.div`
     border: 1px solid ${({ theme }) => theme.greyLight};
@@ -50,8 +51,8 @@ const Image = styled.img`
     margin: 0.5rem;
     height: auto;
     width: auto;
-    max-width: 10rem;
-    max-height: 10rem;
+    max-width: 8rem;
+    max-height: 8rem;
 `;
 
 export const CampListItem = ({ camp }) => (
@@ -62,6 +63,7 @@ export const CampListItem = ({ camp }) => (
                 <Title>
                     #{camp.edition}: {camp.title}
                 </Title>
+                <Date date={camp.date} />
                 <Resume>{camp.description}</Resume>
             </Description>
         </Link>
