@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import { Content, SingleColumn } from '../components/Content';
 import CCC from '../components/CodingCaenCamp';
+import { formatGraphContent } from '../utils/formatters';
+import { CampListItem } from '../components/cccs/list-item';
 
 export const Thanks = styled.div`
     display: flex;
@@ -14,7 +16,8 @@ export const Thanks = styled.div`
     font-weight: bold;
 `;
 
-export default () => {
+export default ({ data }) => {
+    const cccs = data.cccs.edges.map(camp => formatGraphContent(camp.node));
     return (
         <div>
             <Helmet title="CaenCamp: les Coding Caen Camp (CCC)">
@@ -26,6 +29,10 @@ export default () => {
             <Content id="dojoContent">
                 <SingleColumn>
                     <CCC />
+                    {cccs &&
+                        cccs.map(camp => (
+                            <CampListItem key={camp.id} camp={camp} />
+                        ))}
                     <Thanks>
                         <p>
                             Un grand merci à Emmanuelle et Sylvain de{' '}
@@ -41,3 +48,26 @@ export default () => {
         </div>
     );
 };
+
+export const query = graphql`
+    query CccsQuery {
+        cccs: allMarkdownRemark(
+            sort: { order: DESC, fields: [frontmatter___date] }
+            filter: { fileAbsolutePath: { glob: "**/ccc/**" } }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        title
+                        slug
+                        date
+                        description
+                        edition
+                        image
+                    }
+                }
+            }
+        }
+    }
+`;

@@ -20,3 +20,10 @@ export const dojoPropType = PropTypes.shape({
     slug: PropTypes.string.isRequired,
     craftsmen: PropTypes.arrayOf(speakerPropType),
 });
+
+export const campPropType = PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    resume: PropTypes.string,
+});

@@ -5,8 +5,12 @@ import styled from 'styled-components';
 import 'font-awesome/css/font-awesome.css';
 
 import { Content, SingleColumn } from '../components/Content';
-import { formatTalkWithSpeakers } from '../utils/formatters';
+import {
+    formatGraphContent,
+    formatTalkWithSpeakers,
+} from '../utils/formatters';
 import TalkListItem from '../components/talks/listItem';
+import { CampListItem } from '../components/cccs/list-item';
 import CaenCamp from '../components/CaenCamp';
 
 const TalksContainer = styled.div`
@@ -30,6 +34,15 @@ export default ({ data }) => {
         lastTalk = talks[1];
         nextTalk = talks[0];
     }
+    const cccs = data.cccs.edges.map(camp => formatGraphContent(camp.node));
+    let lastCamp = null;
+    let nextCamp = null;
+    if (isPast(new Date(cccs[0].date))) {
+        lastCamp = cccs[0];
+    } else {
+        lastCamp = cccs[1];
+        nextCamp = cccs[0];
+    }
 
     return (
         <div>
@@ -45,6 +58,7 @@ export default ({ data }) => {
                         talks={talks[0].edition}
                         speakers={data.speakers.edges.length}
                         dojos={data.dojos.edges.length}
+                        cccs={data.cccs.edges.length}
                         partners="3"
                     />
                     {nextTalk && (
@@ -53,10 +67,22 @@ export default ({ data }) => {
                             <TalkListItem talk={nextTalk} />
                         </TalksContainer>
                     )}
+                    {nextCamp && (
+                        <TalksContainer>
+                            <h2>Prochain coding caen camp</h2>
+                            <CampListItem camp={nextCamp} />
+                        </TalksContainer>
+                    )}
                     {lastTalk && (
                         <TalksContainer>
                             <h2>Dernier talk</h2>
                             <TalkListItem talk={lastTalk} />
+                        </TalksContainer>
+                    )}
+                    {lastCamp && (
+                        <TalksContainer>
+                            <h2>Dernier coding caen camp</h2>
+                            <CampListItem camp={lastCamp} />
                         </TalksContainer>
                     )}
                 </SingleColumn>
@@ -105,6 +131,27 @@ export const query = graphql`
                         }
                         picture
                         slug
+                    }
+                }
+            }
+        }
+        cccs: allMarkdownRemark(
+            sort: { order: DESC, fields: [frontmatter___date] }
+            filter: {
+                fileAbsolutePath: { glob: "**/ccc/**" }
+                frontmatter: { published: { eq: true } }
+            }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        title
+                        slug
+                        date
+                        description
+                        edition
+                        image
                     }
                 }
             }

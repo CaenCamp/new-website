@@ -34,6 +34,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     const talkTemplate = path.resolve(`src/templates/talk.js`);
     const dojoTemplate = path.resolve(`src/templates/dojo.js`);
     const speakerTemplate = path.resolve(`src/templates/speaker.js`);
+    const cccTemplate = path.resolve(`src/templates/ccc.js`);
 
     return graphql(`
         query AllSingleContents {
@@ -62,6 +63,17 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             }
             speakers: allMarkdownRemark(
                 filter: { fileAbsolutePath: { glob: "**/speakers/**" } }
+            ) {
+                edges {
+                    node {
+                        frontmatter {
+                            slug
+                        }
+                    }
+                }
+            }
+            ccc: allMarkdownRemark(
+                filter: { fileAbsolutePath: { glob: "**/ccc/**" } }
             ) {
                 edges {
                     node {
@@ -104,6 +116,17 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             createPage({
                 path: `/speakers/${node.frontmatter.slug}`,
                 component: speakerTemplate,
+                context: {
+                    // Data passed to context is available in page queries as GraphQL variables.
+                    slug: node.frontmatter.slug,
+                },
+            });
+        });
+
+        result.data.ccc.edges.forEach(({ node }) => {
+            createPage({
+                path: `/coding-caen-camp/${node.frontmatter.slug}`,
+                component: cccTemplate,
                 context: {
                     // Data passed to context is available in page queries as GraphQL variables.
                     slug: node.frontmatter.slug,
