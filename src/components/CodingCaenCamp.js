@@ -30,9 +30,12 @@ const CaenCampContainer = styled.div`
 `;
 const Overview = styled.div`
     text-align: left;
-    width: 65%;
+    width: 100%;
     @media (max-width: ${props => props.theme.mobileSize}) {
         width: 95%;
+    }
+    img {
+        margin: 0 auto;
     }
     a {
         color: ${({ theme }) => theme.black};
@@ -56,11 +59,10 @@ const Stats = styled.div`
 
 export default () => (
     <CaenCampContainer>
-        <Stats>
-            <img src={logo} alt="Logo CCC" />
-        </Stats>
         <Overview>
-            <h2>Qu’est-ce que les Coding Caen Camp.s ?</h2>
+            <center>
+                <img src={logo} alt="Qu’est-ce que les Coding Caen Camp.s ?" />
+            </center>
             <p>
                 Réaliser un <Link to="/talks">talk</Link> est toujours un
                 exercice enrichissant : cela permet de formaliser et de partager
@@ -77,7 +79,6 @@ export default () => (
             </p>
             <p>
                 Le principe : se réunir une fois par mois pour … et bien …{' '}
-                <br />
                 <strong>coder ensemble</strong>.
             </p>
         </Overview>

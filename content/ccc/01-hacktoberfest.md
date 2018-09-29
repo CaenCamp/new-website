@@ -1,6 +1,6 @@
 ---
 edition: 1
-meetupId: 22
+meetupId: 255118278
 title: "Hacktoberfest 2018"
 slug: "hacktoberfest-2018"
 date: "2018-10-16 18:30:00"
@@ -22,7 +22,7 @@ Enfin, ce sera l’occasion de nous rencontrer, de discuter de la suite des Codi
 
 Toute personne motivée pour s’impliquer dans un projet open source ! **Attention, il ne s’agit pas de venir apprendre à coder. Ce n’est pas un cours, il n’y a pas de programme.** Mais nous misons sur le fait que la somme des connaissances réunies permettra à chacun d’apprendre et de construire des choses.   
 
-Il sera évidemment beaucoup question de code, mais sans chapelle technologique. Et le code ne fait pas tout dans la réussite d’un bon projet : avoir des idées, des capacités éditoriales, un talent graphique, une vision sur l’ergonomie...
+Il sera évidemment beaucoup question de code, mais sans chapelle technologique. Et le code n'est pas la seule compétence induisant la réussite d’un bon projet. Il faut aussi avoir des idées, des capacités éditoriales, un talent graphique, une vision sur l’ergonomie...
 
 ## Ce sera où ?
 
