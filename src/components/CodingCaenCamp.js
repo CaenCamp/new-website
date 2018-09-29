@@ -60,7 +60,7 @@ export default () => (
             <img src={logo} alt="Logo CCC" />
         </Stats>
         <Overview>
-            <h2>Qu’est-ce que les Coding Caen Camp ?</h2>
+            <h2>Qu’est-ce que les Coding Caen Camp.s ?</h2>
             <p>
                 Réaliser un <Link to="/talks">talk</Link> est toujours un
                 exercice enrichissant : cela permet de formaliser et de partager

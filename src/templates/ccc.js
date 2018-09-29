@@ -61,11 +61,19 @@ const Image = styled.img`
 
 const MeetupLink = styled.a`
     color: ${({ theme }) => theme.black};
-    font-size: 5rem;
+    font-size: 2rem;
     margin-top: 2rem;
+    margin-left: 1rem;
     @media (max-width: ${props => props.theme.mobileSize}) {
         margin-top: 0.5rem;
     }
+    i {
+        font-size: 5rem;
+    }
+    &:hover {
+        color: crimson;
+    }
+    transition: color 0.2s ease-out;
 `;
 
 export default ({ data }) => {
@@ -87,7 +95,7 @@ export default ({ data }) => {
                         <MeetupLink
                             href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
                                 camp.meetupId
-                                }/`}
+                            }/`}
                         >
                             <i className="fa fa-meetup" />
                         </MeetupLink>
@@ -97,8 +105,27 @@ export default ({ data }) => {
                     <Title>{camp.title}</Title>
                     <div>
                         <Image src={`/ccc/${camp.image}`} />
-                        <div>{camp.description}</div>
                         <div dangerouslySetInnerHTML={{ __html: camp.html }} />
+                        {camp.meetupId && (
+                            <div>
+                                <h2>S'inscrire</h2>
+
+                                <h3>
+                                    Le nombre de places est limité à 15, et vous
+                                    devez apporter votre laptop.
+                                </h3>
+                                <p>
+                                    Pour le moment, les inscriptions se font sur
+                                    <MeetupLink
+                                        href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                            camp.meetupId
+                                        }/`}
+                                    >
+                                        Meetup <i className="fa fa-meetup" />
+                                    </MeetupLink>
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </Description>
             </CampContainer>
