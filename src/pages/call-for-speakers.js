@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet';
 import React from 'react';
 import styled from 'styled-components';
 
+import Layout from '../components/layout';
 import { Content, SingleColumn } from '../components/Content';
 
 const Form = styled.form`
@@ -109,81 +110,83 @@ const Intro = styled.p`
 `;
 
 export default () => (
-    <div>
-        <Helmet title="CaenCamp: proposez un talk">
-            <meta name="description" content="Participez CaenCamp" />
-        </Helmet>
-        <Content id="callForPaperContent">
-            <SingleColumn>
-                <Title>Call for speakers</Title>
-                <Intro>
-                    Les bonnes raisons de faire un talk sont multiples et
-                    internet regorge de posts de blog les énumérant.<br /> Mais
-                    une chose est certaine : la communauté en profitera et vous
-                    en profiterez. Alors n’hésitez pas à proposer un sujet ;)
-                </Intro>
-                <Form
-                    method="POST"
-                    action="https://formspree.io/contact@alexisjanvier.net"
-                >
-                    <InputContainer>
-                        <li>
-                            <label>Qui êtes-vous ?</label>
-                            <input
-                                type="text"
-                                name="speaker"
-                                placeholder="John Doe"
-                                required
-                            />
-                        </li>
-                        <li>
-                            <label>
-                                Quel serait le titre de votre intervention ?
-                            </label>
-                            <input type="text" name="title" required />
-                        </li>
-                        <li>
-                            <label>
-                                Quel serait le format de votre proposition ?
-                            </label>
-                            <CustomSelect>
-                                <select id="format" name="format" required>
-                                    <option value="short" selected>
-                                        Lightning talk (5min)
-                                    </option>
-                                    <option value="talk">
-                                        Talk standard (environ 30min)
-                                    </option>
-                                </select>
-                            </CustomSelect>
-                        </li>
-                        <li>
-                            <label>En quelques mots</label>
-                            <textarea
-                                name="message"
-                                placeholder="200 caractères minimum"
-                                minlength="200"
-                                rows="5"
-                                required
-                            />
-                        </li>
-                        <li>
-                            <label> Comment peut-on vous contacter ?</label>
-                            <input
-                                type="text"
-                                name="contact"
-                                placeholder="votre email, votre identifiant twitter, votre téléphone ..."
-                                required
-                            />
-                        </li>
-                        <li>
-                            <button type="submit">
-                                Envoyer votre proposition
-                            </button>
-                        </li>
-                    </InputContainer>
-                </Form>
-            </SingleColumn>
-        </Content>
-    </div>
+    <Layout>
+        <div>
+            <Helmet title="CaenCamp: proposez un talk">
+                <meta name="description" content="Participez CaenCamp" />
+            </Helmet>
+            <Content id="callForPaperContent">
+                <SingleColumn>
+                    <Title>Call for speakers</Title>
+                    <Intro>
+                        Les bonnes raisons de faire un talk sont multiples et
+                        internet regorge de posts de blog les énumérant.<br /> Mais
+                        une chose est certaine : la communauté en profitera et vous
+                        en profiterez. Alors n’hésitez pas à proposer un sujet ;)
+                    </Intro>
+                    <Form
+                        method="POST"
+                        action="https://formspree.io/contact@alexisjanvier.net"
+                    >
+                        <InputContainer>
+                            <li>
+                                <label>Qui êtes-vous ?</label>
+                                <input
+                                    type="text"
+                                    name="speaker"
+                                    placeholder="John Doe"
+                                    required
+                                />
+                            </li>
+                            <li>
+                                <label>
+                                    Quel serait le titre de votre intervention ?
+                                </label>
+                                <input type="text" name="title" required />
+                            </li>
+                            <li>
+                                <label>
+                                    Quel serait le format de votre proposition ?
+                                </label>
+                                <CustomSelect>
+                                    <select id="format" name="format" required>
+                                        <option value="short" selected>
+                                            Lightning talk (5min)
+                                        </option>
+                                        <option value="talk">
+                                            Talk standard (environ 30min)
+                                        </option>
+                                    </select>
+                                </CustomSelect>
+                            </li>
+                            <li>
+                                <label>En quelques mots</label>
+                                <textarea
+                                    name="message"
+                                    placeholder="200 caractères minimum"
+                                    minlength="200"
+                                    rows="5"
+                                    required
+                                />
+                            </li>
+                            <li>
+                                <label> Comment peut-on vous contacter ?</label>
+                                <input
+                                    type="text"
+                                    name="contact"
+                                    placeholder="votre email, votre identifiant twitter, votre téléphone ..."
+                                    required
+                                />
+                            </li>
+                            <li>
+                                <button type="submit">
+                                    Envoyer votre proposition
+                                </button>
+                            </li>
+                        </InputContainer>
+                    </Form>
+                </SingleColumn>
+            </Content>
+        </div>
+    </Layout>
 );

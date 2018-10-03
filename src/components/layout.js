@@ -94,10 +94,7 @@ class TemplateWrapper extends Component {
                                 <HeaderContent />
                             </Header>
                             <Content>
-                                {children({
-                                    ...this.props,
-                                    nextMeetup: data ? data.nextMeetup : null,
-                                })}
+                                {children}
                             </Content>
                             <Footer>
                                 <FooterContent

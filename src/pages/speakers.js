@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 
+import Layout from '../components/layout';
 import { Content, SingleColumn } from '../components/Content';
 import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
 import {
@@ -28,33 +29,35 @@ export default ({ data }) => {
     );
 
     return (
-        <div>
-            <Helmet title="CaenCamp: proposez un talk">
-                <meta name="description" content="Participez CaenCamp" />
-            </Helmet>
-            <Content id="callForPaperContent">
-                <SingleColumn>
-                    <SpeakerContainer>
-                        {speakers.map(speaker => (
-                            <SpeakerListItem
-                                key={speaker.id}
-                                speaker={speaker}
-                            />
-                        ))}
-                        <Item>
-                            <Link to="/call-for-speakers">
-                                <Profile src="/speakers/you.jpg" />
-                                <Name>Vous</Name>
-                                <Introduction>
-                                    Rejoignez les autres speakers ! Proposez un
-                                    sujet de talk.
-                                </Introduction>
-                            </Link>
-                        </Item>
-                    </SpeakerContainer>
-                </SingleColumn>
-            </Content>
-        </div>
+        <Layout>
+            <div>
+                <Helmet title="CaenCamp: proposez un talk">
+                    <meta name="description" content="Participez CaenCamp" />
+                </Helmet>
+                <Content id="callForPaperContent">
+                    <SingleColumn>
+                        <SpeakerContainer>
+                            {speakers.map(speaker => (
+                                <SpeakerListItem
+                                    key={speaker.id}
+                                    speaker={speaker}
+                                />
+                            ))}
+                            <Item>
+                                <Link to="/call-for-speakers">
+                                    <Profile src="/speakers/you.jpg" />
+                                    <Name>Vous</Name>
+                                    <Introduction>
+                                        Rejoignez les autres speakers ! Proposez un
+                                        sujet de talk.
+                                    </Introduction>
+                                </Link>
+                            </Item>
+                        </SpeakerContainer>
+                    </SingleColumn>
+                </Content>
+            </div>
+        </Layout>
     );
 };
 
