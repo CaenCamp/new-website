@@ -1,6 +1,6 @@
 ---
 edition: 41
-meetupId:
+meetupId: 255224689
 title: "Illustrations responsives"
 slug: "edition-41-illustrations-responsives"
 date: "2018-11-27 18:30:00"
@@ -13,7 +13,7 @@ speakers:
     - quentin-desrame
 place: forum-digital
 video:
-published: true
+published: false
 ---
 
 ### talk
