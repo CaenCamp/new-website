@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
-import isPast from 'date-fns/is_past';
+import isBefore from 'date-fns/is_before';
 import styled from 'styled-components';
 import 'font-awesome/css/font-awesome.css';
 
@@ -28,7 +28,7 @@ export default ({ data }) => {
 
     let lastTalk = null;
     let nextTalk = null;
-    if (isPast(new Date(talks[0].date))) {
+    if (!isBefore(new Date(), new Date(talks[0].date))) {
         lastTalk = talks[0];
     } else {
         lastTalk = talks[1];
@@ -37,7 +37,7 @@ export default ({ data }) => {
     const cccs = data.cccs.edges.map(camp => formatGraphContent(camp.node));
     let lastCamp = null;
     let nextCamp = null;
-    if (isPast(new Date(cccs[0].date))) {
+    if (!isBefore(new Date(), new Date(cccs[0].date))) {
         lastCamp = cccs[0];
     } else {
         lastCamp = cccs[1];

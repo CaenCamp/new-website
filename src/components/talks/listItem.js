@@ -1,7 +1,7 @@
 import Link from 'gatsby-link';
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import isPast from 'date-fns/is_past';
+import isBefore from 'date-fns/is_before';
 
 import Calendar from './Calendar';
 import MinimalView from '../speakers/MinimalView';
@@ -112,7 +112,7 @@ export default class ListItem extends Component {
                             }
                         />
                     </Description>
-                    {!isPast(new Date(talk.date)) &&
+                    {isBefore(new Date(), new Date(talk.date)) &&
                         talk.meetupId && (
                             <Registration>
                                 <a
