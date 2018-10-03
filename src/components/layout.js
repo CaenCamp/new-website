@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import styled, { ThemeProvider } from 'styled-components';
 import { Helmet } from 'react-helmet';
 
@@ -50,36 +50,65 @@ const Footer = styled.footer`
 
 class TemplateWrapper extends Component {
     render() {
-        const { children, data } = this.props;
+        const { children } = this.props;
 
         return (
-            <ThemeProvider theme={theme}>
-                <div>
-                    <Container>
-                        <Helmet>
-                            <link
-                                rel="icon"
-                                href={favicon}
-                                type="image/x-icon"
-                            />
-                        </Helmet>
-                        <Header>
-                            <HeaderContent />
-                        </Header>
-                        <Content>
-                            {children({
-                                ...this.props,
-                                nextMeetup: data ? data.nextMeetup : null,
-                            })}
-                        </Content>
-                        <Footer>
-                            <FooterContent
-                                socialLinks={data.site.siteMetadata.socialLinks}
-                            />
-                        </Footer>
-                    </Container>
-                </div>
-            </ThemeProvider>
+            <StaticQuery
+                query={graphql`
+                    query AboutQuery {
+                        site {
+                            siteMetadata {
+                                title
+                                baseline
+                                socialLinks {
+                                    title
+                                    url
+                                }
+                            }
+                        }
+                        nextMeetup: allMeetupEvent(
+                            limit: 1
+                            filter: { status: { eq: "upcoming" } }
+                        ) {
+                            edges {
+                                node {
+                                    name
+                                    link
+                                    yes_rsvp_count
+                                }
+                            }
+                        }
+                    }
+                `}
+                render={data => (<ThemeProvider theme={theme}>
+                    <div>
+                        <Container>
+                            <Helmet>
+                                <link
+                                    rel="icon"
+                                    href={favicon}
+                                    type="image/x-icon"
+                                />
+                            </Helmet>
+                            <Header>
+                                <HeaderContent />
+                            </Header>
+                            <Content>
+                                {children({
+                                    ...this.props,
+                                    nextMeetup: data ? data.nextMeetup : null,
+                                })}
+                            </Content>
+                            <Footer>
+                                <FooterContent
+                                    socialLinks={data.site.siteMetadata.socialLinks}
+                                />
+                            </Footer>
+                        </Container>
+                    </div>
+                </ThemeProvider>)
+                }
+                />
         );
     }
 }
@@ -87,32 +116,5 @@ class TemplateWrapper extends Component {
 TemplateWrapper.propTypes = {
     children: PropTypes.func,
 };
-
-export const query = graphql`
-    query AboutQuery {
-        site {
-            siteMetadata {
-                title
-                baseline
-                socialLinks {
-                    title
-                    url
-                }
-            }
-        }
-        nextMeetup: allMeetupEvent(
-            limit: 1
-            filter: { status: { eq: "upcoming" } }
-        ) {
-            edges {
-                node {
-                    name
-                    link
-                    yes_rsvp_count
-                }
-            }
-        }
-    }
-`;
 
 export default TemplateWrapper;
