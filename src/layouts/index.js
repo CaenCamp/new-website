@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { graphql } from 'gatsby'
 import styled, { ThemeProvider } from 'styled-components';
 import { Helmet } from 'react-helmet';
 

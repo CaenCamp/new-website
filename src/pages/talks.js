@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
+import { graphql } from 'gatsby'
 import styled from 'styled-components';
 
 import { Content, SingleColumn } from '../components/Content';
