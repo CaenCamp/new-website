@@ -27,3 +27,7 @@ Il sera évidemment beaucoup question de code, mais sans chapelle technologique.
 ## Ce sera où ?
 
 Nous serons accueillis chez [Hey! Coworking](https://www.hey-coworking.com/), [47 Quai de Juillet, 14000 Caen](https://www.google.fr/maps/place/HEY+!+Coworking/@49.1790401,-0.3522317,15z/data=!4m2!3m1!1s0x0:0x424ace3e48cd2332?sa=X&ved=2ahUKEwjugr707d_dAhURJhoKHQdbANoQ_BIwDnoECAoQCw), le mardi 16 octobre de 18h30 à 21h30.
+
+## Merci !
+
+Un grand merci à [KNPLabs](http://knplabs.com/fr) (@KnpLabs) qui sera le **PizzaSponsor** de cette première édition.
