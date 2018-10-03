@@ -7,6 +7,8 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
     const url = `https://api.meetup.com/CaenCamp/events?scroll=future_or_past`;
     const data = await axios.get(url);
 
+    console.log(path);
+    
     data.data.forEach((event, i) => {
         const meetupEventNode = {
             ...event,
