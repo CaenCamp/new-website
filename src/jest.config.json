@@ -10,5 +10,8 @@
         ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
     },
     "transform": { "^.+\\.js$": "<rootDir>/jestPreprocess.js" },
-    "testURL": "http://0.0.0.0"
+    "testURL": "http://0.0.0.0",
+    "transformIgnorePatterns": [
+        "node_modules/(?!(gatsby)/)"
+      ]
 }
