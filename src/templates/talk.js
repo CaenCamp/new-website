@@ -1,9 +1,11 @@
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import React from 'react';
+import { graphql } from 'gatsby'
 import styled from 'styled-components';
 import ReactPlayer from 'react-player';
 
+import Layout from '../components/layout';
 import { formatTalkWithSpeakers } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
 import SpeakerTalk from '../components/speakers/SpeakerTalk';
@@ -83,63 +85,65 @@ export default ({ data }) => {
     const talk = formatTalkWithSpeakers(data.rawTalk, data.speakers.edges);
 
     return (
-        <SingleColumn>
-            <Helmet>
-                <title>{talk.title}</title>
-                <meta name="description" content={talk.description} />
-                <meta name="keywords" content={`${talk.tags}`} />
-            </Helmet>
-            <StyledLink to="/talks">
-                <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
-                liste
-            </StyledLink>
-            <TalkContainer>
-                <DateAndSpeakers>
-                    <Calendar date={talk.date} edition={talk.edition} />
-                    {talk.speakers.map(speaker => (
-                        <SpeakerTalk key={speaker.slug} speaker={speaker} />
-                    ))}
-                    {talk.meetupId && (
-                        <MeetupLink
-                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
-                                talk.meetupId
-                            }/`}
-                        >
-                            <i className="fa fa-meetup fa-5x" />
-                        </MeetupLink>
-                    )}
-                </DateAndSpeakers>
-                <Description>
-                    <Title>{talk.title}</Title>
-                    <Tags tags={talk.tags} />
-                    {talk.video && (
-                        <VideoContainer>
-                            <StyledReactPlayer
-                                url={talk.video}
-                                width="100%"
-                                height="100%"
-                            />
-                        </VideoContainer>
-                    )}
-                    <div dangerouslySetInnerHTML={{ __html: talk.html }} />
-                </Description>
-                <DateAndSpeakersMobile>
-                    <Calendar date={talk.date} edition={talk.edition} />
-                    {talk.meetupId && (
-                        <MeetupLink
-                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
-                                talk.meetupId
-                            }/`}
-                        >
-                            <i className="fa fa-meetup" />
-                        </MeetupLink>
-                    )}
-                    {talk.speakers.map(speaker => (
-                        <SpeakerListItem key={speaker.slug} speaker={speaker} />
-                    ))}
-                </DateAndSpeakersMobile>
-            </TalkContainer>
-        </SingleColumn>
+        <Layout>
+            <SingleColumn>
+                <Helmet>
+                    <title>{talk.title}</title>
+                    <meta name="description" content={talk.description} />
+                    <meta name="keywords" content={`${talk.tags}`} />
+                </Helmet>
+                <StyledLink to="/talks">
+                    <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
+                    liste
+                </StyledLink>
+                <TalkContainer>
+                    <DateAndSpeakers>
+                        <Calendar date={talk.date} edition={talk.edition} />
+                        {talk.speakers.map(speaker => (
+                            <SpeakerTalk key={speaker.slug} speaker={speaker} />
+                        ))}
+                        {talk.meetupId && (
+                            <MeetupLink
+                                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                    talk.meetupId
+                                }/`}
+                            >
+                                <i className="fa fa-meetup fa-5x" />
+                            </MeetupLink>
+                        )}
+                    </DateAndSpeakers>
+                    <Description>
+                        <Title>{talk.title}</Title>
+                        <Tags tags={talk.tags} />
+                        {talk.video && (
+                            <VideoContainer>
+                                <StyledReactPlayer
+                                    url={talk.video}
+                                    width="100%"
+                                    height="100%"
+                                />
+                            </VideoContainer>
+                        )}
+                        <div dangerouslySetInnerHTML={{ __html: talk.html }} />
+                    </Description>
+                    <DateAndSpeakersMobile>
+                        <Calendar date={talk.date} edition={talk.edition} />
+                        {talk.meetupId && (
+                            <MeetupLink
+                                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                    talk.meetupId
+                                }/`}
+                            >
+                                <i className="fa fa-meetup" />
+                            </MeetupLink>
+                        )}
+                        {talk.speakers.map(speaker => (
+                            <SpeakerListItem key={speaker.slug} speaker={speaker} />
+                        ))}
+                    </DateAndSpeakersMobile>
+                </TalkContainer>
+            </SingleColumn>
+        </Layout>
     );
 };
 

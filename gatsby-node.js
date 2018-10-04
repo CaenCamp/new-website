@@ -2,8 +2,8 @@ const path = require(`path`);
 const axios = require('axios');
 const crypto = require('crypto');
 
-exports.sourceNodes = async ({ boundActionCreators }) => {
-    const { createNode } = boundActionCreators;
+exports.sourceNodes = async ({ actions }) => {
+    const { createNode } = actions;
     const url = `https://api.meetup.com/CaenCamp/events?scroll=future_or_past`;
     const data = await axios.get(url);
 
@@ -29,8 +29,8 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
     return;
 };
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-    const { createPage } = boundActionCreators;
+exports.createPages = ({ graphql, actions }) => {
+    const { createPage } = actions;
     const talkTemplate = path.resolve(`src/templates/talk.js`);
     const dojoTemplate = path.resolve(`src/templates/dojo.js`);
     const speakerTemplate = path.resolve(`src/templates/speaker.js`);

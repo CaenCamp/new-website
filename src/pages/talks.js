@@ -1,7 +1,9 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
+import { graphql } from 'gatsby'
 import styled from 'styled-components';
 
+import Layout from '../components/layout';
 import { Content, SingleColumn } from '../components/Content';
 import { formatTalkWithSpeakers } from '../utils/formatters';
 import TalkListItem from '../components/talks/listItem';
@@ -20,23 +22,25 @@ export default ({ data }) => {
     );
 
     return (
-        <div>
-            <Helmet title="CaenCamp: les talks">
-                <meta
-                    name="description"
-                    content="Retrouvez tous les talks des CaenCamp"
-                />
-            </Helmet>
-            <Content id="talksContent">
-                <SingleColumn>
-                    <TalksContainer>
-                        {talks.map(talk => (
-                            <TalkListItem key={talk.id} talk={talk} />
-                        ))}
-                    </TalksContainer>
-                </SingleColumn>
-            </Content>
-        </div>
+        <Layout>
+            <div>
+                <Helmet title="CaenCamp: les talks">
+                    <meta
+                        name="description"
+                        content="Retrouvez tous les talks des CaenCamp"
+                    />
+                </Helmet>
+                <Content id="talksContent">
+                    <SingleColumn>
+                        <TalksContainer>
+                            {talks.map(talk => (
+                                <TalkListItem key={talk.id} talk={talk} />
+                            ))}
+                        </TalksContainer>
+                    </SingleColumn>
+                </Content>
+            </div>
+        </Layout>
     );
 };
 
