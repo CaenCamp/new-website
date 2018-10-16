@@ -144,7 +144,7 @@ Voici l'organisation des principaux répertoires du projet :
 * **.github** : On trouve ici les fichiers d'aide sur le projet et les templates pour Github.
 * **.storybook** : On trouve ici les fichiers de configuration permettant le bon fonctionnement du storybook
 * **content** : On trouve ici les fichiers des contenus (talks, speakers, partners) en `.md`.
-* **e2e** : On trouve ici les fichiers des tests e2e.
+* **e2e** : On trouve ici les fichiers des tests "end to end".
 * **public** : Ce répertoire n'est pas dans le dépôt git, mais sera visible dès que vous lancerez un `build` du projet. Vous y trouverez donc les fichiers statiques finaux tels qu'ils  seront mis en ligne.
 * **src** : On trouve ici tous les fichiers propres à Gatsby ainsi que les fichiers de tests unitaires.
 * **static** : On trouve ici tous les fichiers *static*, c.a.d les images, la favicon, etc ...
