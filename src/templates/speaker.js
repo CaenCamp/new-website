@@ -1,5 +1,4 @@
 import Helmet from 'react-helmet';
-import Link from 'gatsby-link';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -8,10 +7,7 @@ import { SingleColumn } from '../components/Content';
 import TalkListItem from '../components/talks/listItem';
 import { DojoListItem } from '../components/dojos/listItem';
 import Links from '../components/speakers/Links';
-
-const StyledLink = styled(Link)`
-    color: ${({ theme }) => theme.black};
-`;
+import BackToList from '../components/BackToList';
 
 const SpeakerContainer = styled.div`
     display: flex;
@@ -68,10 +64,7 @@ export default ({ data }) => {
                 <meta name="description" content="A trouver" />
                 <meta name="keywords" content="A voir" />
             </Helmet>
-            <StyledLink to="/speakers">
-                <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
-                liste
-            </StyledLink>
+            <BackToList path="/speakers" />
             <SpeakerContainer>
                 <SpeakerBio>
                     <Profile src={`/speakers/${speaker.picture}`} />
