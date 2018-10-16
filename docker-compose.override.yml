@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  gatsby:
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - '${GATSBY_PORT:-8000}:8000'
