@@ -43,7 +43,8 @@
         "react-typography": "0.16.13",
         "storybook": "1.0.0",
         "storybook-router": "0.3.4",
-        "styled-components": "3.2.6"
+        "styled-components": "3.2.6",
+        "url-search-params-polyfill": "5.0.0"
     },
     "devDependencies": {
         "@storybook/addon-backgrounds": "3.4.4",

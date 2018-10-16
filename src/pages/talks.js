@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
 import styled from 'styled-components';
+import 'url-search-params-polyfill';
 
 import { Content, SingleColumn } from '../components/Content';
 import { formatTalkWithSpeakers } from '../utils/formatters';
@@ -14,8 +15,8 @@ const TalksContainer = styled.div`
     justify-content: left;
 `;
 
-export default ({ data }) => {
-    const params = new URLSearchParams(window.location.search); 
+export default ({ data, location }) => {
+    const params = new URLSearchParams(location.search);
     const tag = params.get('tag');
 
     const talks = data.talks.edges
@@ -25,8 +26,7 @@ export default ({ data }) => {
 
             return talk;
         })
-        .filter(talk => !tag || talk.tags.indexOf(tag) !== -1)
-    ;
+        .filter(talk => !tag || talk.tags.indexOf(tag) !== -1);
 
     return (
         <div>
