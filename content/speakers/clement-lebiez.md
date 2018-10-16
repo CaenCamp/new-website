@@ -1,6 +1,6 @@
 ---
 firstName: "Clément"
-lastName: "Lebiez"
+lastName: "Le Biez"
 slug: "clement-lebiez"
 resume: "Front-end developer @Yousignfr & Freelance - God created the world in #JavaScript"
 picture: "clement-lebiez.jpg"
