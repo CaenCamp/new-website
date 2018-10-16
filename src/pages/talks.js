@@ -15,9 +15,18 @@ const TalksContainer = styled.div`
 `;
 
 export default ({ data }) => {
-    const talks = data.talks.edges.map(talk =>
-        formatTalkWithSpeakers(talk.node, data.speakers.edges),
-    );
+    const params = new URLSearchParams(window.location.search); 
+    const tag = params.get('tag');
+
+    const talks = data.talks.edges
+        .map(talk => formatTalkWithSpeakers(talk.node, data.speakers.edges))
+        .map(talk => {
+            talk.tags = talk.video ? ['video', ...talk.tags] : talk.tags;
+
+            return talk;
+        })
+        .filter(talk => !tag || talk.tags.indexOf(tag) !== -1)
+    ;
 
     return (
         <div>
