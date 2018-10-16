@@ -5,6 +5,9 @@ export const Content = styled.section`
     flex-direction: row;
     align-items: top;
     justify-content: center;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        margin-top: 1rem;
+    }
 `;
 export const SingleColumn = styled.div`
     width: 100%;

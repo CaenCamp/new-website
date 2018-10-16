@@ -1,19 +1,15 @@
 import Helmet from 'react-helmet';
-import Link from 'gatsby-link';
 import React from 'react';
 import styled from 'styled-components';
 import ReactPlayer from 'react-player';
 
 import { formatTalkWithSpeakers } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
+import BackToList from '../components/BackToList';
 import SpeakerTalk from '../components/speakers/SpeakerTalk';
 import { SpeakerListItem } from '../components/speakers/listItem';
 import Calendar from '../components/talks/Calendar';
 import Tags from '../components/talks/Tags';
-
-const StyledLink = styled(Link)`
-    color: ${({ theme }) => theme.black};
-`;
 
 const TalkContainer = styled.div`
     display: flex;
@@ -89,10 +85,7 @@ export default ({ data }) => {
                 <meta name="description" content={talk.description} />
                 <meta name="keywords" content={`${talk.tags}`} />
             </Helmet>
-            <StyledLink to="/talks">
-                <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
-                liste
-            </StyledLink>
+            <BackToList path="/talks" />
             <TalkContainer>
                 <DateAndSpeakers>
                     <Calendar date={talk.date} edition={talk.edition} />
