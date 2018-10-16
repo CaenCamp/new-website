@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'gatsby-link';
 
 const Tags = styled.ul`
     list-style: none;
@@ -58,5 +59,5 @@ const Tag = styled.li`
 `;
 
 export default ({ tags }) => (
-    <Tags>{tags.map(tag => <Tag key={tag}>{tag}</Tag>)}</Tags>
+    <Tags>{tags.map(tag => <Tag key={tag}><Link to={"/talks?tag="+tag}>{tag}</Link></Tag>)}</Tags>
 );

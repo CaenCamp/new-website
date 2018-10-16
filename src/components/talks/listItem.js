@@ -14,15 +14,11 @@ const Item = styled.div`
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: 2px 2px 5px rgba(235, 235, 235, 0.5);
-    a {
-        display: flex;
-        flex-direction: row;
-        align-items: left;
-        @media (max-width: ${props => props.theme.mobileSize}) {
-            flex-direction: column;
-        }
-    }
+    display: flex;
+    flex-direction: row;
+    align-items: left;
     @media (max-width: ${props => props.theme.mobileSize}) {
+        flex-direction: column;
         margin: 0.5rem;
         padding: 0.2rem;
     }
@@ -39,6 +35,9 @@ const Title = styled.h3`
     @media (max-width: ${props => props.theme.mobileSize}) {
         font-size: 1.4rem;
         margin: 0.8rem 0;
+    }
+    a {
+        color: ${({ theme }) => theme.black};
     }
 `;
 
@@ -92,41 +91,35 @@ export default class ListItem extends Component {
         const { talk } = this.props;
         return (
             <Item>
-                <Link to={`/talks/${talk.slug}`}>
-                    <Calendar date={talk.date} edition={talk.edition} />
-                    <Description>
-                        <Title>{talk.title}</Title>
-                        <Speakers>
-                            {talk.speakers.length > 0 &&
-                                talk.speakers.map(speaker => (
-                                    <MinimalView
-                                        speaker={speaker}
-                                        key={speaker.slug}
-                                    />
-                                ))}
-                        </Speakers>
-                        <Resume>{talk.description}</Resume>
-                        <Tags
-                            tags={
-                                talk.video ? ['video', ...talk.tags] : talk.tags
-                            }
-                        />
-                    </Description>
-                    {isBefore(new Date(), new Date(talk.date)) &&
-                        talk.meetupId && (
-                            <Registration>
-                                <a
-                                    href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
-                                        talk.meetupId
-                                    }/`}
-                                    onClick={this.handleClick}
-                                >
-                                    <i className="fa fa-meetup fa-5x" />
-                                    <p>Inscrivez-vous !</p>
-                                </a>
-                            </Registration>
-                        )}
-                </Link>
+                <Calendar date={talk.date} edition={talk.edition} />
+                <Description>
+                    <Title><Link to={`/talks/${talk.slug}`}>{talk.title}</Link></Title>
+                    <Speakers>
+                        {talk.speakers.length > 0 &&
+                            talk.speakers.map(speaker => (
+                                <MinimalView
+                                    speaker={speaker}
+                                    key={speaker.slug}
+                                />
+                            ))}
+                    </Speakers>
+                    <Resume>{talk.description}</Resume>
+                    <Tags tags={talk.tags} />
+                </Description>
+                {isBefore(new Date(), new Date(talk.date)) &&
+                    talk.meetupId && (
+                        <Registration>
+                            <a
+                                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                    talk.meetupId
+                                }/`}
+                                onClick={this.handleClick}
+                            >
+                                <i className="fa fa-meetup fa-5x" />
+                                <p>Inscrivez-vous !</p>
+                            </a>
+                        </Registration>
+                    )}
             </Item>
         );
     }
