@@ -35,7 +35,7 @@ const activeLinkStyle = {
 
 export default () => (
     <Nav>
-        <Link exact to="/" activeStyle={activeLinkStyle}>
+        <Link to="/" activeStyle={activeLinkStyle}>
             accueil
         </Link>
         <Link to="/speakers" activeStyle={activeLinkStyle}>
