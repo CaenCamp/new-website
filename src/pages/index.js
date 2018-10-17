@@ -1,6 +1,7 @@
+import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import React from 'react';
 import isBefore from 'date-fns/is_before';
+import React from 'react';
 import styled from 'styled-components';
 import 'font-awesome/css/font-awesome.css';
 
@@ -12,6 +13,7 @@ import {
 import TalkListItem from '../components/talks/listItem';
 import { CampListItem } from '../components/cccs/list-item';
 import CaenCamp from '../components/CaenCamp';
+import Layout from '../components/layout';
 
 const TalksContainer = styled.div`
     display: flex;
@@ -45,49 +47,51 @@ export default ({ data }) => {
     }
 
     return (
-        <div>
-            <Helmet title="CaenCamp">
-                <meta
-                    name="description"
-                    content="Welcome on the new CaenCamp site"
-                />
-            </Helmet>
-            <Content id="homeContent">
-                <SingleColumn>
-                    <CaenCamp
-                        talks={talks[0].edition}
-                        speakers={data.speakers.edges.length}
-                        dojos={data.dojos.edges.length}
-                        cccs={data.cccs.edges.length}
-                        partners="3"
+        <Layout>
+            <div>
+                <Helmet title="CaenCamp">
+                    <meta
+                        name="description"
+                        content="Welcome on the new CaenCamp site"
                     />
-                    {nextTalk && (
-                        <TalksContainer>
-                            <h2>Prochain talk</h2>
-                            <TalkListItem talk={nextTalk} />
-                        </TalksContainer>
-                    )}
-                    {nextCamp && (
-                        <TalksContainer>
-                            <h2>Prochain coding caen camp</h2>
-                            <CampListItem camp={nextCamp} />
-                        </TalksContainer>
-                    )}
-                    {lastTalk && (
-                        <TalksContainer>
-                            <h2>Dernier talk</h2>
-                            <TalkListItem talk={lastTalk} />
-                        </TalksContainer>
-                    )}
-                    {lastCamp && (
-                        <TalksContainer>
-                            <h2>Dernier coding caen camp</h2>
-                            <CampListItem camp={lastCamp} />
-                        </TalksContainer>
-                    )}
-                </SingleColumn>
-            </Content>
-        </div>
+                </Helmet>
+                <Content id="homeContent">
+                    <SingleColumn>
+                        <CaenCamp
+                            talks={talks[0].edition}
+                            speakers={data.speakers.edges.length}
+                            dojos={data.dojos.edges.length}
+                            cccs={data.cccs.edges.length}
+                            partners="3"
+                        />
+                        {nextTalk && (
+                            <TalksContainer>
+                                <h2>Prochain talk</h2>
+                                <TalkListItem talk={nextTalk} />
+                            </TalksContainer>
+                        )}
+                        {nextCamp && (
+                            <TalksContainer>
+                                <h2>Prochain coding caen camp</h2>
+                                <CampListItem camp={nextCamp} />
+                            </TalksContainer>
+                        )}
+                        {lastTalk && (
+                            <TalksContainer>
+                                <h2>Dernier talk</h2>
+                                <TalkListItem talk={lastTalk} />
+                            </TalksContainer>
+                        )}
+                        {lastCamp && (
+                            <TalksContainer>
+                                <h2>Dernier coding caen camp</h2>
+                                <CampListItem camp={lastCamp} />
+                            </TalksContainer>
+                        )}
+                    </SingleColumn>
+                </Content>
+            </div>
+        </Layout>
     );
 };
 

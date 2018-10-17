@@ -1,3 +1,4 @@
+import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import React from 'react';
 import styled from 'styled-components';
@@ -5,8 +6,9 @@ import 'url-search-params-polyfill';
 
 import { Content, SingleColumn } from '../components/Content';
 import { formatTalkWithSpeakers } from '../utils/formatters';
-import TalkListItem from '../components/talks/listItem';
+import Layout from '../components/layout';
 import Tags from '../components/talks/Tags';
+import TalkListItem from '../components/talks/listItem';
 
 const TagList = styled.div`
     @media (max-width: ${props => props.theme.mobileSize}) {
@@ -25,7 +27,7 @@ const TalksContainer = styled.div`
 export default ({ data, location }) => {
     let tags = [];
 
-    const params = new URLSearchParams(location.search); 
+    const params = new URLSearchParams(location.search);
     const currentTag = params.get('tag');
 
     const talks = data.talks.edges
@@ -35,31 +37,36 @@ export default ({ data, location }) => {
             tags = tags.concat(talk.tags);
             return talk;
         })
-        .filter(talk => !currentTag || talk.tags.indexOf(currentTag) !== -1)
-    ;
+        .filter(talk => !currentTag || talk.tags.indexOf(currentTag) !== -1);
     tags = Array.from(new Set(tags));
 
     return (
-        <div>
-            <Helmet title="CaenCamp: les talks">
-                <meta
-                    name="description"
-                    content="Retrouvez tous les talks des CaenCamp"
-                />
-            </Helmet>
-            <Content id="talksContent">
-                <SingleColumn>
-                    <TagList>
-                        <Tags tags={tags} currentTag={currentTag} />
-                    </TagList>
-                    <TalksContainer>
-                        {talks.map(talk => (
-                            <TalkListItem key={talk.id} talk={talk} currentTag={currentTag} />
-                        ))}
-                    </TalksContainer>
-                </SingleColumn>
-            </Content>
-        </div>
+        <Layout>
+            <div>
+                <Helmet title="CaenCamp: les talks">
+                    <meta
+                        name="description"
+                        content="Retrouvez tous les talks des CaenCamp"
+                    />
+                </Helmet>
+                <Content id="talksContent">
+                    <SingleColumn>
+                        <TagList>
+                            <Tags tags={tags} currentTag={currentTag} />
+                        </TagList>
+                        <TalksContainer>
+                            {talks.map(talk => (
+                                <TalkListItem
+                                    key={talk.id}
+                                    talk={talk}
+                                    currentTag={currentTag}
+                                />
+                            ))}
+                        </TalksContainer>
+                    </SingleColumn>
+                </Content>
+            </div>
+        </Layout>
     );
 };
 
