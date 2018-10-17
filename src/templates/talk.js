@@ -1,14 +1,16 @@
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import React from 'react';
-import styled from 'styled-components';
 import ReactPlayer from 'react-player';
+import styled from 'styled-components';
 
 import { formatTalkWithSpeakers } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
-import BackToList from '../components/BackToList';
-import SpeakerTalk from '../components/speakers/SpeakerTalk';
 import { SpeakerListItem } from '../components/speakers/listItem';
+import BackToList from '../components/BackToList';
 import Calendar from '../components/talks/Calendar';
+import Layout from '../components/layout';
+import SpeakerTalk from '../components/speakers/SpeakerTalk';
 import Tags from '../components/talks/Tags';
 
 const TalkContainer = styled.div`
@@ -79,61 +81,66 @@ export default ({ data }) => {
     const talk = formatTalkWithSpeakers(data.rawTalk, data.speakers.edges);
 
     return (
-        <SingleColumn>
-            <Helmet>
-                <title>{talk.title}</title>
-                <meta name="description" content={talk.description} />
-                <meta name="keywords" content={`${talk.tags}`} />
-            </Helmet>
-            <BackToList path="/talks" />
-            <TalkContainer>
-                <DateAndSpeakers>
-                    <Calendar date={talk.date} edition={talk.edition} />
-                    {talk.speakers.map(speaker => (
-                        <SpeakerTalk key={speaker.slug} speaker={speaker} />
-                    ))}
-                    {talk.meetupId && (
-                        <MeetupLink
-                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
-                                talk.meetupId
-                            }/`}
-                        >
-                            <i className="fa fa-meetup fa-5x" />
-                        </MeetupLink>
-                    )}
-                </DateAndSpeakers>
-                <Description>
-                    <Title>{talk.title}</Title>
-                    <Tags tags={talk.tags} />
-                    {talk.video && (
-                        <VideoContainer>
-                            <StyledReactPlayer
-                                url={talk.video}
-                                width="100%"
-                                height="100%"
-                                controls="true"
+        <Layout>
+            <SingleColumn>
+                <Helmet>
+                    <title>{talk.title}</title>
+                    <meta name="description" content={talk.description} />
+                    <meta name="keywords" content={`${talk.tags}`} />
+                </Helmet>
+                <BackToList path="/talks" />
+                <TalkContainer>
+                    <DateAndSpeakers>
+                        <Calendar date={talk.date} edition={talk.edition} />
+                        {talk.speakers.map(speaker => (
+                            <SpeakerTalk key={speaker.slug} speaker={speaker} />
+                        ))}
+                        {talk.meetupId && (
+                            <MeetupLink
+                                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                    talk.meetupId
+                                }/`}
+                            >
+                                <i className="fa fa-meetup fa-5x" />
+                            </MeetupLink>
+                        )}
+                    </DateAndSpeakers>
+                    <Description>
+                        <Title>{talk.title}</Title>
+                        <Tags tags={talk.tags} />
+                        {talk.video && (
+                            <VideoContainer>
+                                <StyledReactPlayer
+                                    url={talk.video}
+                                    width="100%"
+                                    height="100%"
+                                    controls="true"
+                                />
+                            </VideoContainer>
+                        )}
+                        <div dangerouslySetInnerHTML={{ __html: talk.html }} />
+                    </Description>
+                    <DateAndSpeakersMobile>
+                        <Calendar date={talk.date} edition={talk.edition} />
+                        {talk.meetupId && (
+                            <MeetupLink
+                                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                    talk.meetupId
+                                }/`}
+                            >
+                                <i className="fa fa-meetup" />
+                            </MeetupLink>
+                        )}
+                        {talk.speakers.map(speaker => (
+                            <SpeakerListItem
+                                key={speaker.slug}
+                                speaker={speaker}
                             />
-                        </VideoContainer>
-                    )}
-                    <div dangerouslySetInnerHTML={{ __html: talk.html }} />
-                </Description>
-                <DateAndSpeakersMobile>
-                    <Calendar date={talk.date} edition={talk.edition} />
-                    {talk.meetupId && (
-                        <MeetupLink
-                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
-                                talk.meetupId
-                            }/`}
-                        >
-                            <i className="fa fa-meetup" />
-                        </MeetupLink>
-                    )}
-                    {talk.speakers.map(speaker => (
-                        <SpeakerListItem key={speaker.slug} speaker={speaker} />
-                    ))}
-                </DateAndSpeakersMobile>
-            </TalkContainer>
-        </SingleColumn>
+                        ))}
+                    </DateAndSpeakersMobile>
+                </TalkContainer>
+            </SingleColumn>
+        </Layout>
     );
 };
 

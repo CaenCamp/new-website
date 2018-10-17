@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-module.exports = class HTML extends React.Component {
+export default class HTML extends React.Component {
     static propTypes = {
         headComponents: PropTypes.node,
         preBodyComponents: PropTypes.node,
@@ -42,4 +42,4 @@ module.exports = class HTML extends React.Component {
             </html>
         );
     }
-};
+}

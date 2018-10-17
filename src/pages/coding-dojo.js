@@ -1,10 +1,12 @@
+import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import React from 'react';
 import styled from 'styled-components';
 
 import { Content, SingleColumn } from '../components/Content';
-import { formatDojoWithCraftsmen } from '../utils/formatters';
 import { DojoListItem } from '../components/dojos/listItem';
+import { formatDojoWithCraftsmen } from '../utils/formatters';
+import Layout from '../components/layout';
 
 export const DojoContainer = styled.div`
     display: flex;
@@ -20,23 +22,25 @@ export default ({ data }) => {
     );
 
     return (
-        <div>
-            <Helmet title="CaenCamp: les coding dojos">
-                <meta
-                    name="description"
-                    content="Affutez vos skills au Dojo des CaenCamp"
-                />
-            </Helmet>
-            <Content id="dojoContent">
-                <SingleColumn>
-                    <DojoContainer>
-                        {dojos.map(dojo => (
-                            <DojoListItem key={dojo.id} dojo={dojo} />
-                        ))}
-                    </DojoContainer>
-                </SingleColumn>
-            </Content>
-        </div>
+        <Layout>
+            <div>
+                <Helmet title="CaenCamp: les coding dojos">
+                    <meta
+                        name="description"
+                        content="Affutez vos skills au Dojo des CaenCamp"
+                    />
+                </Helmet>
+                <Content id="dojoContent">
+                    <SingleColumn>
+                        <DojoContainer>
+                            {dojos.map(dojo => (
+                                <DojoListItem key={dojo.id} dojo={dojo} />
+                            ))}
+                        </DojoContainer>
+                    </SingleColumn>
+                </Content>
+            </div>
+        </Layout>
     );
 };
 

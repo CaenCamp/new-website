@@ -1,12 +1,28 @@
 {
     "name": "CaenCamp website unit tests",
     "collectCoverage": false,
-    "moduleFileExtensions": ["js"],
-    "setupFiles": ["raf/polyfill", "./setupTests.js"],
-    "testPathIgnorePatterns": ["/node_modules/", "/templates/", "/.cache"],
+    "moduleFileExtensions": [
+        "js"
+    ],
+    "setupFiles": [
+        "raf/polyfill",
+        "./setupTests.js"
+    ],
+    "testPathIgnorePatterns": [
+        "/node_modules/",
+        "/templates/",
+        "/.cache"
+    ],
     "testRegex": "src/.*\\.test\\.js$",
     "verbose": true,
     "moduleNameMapper": {
         ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-    }
+    },
+    "transform": {
+        "^.+\\.js$": "<rootDir>/jestPreprocess.js"
+    },
+    "testURL": "http://0.0.0.0",
+    "transformIgnorePatterns": [
+        "node_modules/(?!(gatsby)/)"
+    ]
 }
