@@ -17,7 +17,6 @@
         "develop": "./node_modules/.bin/gatsby develop --host 0.0.0.0",
         "format": "./node_modules/eslint/bin/eslint.js --fix .",
         "serve": "./node_modules/.bin/gatsby serve",
-        "storybook": "start-storybook -p 9001 -c .storybook",
         "test:watch": "jest --config ./src/jest.config.json --watch",
         "test": "jest --config ./src/jest.config.json",
         "e2e": "jest --config ./e2e/jest.config.json"
@@ -41,15 +40,11 @@
         "react-helmet": "5.2.0",
         "react-player": "1.6.6",
         "react-typography": "0.16.13",
-        "storybook": "1.0.0",
-        "storybook-router": "0.3.4",
         "styled-components": "3.2.6",
         "typography": "0.16.17",
         "url-search-params-polyfill": "5.0.0"
     },
     "devDependencies": {
-        "@storybook/addon-backgrounds": "3.4.11",
-        "@storybook/react": "3.4.11",
         "babel-eslint": "10.0.1",
         "babel-jest": "22.4.3",
         "babel-loader": "8.0.4",
