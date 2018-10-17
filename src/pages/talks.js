@@ -6,6 +6,13 @@ import 'url-search-params-polyfill';
 import { Content, SingleColumn } from '../components/Content';
 import { formatTalkWithSpeakers } from '../utils/formatters';
 import TalkListItem from '../components/talks/listItem';
+import Tags from '../components/talks/Tags';
+
+const TagList = styled.div`
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        display: none;
+    }
+`;
 
 const TalksContainer = styled.div`
     display: flex;
@@ -16,17 +23,21 @@ const TalksContainer = styled.div`
 `;
 
 export default ({ data, location }) => {
-    const params = new URLSearchParams(location.search);
-    const tag = params.get('tag');
+    let tags = [];
+
+    const params = new URLSearchParams(location.search); 
+    const currentTag = params.get('tag');
 
     const talks = data.talks.edges
         .map(talk => formatTalkWithSpeakers(talk.node, data.speakers.edges))
         .map(talk => {
             talk.tags = talk.video ? ['video', ...talk.tags] : talk.tags;
-
+            tags = tags.concat(talk.tags);
             return talk;
         })
-        .filter(talk => !tag || talk.tags.indexOf(tag) !== -1);
+        .filter(talk => !currentTag || talk.tags.indexOf(currentTag) !== -1)
+    ;
+    tags = Array.from(new Set(tags));
 
     return (
         <div>
@@ -38,9 +49,12 @@ export default ({ data, location }) => {
             </Helmet>
             <Content id="talksContent">
                 <SingleColumn>
+                    <TagList>
+                        <Tags tags={tags} currentTag={currentTag} />
+                    </TagList>
                     <TalksContainer>
                         {talks.map(talk => (
-                            <TalkListItem key={talk.id} talk={talk} />
+                            <TalkListItem key={talk.id} talk={talk} currentTag={currentTag} />
                         ))}
                     </TalksContainer>
                 </SingleColumn>

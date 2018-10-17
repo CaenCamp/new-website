@@ -88,7 +88,7 @@ export default class ListItem extends Component {
     };
 
     render() {
-        const { talk } = this.props;
+        const { talk, currentTag } = this.props;
         return (
             <Item>
                 <Calendar date={talk.date} edition={talk.edition} />
@@ -104,7 +104,7 @@ export default class ListItem extends Component {
                             ))}
                     </Speakers>
                     <Resume>{talk.description}</Resume>
-                    <Tags tags={talk.tags} />
+                    <Tags tags={talk.tags} currentTag={currentTag} />
                 </Description>
                 {isBefore(new Date(), new Date(talk.date)) &&
                     talk.meetupId && (

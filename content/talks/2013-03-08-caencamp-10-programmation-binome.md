@@ -6,7 +6,7 @@ slug: "edition-10-la-programmation-en-binome-cest-magique"
 date: "2013-03-08"
 description: "Présentation des microdata puis quelle drôle d’idée que deux personnes réalisent une tâche pouvant être réalisée par une seule personne ? Cela ne multiplie-t-il pas les coûts par deux ?"
 tags:
-    - pair-programing
+    - pair-programming
     - craftsmanship
     - microdata
 speakers:

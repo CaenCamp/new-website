@@ -7,7 +7,7 @@ date: "2018-05-29 18:30:00"
 description: "Après Yousign pour l’édition #37, c’est Marmelab qui s’y colle pour cette édition #38 avec du Docker et du Site Reliability Engineering (SRE)."
 tags:
     - SRE
-    - Docker
+    - docker
 speakers:
     - kevin-maschtaler
     - alexis-janvier

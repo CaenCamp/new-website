@@ -25,6 +25,10 @@ const Tag = styled.li`
     text-decoration: none;
     -webkit-transition: color 0.2s;
 
+    a {
+        color: black;
+    }
+
     &::before {
         background: #fff;
         border-radius: 10px;
@@ -48,16 +52,29 @@ const Tag = styled.li`
         top: 0;
     }
 
+    &.current,
     &:hover {
         background-color: crimson;
         color: white;
+        a {
+            color: white;
+        }
     }
 
+    &.current::after,
     &:hover::after {
         border-left-color: crimson;
     }
 `;
 
-export default ({ tags }) => (
-    <Tags>{tags.map(tag => <Tag key={tag}><Link to={"/talks?tag="+tag}>{tag}</Link></Tag>)}</Tags>
+export default ({ tags, currentTag }) => (
+    <Tags>{tags.sort(function(a, b){
+        var nameA = a.toLowerCase(), nameB = b.toLowerCase();
+        if (nameA < nameB) //sort string ascending
+         return -1;
+        if (nameA > nameB)
+         return 1;
+        return 0; //default return value (no sorting)
+       }
+    ).map(tag => <Tag className={tag == currentTag ? 'current' : ''} key={tag}><Link to={"/talks?tag="+tag}>{tag}</Link></Tag>)}</Tags>
 );
