@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/CaenCamp/new-website.svg?branch=master)](https://travis-ci.org/CaenCamp/new-website)
 
+[![](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/images/0)](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/links/0)[![](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/images/1)](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/links/1)[![](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/images/2)](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/links/2)[![](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/images/3)](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/links/3)[![](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/images/4)](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/links/4)[![](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/images/5)](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/links/5)[![](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/images/6)](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/links/6)[![](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/images/7)](https://sourcerer.io/fame/alexisjanvier/CaenCamp/new-website/links/7)
+
 ## Les CaenCamp.s
 
 Les CaenCamp.s sont une série de rencontres caennaises organisées par, animées par et à destination des développeurs. Cette initiative existe depuis 2012 et totalise déjà 33 rencontres.
