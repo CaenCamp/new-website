@@ -116,7 +116,7 @@ export default ({ data }) => {
                                     <h2>S'inscrire</h2>
 
                                     <h3>
-                                        Le nombre de places est limité à 15, et
+                                        Le nombre de places est limité à 20, et
                                         vous devez apporter votre laptop.
                                     </h3>
                                     <p>
