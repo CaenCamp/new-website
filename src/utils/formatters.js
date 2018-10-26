@@ -20,6 +20,67 @@ export const formatTalkWithSpeakers = (talk, speakers = []) => ({
         .filter(sp => sp !== null),
 });
 
+export const formatLightningWithSpeakers = (lightning, speakers = []) => ({
+    ...formatGraphContent(lightning),
+    speakers: lightning.frontmatter.speakers
+        .map(speaker => {
+            const findedSpeaker = speakers.find(
+                sp => sp.node.frontmatter.slug === speaker,
+            );
+            if (findedSpeaker) {
+                return formatGraphContent(findedSpeaker.node);
+            } else {
+                return null;
+            }
+        })
+        .filter(sp => sp !== null),
+});
+
+export const formatTalkWithLightningsAndSpeakers = (
+    talk,
+    speakers = [],
+    lightnings = [],
+) => {
+    const currentTalk = formatGraphContent(talk);
+    const currentLightnings = lightnings
+        .map(lightning => {
+            if (
+                talk.frontmatter.edition === lightning.node.frontmatter.edition
+            ) {
+                return formatLightningWithSpeakers(lightning.node, speakers);
+            } else {
+                return null;
+            }
+        })
+        .filter(lt => lt !== null);
+    const tags = currentLightnings.length
+        ? [
+              ...currentTalk.tags,
+              ...currentLightnings.reduce((acc, lightning) => {
+                  return [...acc, ...lightning.tags];
+              }, []),
+          ]
+        : currentTalk.tags;
+    const currentSpeakers = talk.frontmatter.speakers
+        .map(speaker => {
+            const findedSpeaker = speakers.find(
+                sp => sp.node.frontmatter.slug === speaker,
+            );
+            if (findedSpeaker) {
+                return formatGraphContent(findedSpeaker.node);
+            } else {
+                return null;
+            }
+        })
+        .filter(sp => sp !== null);
+    return {
+        ...currentTalk,
+        lightnings: currentLightnings,
+        speakers: currentSpeakers,
+        globalTags: Array.from(new Set(tags)),
+    };
+};
+
 export const formatDojoWithCraftsmen = (dojo, craftsmen = []) => ({
     ...formatGraphContent(dojo),
     craftsmen: dojo.frontmatter.craftsmen

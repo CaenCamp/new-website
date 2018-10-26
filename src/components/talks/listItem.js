@@ -16,7 +16,7 @@ const Item = styled.div`
     box-shadow: 2px 2px 5px rgba(235, 235, 235, 0.5);
     display: flex;
     flex-direction: row;
-    align-items: left;
+    align-items: top;
     @media (max-width: ${props => props.theme.mobileSize}) {
         flex-direction: column;
         margin: 0.5rem;
@@ -34,6 +34,19 @@ const Title = styled.h3`
     padding: 0;
     @media (max-width: ${props => props.theme.mobileSize}) {
         font-size: 1.4rem;
+        margin: 0.8rem 0;
+    }
+    a {
+        color: ${({ theme }) => theme.black};
+    }
+`;
+
+const TitleLightning = styled.h4`
+    font-size: 1.3rem;
+    margin: 1rem 0 0.5rem 0;
+    padding: 0;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        font-size: 1rem;
         margin: 0.8rem 0;
     }
     a {
@@ -81,6 +94,23 @@ const Registration = styled.div`
     }
 `;
 
+const Lightning = ({ currentTag, lightning, talk }) => (
+    <React.Fragment>
+        <TitleLightning>
+            <i className="fa fa-bolt" aria-hidden="true" />{' '}
+            <Link to={`/talks/${talk.slug}`}>{lightning.title}</Link>
+        </TitleLightning>
+        <Speakers>
+            {lightning.speakers.length > 0 &&
+                lightning.speakers.map(speaker => (
+                    <MinimalView speaker={speaker} key={speaker.slug} />
+                ))}
+        </Speakers>
+        <Resume>{lightning.description}</Resume>
+        <Tags tags={lightning.tags} currentTag={currentTag} />
+    </React.Fragment>
+);
+
 export default class ListItem extends Component {
     handleClick = event => {
         event.stopPropagation();
@@ -93,7 +123,18 @@ export default class ListItem extends Component {
             <Item>
                 <Calendar date={talk.date} edition={talk.edition} />
                 <Description>
-                    <Title><Link to={`/talks/${talk.slug}`}>{talk.title}</Link></Title>
+                    <Title>
+                        {talk.lightnings &&
+                            !!talk.lightnings.length && (
+                                <React.Fragment>
+                                    <i
+                                        className="fa fa-bullhorn"
+                                        aria-hidden="true"
+                                    />{' '}
+                                </React.Fragment>
+                            )}
+                        <Link to={`/talks/${talk.slug}`}>{talk.title}</Link>
+                    </Title>
                     <Speakers>
                         {talk.speakers.length > 0 &&
                             talk.speakers.map(speaker => (
@@ -105,6 +146,16 @@ export default class ListItem extends Component {
                     </Speakers>
                     <Resume>{talk.description}</Resume>
                     <Tags tags={talk.tags} currentTag={currentTag} />
+                    {talk.lightnings &&
+                        !!talk.lightnings.length &&
+                        talk.lightnings.map((lightning, index) => (
+                            <Lightning
+                                currentTag={currentTag}
+                                lightning={lightning}
+                                talk={talk}
+                                key={`${talk.edition}_lightning_${index}`}
+                            />
+                        ))}
                 </Description>
                 {isBefore(new Date(), new Date(talk.date)) &&
                     talk.meetupId && (

@@ -8,7 +8,7 @@ import 'font-awesome/css/font-awesome.css';
 import { Content, SingleColumn } from '../components/Content';
 import {
     formatGraphContent,
-    formatTalkWithSpeakers,
+    formatTalkWithLightningsAndSpeakers,
 } from '../utils/formatters';
 import TalkListItem from '../components/talks/listItem';
 import { CampListItem } from '../components/cccs/list-item';
@@ -25,7 +25,11 @@ const TalksContainer = styled.div`
 
 export default ({ data }) => {
     const talks = data.talks.edges.map(talk =>
-        formatTalkWithSpeakers(talk.node, data.speakers.edges),
+        formatTalkWithLightningsAndSpeakers(
+            talk.node,
+            data.speakers.edges,
+            data.lightnings.edges,
+        ),
     );
 
     let lastTalk = null;
