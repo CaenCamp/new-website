@@ -58,11 +58,12 @@ export default ({ data }) => {
                 <Content id="homeContent">
                     <SingleColumn>
                         <CaenCamp
-                            talks={talks[0].edition}
-                            speakers={data.speakers.edges.length}
-                            dojos={data.dojos.edges.length}
                             cccs={data.cccs.edges.length}
+                            dojos={data.dojos.edges.length}
+                            lightnings={data.lightnings.edges.length}
                             partners="3"
+                            speakers={data.speakers.edges.length}
+                            talks={talks[0].edition}
                         />
                         {nextTalk && (
                             <TalksContainer>
@@ -116,6 +117,24 @@ export const query = graphql`
                         title
                         video
                         meetupId
+                    }
+                }
+            }
+        }
+        lightnings: allMarkdownRemark(
+            filter: {
+                fileAbsolutePath: { glob: "**/lightnings/**" }
+                frontmatter: { published: { eq: true } }
+            }
+        ) {
+            edges {
+                node {
+                    frontmatter {
+                        edition
+                        title
+                        description
+                        tags
+                        speakers
                     }
                 }
             }

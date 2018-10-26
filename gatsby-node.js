@@ -83,6 +83,26 @@ exports.createPages = ({ graphql, actions }) => {
                     }
                 }
             }
+            lightnings: allMarkdownRemark(
+                filter: { fileAbsolutePath: { glob: "**/lightnings/**" } }
+            ) {
+                edges {
+                    node {
+                        frontmatter {
+                            edition
+                            title
+                            date
+                            description
+                            tags
+                            speakers
+                            place
+                            video
+                            image
+                        }
+                        html
+                    }
+                }
+            }
         }
     `).then(result => {
         if (result.errors) {
