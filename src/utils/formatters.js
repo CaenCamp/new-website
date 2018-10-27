@@ -97,9 +97,10 @@ export const formatDojoWithCraftsmen = (dojo, craftsmen = []) => ({
         .filter(cm => cm !== null),
 });
 
-export const formatSpeakerWithTalksAndDojos = (
+export const formatSpeakerWithTalksLightningsAndDojos = (
     speaker,
     talks = [],
+    lightning = [],
     dojos = [],
 ) => ({
     ...formatGraphContent(speaker),
@@ -107,6 +108,11 @@ export const formatSpeakerWithTalksAndDojos = (
         .map(talk => formatGraphContent(talk.node))
         .filter(talk =>
             talk.speakers.find(sp => sp === speaker.frontmatter.slug),
+        ),
+    lightning: lightning
+        .map(lightning => formatGraphContent(lightning.node))
+        .filter(lightning =>
+            lightning.speakers.find(sp => sp === speaker.frontmatter.slug),
         ),
     dojos: dojos
         .map(dojo => formatGraphContent(dojo.node))

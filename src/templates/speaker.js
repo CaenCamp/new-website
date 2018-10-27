@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { DojoListItem } from '../components/dojos/listItem';
-import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
+import { formatSpeakerWithTalksLightningsAndDojos } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
 import BackToList from '../components/BackToList';
 import Layout from '../components/layout';
@@ -52,9 +52,10 @@ const DojoContainer = styled.div`
 `;
 
 export default ({ data }) => {
-    const speaker = formatSpeakerWithTalksAndDojos(
+    const speaker = formatSpeakerWithTalksLightningsAndDojos(
         data.rawSpeaker,
         data.talks.edges,
+        data.lightnings.edges,
         data.dojos.edges,
     );
     return (
@@ -86,11 +87,32 @@ export default ({ data }) => {
                 {speaker.talks.length > 0 && (
                     <TalksContainer>
                         <h2>
+                            <i className="fa fa-bullhorn" aria-hidden="true" />{' '}
                             {speaker.talks.length === 1
                                 ? 'Son Talk'
                                 : 'Ses Talks'}
                         </h2>
-                        {speaker.talks.map(talk => (
+                        {speaker.talks.map(lightning => (
+                            <TalkListItem
+                                key={lightning.id}
+                                talk={{
+                                    ...lightning,
+                                    speakers: [],
+                                }}
+                            />
+                        ))}
+                    </TalksContainer>
+                )}
+
+                {speaker.lightning.length > 0 && (
+                    <TalksContainer>
+                        <h2>
+                            <i className="fa fa-bolt" aria-hidden="true" />{' '}
+                            {speaker.lightning.length === 1
+                                ? 'Son Lightning Talk'
+                                : 'Ses Lightning Talks'}
+                        </h2>
+                        {speaker.lightning.map(talk => (
                             <TalkListItem
                                 key={talk.id}
                                 talk={{
@@ -160,6 +182,27 @@ export const query = graphql`
                         tags
                         description
                         video
+                    }
+                }
+            }
+        }
+        lightnings: allMarkdownRemark(
+            filter: {
+                fileAbsolutePath: { glob: "**/lightnings/**" }
+                frontmatter: { published: { eq: true } }
+            }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        edition
+                        title
+                        slug
+                        speakers
+                        date
+                        tags
+                        description
                     }
                 }
             }
