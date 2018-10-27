@@ -43,7 +43,9 @@ export default ({ data, location }) => {
             tags = tags.concat(talk.tags);
             return talk;
         })
-        .filter(talk => !currentTag || talk.tags.indexOf(currentTag) !== -1);
+        .filter(
+            talk => !currentTag || talk.globalTags.indexOf(currentTag) !== -1,
+        );
     tags = Array.from(new Set(tags));
 
     return (
