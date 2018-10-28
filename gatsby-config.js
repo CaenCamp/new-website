@@ -34,15 +34,15 @@ module.exports = {
         ],
     },
     plugins: [
-        `gatsby-plugin-styled-components`,
-        'gatsby-plugin-react-helmet',
+        'gatsby-plugin-styled-components',
+        'gatsby-transformer-remark',
         {
-            resolve: `gatsby-source-filesystem`,
+            resolve: 'gatsby-source-filesystem',
             options: {
                 path: `${__dirname}/content`,
                 name: 'contents',
             },
         },
-        `gatsby-transformer-remark`,
+        'gatsby-plugin-react-helmet',
     ],
 };

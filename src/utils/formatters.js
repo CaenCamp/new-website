@@ -20,6 +20,76 @@ export const formatTalkWithSpeakers = (talk, speakers = []) => ({
         .filter(sp => sp !== null),
 });
 
+export const formatLightningWithSpeakers = (lightning, speakers = []) => ({
+    ...formatGraphContent(lightning),
+    speakers: lightning.frontmatter.speakers
+        .map(speaker => {
+            const findedSpeaker = speakers.find(
+                sp => sp.node.frontmatter.slug === speaker,
+            );
+            if (findedSpeaker) {
+                return formatGraphContent(findedSpeaker.node);
+            } else {
+                return null;
+            }
+        })
+        .filter(sp => sp !== null),
+});
+
+export const formatTalkWithLightningsAndSpeakers = (
+    talk,
+    speakers = [],
+    lightnings = [],
+) => {
+    const currentTalk = formatGraphContent(talk);
+    const currentLightnings = lightnings
+        .map(lightning => {
+            if (
+                talk.frontmatter.edition === lightning.node.frontmatter.edition
+            ) {
+                return formatLightningWithSpeakers(lightning.node, speakers);
+            } else {
+                return null;
+            }
+        })
+        .filter(lt => lt !== null);
+    const tags = currentLightnings.length
+        ? [
+              ...currentTalk.tags,
+              ...currentLightnings.reduce((acc, lightning) => {
+                  return [...acc, ...lightning.tags];
+              }, []),
+          ]
+        : currentTalk.tags;
+    const currentSpeakers = talk.frontmatter.speakers
+        .map(speaker => {
+            const findedSpeaker = speakers.find(
+                sp => sp.node.frontmatter.slug === speaker,
+            );
+            if (findedSpeaker) {
+                return formatGraphContent(findedSpeaker.node);
+            } else {
+                return null;
+            }
+        })
+        .filter(sp => sp !== null);
+    const globalSpeakers = currentLightnings.length
+        ? [
+              ...currentSpeakers,
+              ...currentLightnings.reduce((acc, lightning) => {
+                  return [...acc, ...lightning.speakers];
+              }, []),
+          ]
+        : currentSpeakers;
+    return {
+        ...currentTalk,
+        lightnings: currentLightnings,
+        speakers: currentSpeakers,
+        globalTags: Array.from(new Set(tags)),
+        globalSpeakers,
+    };
+};
+
 export const formatDojoWithCraftsmen = (dojo, craftsmen = []) => ({
     ...formatGraphContent(dojo),
     craftsmen: dojo.frontmatter.craftsmen
@@ -36,25 +106,44 @@ export const formatDojoWithCraftsmen = (dojo, craftsmen = []) => ({
         .filter(cm => cm !== null),
 });
 
-export const formatSpeakerWithTalksAndDojos = (
+export const formatSpeakerWithTalksLightningsAndDojos = (
     speaker,
     talks = [],
+    lightning = [],
     dojos = [],
-) => ({
-    ...formatGraphContent(speaker),
-    talks: talks
+) => {
+    const currentTalks = talks
         .map(talk => formatGraphContent(talk.node))
         .filter(talk =>
             talk.speakers.find(sp => sp === speaker.frontmatter.slug),
-        ),
-    dojos: dojos
-        .map(dojo => formatGraphContent(dojo.node))
-        .filter(dojo =>
-            dojo.craftsmen.find(
-                craftsman => craftsman === speaker.frontmatter.slug,
+        );
+    const currentLightnings = lightning
+        .map(lightning => formatGraphContent(lightning.node))
+        .filter(lightning =>
+            lightning.speakers.find(sp => sp === speaker.frontmatter.slug),
+        )
+        .map(lightning => {
+            const talkForLightning = talks
+                .map(talk => formatGraphContent(talk.node))
+                .find(talk => talk.edition === lightning.edition);
+            return {
+                ...lightning,
+                slug: talkForLightning ? talkForLightning.slug : '',
+            };
+        });
+    return {
+        ...formatGraphContent(speaker),
+        talks: currentTalks,
+        lightning: currentLightnings,
+        dojos: dojos
+            .map(dojo => formatGraphContent(dojo.node))
+            .filter(dojo =>
+                dojo.craftsmen.find(
+                    craftsman => craftsman === speaker.frontmatter.slug,
+                ),
             ),
-        ),
-});
+    };
+};
 
 export const formatMeetup = rawMeetup => {
     let meetup = null;

@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Content, SingleColumn } from '../components/Content';
-import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
+import { formatSpeakerWithTalksLightningsAndDojos } from '../utils/formatters';
 import Layout from '../components/layout';
 import {
     SpeakerListItem,
@@ -25,7 +25,7 @@ export const SpeakerContainer = styled.div`
 
 export default ({ data }) => {
     const speakers = data.speakers.edges.map(speaker =>
-        formatSpeakerWithTalksAndDojos(speaker.node),
+        formatSpeakerWithTalksLightningsAndDojos(speaker.node),
     );
 
     return (
