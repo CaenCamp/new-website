@@ -80,7 +80,7 @@ export const formatTalkWithLightningsAndSpeakers = (
                   return [...acc, ...lightning.speakers];
               }, []),
           ]
-        : currentTalk.tags;
+        : currentSpeakers;
     return {
         ...currentTalk,
         lightnings: currentLightnings,
