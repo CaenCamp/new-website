@@ -1,4 +1,4 @@
-Issue reference: #issuenumber
+Issue reference: resolve #issuenumber
 
 ## Description
 

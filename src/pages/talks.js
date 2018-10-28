@@ -40,6 +40,9 @@ export default ({ data, location }) => {
         )
         .map(talk => {
             talk.tags = talk.video ? ['video', ...talk.tags] : talk.tags;
+            talk.globalTags = talk.video
+                ? ['video', ...talk.globalTags]
+                : talk.globalTags;
             tags = tags.concat(talk.tags);
             return talk;
         })
