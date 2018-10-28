@@ -73,11 +73,20 @@ export const formatTalkWithLightningsAndSpeakers = (
             }
         })
         .filter(sp => sp !== null);
+    const globalSpeakers = currentLightnings.length
+        ? [
+              ...currentSpeakers,
+              ...currentLightnings.reduce((acc, lightning) => {
+                  return [...acc, ...lightning.speakers];
+              }, []),
+          ]
+        : currentTalk.tags;
     return {
         ...currentTalk,
         lightnings: currentLightnings,
         speakers: currentSpeakers,
         globalTags: Array.from(new Set(tags)),
+        globalSpeakers,
     };
 };
 

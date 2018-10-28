@@ -4,7 +4,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 
-import { formatTalkWithSpeakers } from '../utils/formatters';
+import { formatTalkWithLightningsAndSpeakers } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
 import { SpeakerListItem } from '../components/speakers/listItem';
 import BackToList from '../components/BackToList';
@@ -12,6 +12,7 @@ import Calendar from '../components/talks/Calendar';
 import Layout from '../components/layout';
 import SpeakerTalk from '../components/speakers/SpeakerTalk';
 import Tags from '../components/talks/Tags';
+import MinimalView from '../components/speakers/MinimalView';
 
 const TalkContainer = styled.div`
     display: flex;
@@ -76,9 +77,66 @@ export const MeetupLink = styled.a`
         font-size: 1.5rem;
     }
 `;
+const Picture = styled.img`
+    margin: 1rem auto;
+    height: auto;
+    width: auto;
+    max-width: 15rem;
+    max-height: 15rem;
+`;
+const Speakers = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    margin-bottom: 0.5rem;
+`;
+
+const Talk = ({ talk, type }) => (
+    <Description>
+        <Title>
+            {type === 'talk' &&
+                talk.lightnings &&
+                !!talk.lightnings.length && (
+                    <React.Fragment>
+                        <i className="fa fa-bullhorn" aria-hidden="true" />{' '}
+                    </React.Fragment>
+                )}
+            {type === 'lightning' && (
+                <React.Fragment>
+                    <i className="fa fa-bolt" aria-hidden="true" />{' '}
+                </React.Fragment>
+            )}
+            {talk.title}
+        </Title>
+        <Speakers>
+            {talk.speakers.length > 0 &&
+                talk.speakers.map(speaker => (
+                    <MinimalView speaker={speaker} key={speaker.slug} />
+                ))}
+        </Speakers>
+        <Tags tags={talk.tags} />
+        <div dangerouslySetInnerHTML={{ __html: talk.html }} />
+        {talk.video && (
+            <VideoContainer>
+                <StyledReactPlayer
+                    url={talk.video}
+                    width="100%"
+                    height="100%"
+                    controls="true"
+                />
+            </VideoContainer>
+        )}
+        {!talk.video &&
+            talk.picture && <Picture src={`/talks/${talk.picture}`} />}
+    </Description>
+);
 
 export default ({ data }) => {
-    const talk = formatTalkWithSpeakers(data.rawTalk, data.speakers.edges);
+    const talk = formatTalkWithLightningsAndSpeakers(
+        data.rawTalk,
+        data.speakers.edges,
+        data.lightnings.edges,
+    );
 
     return (
         <Layout>
@@ -86,13 +144,13 @@ export default ({ data }) => {
                 <Helmet>
                     <title>{talk.title}</title>
                     <meta name="description" content={talk.description} />
-                    <meta name="keywords" content={`${talk.tags}`} />
+                    <meta name="keywords" content={`${talk.globalTags}`} />
                 </Helmet>
                 <BackToList path="/talks" />
                 <TalkContainer>
                     <DateAndSpeakers>
                         <Calendar date={talk.date} edition={talk.edition} />
-                        {talk.speakers.map(speaker => (
+                        {talk.globalSpeakers.map(speaker => (
                             <SpeakerTalk key={speaker.slug} speaker={speaker} />
                         ))}
                         {talk.meetupId && (
@@ -105,21 +163,17 @@ export default ({ data }) => {
                             </MeetupLink>
                         )}
                     </DateAndSpeakers>
-                    <Description>
-                        <Title>{talk.title}</Title>
-                        <Tags tags={talk.tags} />
-                        {talk.video && (
-                            <VideoContainer>
-                                <StyledReactPlayer
-                                    url={talk.video}
-                                    width="100%"
-                                    height="100%"
-                                    controls="true"
+                    <div>
+                        <Talk talk={talk} type="talk" />
+                        {!!talk.lightnings.length &&
+                            talk.lightnings.map(lightning => (
+                                <Talk
+                                    key={lightning.id}
+                                    talk={lightning}
+                                    type="lightning"
                                 />
-                            </VideoContainer>
-                        )}
-                        <div dangerouslySetInnerHTML={{ __html: talk.html }} />
-                    </Description>
+                            ))}
+                    </div>
                     <DateAndSpeakersMobile>
                         <Calendar date={talk.date} edition={talk.edition} />
                         {talk.meetupId && (
@@ -128,10 +182,10 @@ export default ({ data }) => {
                                     talk.meetupId
                                 }/`}
                             >
-                                <i className="fa fa-meetup" />
+                                <i className="fa fa-meetup fa-5x" />
                             </MeetupLink>
                         )}
-                        {talk.speakers.map(speaker => (
+                        {talk.globalSpeakers.map(speaker => (
                             <SpeakerListItem
                                 key={speaker.slug}
                                 speaker={speaker}
@@ -157,6 +211,7 @@ export const query = graphql`
                 speakers
                 edition
                 video
+                picture
             }
         }
         speakers: allMarkdownRemark(
@@ -175,6 +230,30 @@ export const query = graphql`
                         picture
                         resume
                         slug
+                    }
+                }
+            }
+        }
+        lightnings: allMarkdownRemark(
+            filter: {
+                fileAbsolutePath: { glob: "**/lightnings/**" }
+                frontmatter: { published: { eq: true } }
+            }
+        ) {
+            edges {
+                node {
+                    id
+                    html
+                    frontmatter {
+                        edition
+                        title
+                        slug
+                        speakers
+                        date
+                        tags
+                        description
+                        picture
+                        video
                     }
                 }
             }
