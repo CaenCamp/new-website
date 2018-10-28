@@ -111,26 +111,39 @@ export const formatSpeakerWithTalksLightningsAndDojos = (
     talks = [],
     lightning = [],
     dojos = [],
-) => ({
-    ...formatGraphContent(speaker),
-    talks: talks
+) => {
+    const currentTalks = talks
         .map(talk => formatGraphContent(talk.node))
         .filter(talk =>
             talk.speakers.find(sp => sp === speaker.frontmatter.slug),
-        ),
-    lightning: lightning
+        );
+    const currentLightnings = lightning
         .map(lightning => formatGraphContent(lightning.node))
         .filter(lightning =>
             lightning.speakers.find(sp => sp === speaker.frontmatter.slug),
-        ),
-    dojos: dojos
-        .map(dojo => formatGraphContent(dojo.node))
-        .filter(dojo =>
-            dojo.craftsmen.find(
-                craftsman => craftsman === speaker.frontmatter.slug,
+        )
+        .map(lightning => {
+            const talkForLightning = talks
+                .map(talk => formatGraphContent(talk.node))
+                .find(talk => talk.edition === lightning.edition);
+            return {
+                ...lightning,
+                slug: talkForLightning ? talkForLightning.slug : '',
+            };
+        });
+    return {
+        ...formatGraphContent(speaker),
+        talks: currentTalks,
+        lightning: currentLightnings,
+        dojos: dojos
+            .map(dojo => formatGraphContent(dojo.node))
+            .filter(dojo =>
+                dojo.craftsmen.find(
+                    craftsman => craftsman === speaker.frontmatter.slug,
+                ),
             ),
-        ),
-});
+    };
+};
 
 export const formatMeetup = rawMeetup => {
     let meetup = null;
