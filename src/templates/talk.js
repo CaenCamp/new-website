@@ -62,7 +62,7 @@ export const Title = styled.h1`
 const VideoContainer = styled.div`
     position: relative;
     padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
-    margin-bottom: 1rem;
+    margin-bottom: 5rem;
 `;
 const StyledReactPlayer = styled(ReactPlayer)`
     position: absolute;

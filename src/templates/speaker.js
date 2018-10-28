@@ -191,6 +191,7 @@ export const query = graphql`
                 fileAbsolutePath: { glob: "**/lightnings/**" }
                 frontmatter: { published: { eq: true } }
             }
+            sort: { order: DESC, fields: [frontmatter___edition] }
         ) {
             edges {
                 node {
