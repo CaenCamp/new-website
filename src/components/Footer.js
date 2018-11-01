@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import AboutCode from './footer/aboutCode';
 import CallForSpeakers from './footer/callForSpeakers';
 import StayInTouch from './footer/stayInTouch';
+import OpenCollective from './footer/openCollective';
 
 const Footer = styled.footer`
     display: flex;
@@ -32,6 +33,7 @@ export default ({ socialLinks }) => (
     <Footer>
         <StayInTouch links={socialLinks} />
         <CallForSpeakers />
+        <OpenCollective />
         <AboutCode />
         <Copyright>@caencamp 2018</Copyright>
     </Footer>

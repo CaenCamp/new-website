@@ -5,7 +5,7 @@ export const CodeContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    width: 30%;
+    width: 24%;
     @media (max-width: ${props => props.theme.mobileSize}) {
         width: 100%;
         margin-bottom: 1rem;

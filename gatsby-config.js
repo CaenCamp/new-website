@@ -20,14 +20,6 @@ module.exports = {
                 url: 'https://www.youtube.com/channel/UCLX4DP_fDCZ4fsgbUZsGaUw',
             },
             {
-                title: 'Trello',
-                url: 'https://trello.com/b/ROiO9tng/caencamp',
-            },
-            {
-                title: 'Facebook',
-                url: 'https://www.facebook.com/CaenCamp/',
-            },
-            {
                 title: 'Rss',
                 url: 'https://www.meetup.com/fr-FR/CaenCamp/events/rss/',
             },
