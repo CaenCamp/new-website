@@ -11,7 +11,7 @@ export default () => (
             <a href="https://opencollective.com/caencamp">open collective</a>
             <object
                 type="image/svg+xml"
-                data="https://opencollective.com/caencamp/tiers/développeur.svg?avatarHeight=36&width=600"
+                data="https://opencollective.com/caencamp/tiers/entreprise.svg?avatarHeight=36&width=600"
             >
                 open collective
             </object>
