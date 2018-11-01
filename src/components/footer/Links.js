@@ -11,7 +11,7 @@ const LinksContainer = styled.div`
     margin-top: 1rem;
     a {
         color: ${({ theme }) => theme.grey};
-        margin: 0 1rem;
+        margin: 0 0.5rem;
         -webkit-transition: color 0.2s;
         &:hover {
             color: crimson;
