@@ -12,7 +12,7 @@ speakers:
 place: forum-digital
 video:
 picture: 
-published: false
+published: true
 ---
 
 Présentation et description de `<picture>` `srcset` et `sizes` ainsi que de la propriété css `object-fit`
