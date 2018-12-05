@@ -10,7 +10,7 @@ tags:
 speakers:
     - yvain-liechti
 place: forum-digital
-video:
+video: https://www.youtube.com/watch?v=1f46hA_Cc2E
 picture: 
 published: true
 ---
