@@ -4,3 +4,4 @@ services:
     image: node:8-alpine
     working_dir: /usr/src/app
     command: npm run develop
+    user: "${UID}:${GID}"
