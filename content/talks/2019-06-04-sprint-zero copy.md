@@ -11,7 +11,7 @@ tags:
 speakers:
     - eve-vinclaire-berkemeier
     - antoine-lelaisant
-place: forum-digital
+place: dome
 video: 
 picture: cc43.jpg
 published: true

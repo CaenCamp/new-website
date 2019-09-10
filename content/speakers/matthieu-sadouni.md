@@ -2,7 +2,7 @@
 firstName: "Matthieu"
 lastName: "Sadouni"
 slug: "matthieu-sadouni"
-resume: "Web developer at MH Communication"
+resume: "Web developer at Imagile"
 picture: "matthieu-sadouni.jpg"
 links:
     - title: twitter
