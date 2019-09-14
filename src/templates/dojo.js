@@ -1,7 +1,9 @@
 import Helmet from 'react-helmet';
 import React from 'react';
+import { graphql } from 'gatsby';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
+import Layout from '../components/Layout';
 
 import { formatDojoWithCraftsmen } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
@@ -44,30 +46,33 @@ export const Title = styled.h1`
 export default ({ data }) => {
     const dojo = formatDojoWithCraftsmen(data.rawDojo, data.craftsmen.edges);
     return (
-        <SingleColumn>
-            <Helmet>
-                <title>{dojo.title}</title>
-                <meta name="description" content={dojo.description} />
-                <meta name="keywords" content={`${dojo.tags}`} />
-            </Helmet>
-            <StyledLink to="/coding-dojo">
-                <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
-                liste
-            </StyledLink>
-            <DojoContainer>
-                <DateAndSpeakers>
-                    <Calendar date={dojo.date} edition={dojo.edition} />
-                    {dojo.craftsmen.map(speaker => (
-                        <SpeakerTalk key={speaker.slug} speaker={speaker} />
-                    ))}
-                </DateAndSpeakers>
-                <Description>
-                    <Title>{dojo.title}</Title>
-                    <Tags tags={dojo.tags} />
-                    <div dangerouslySetInnerHTML={{ __html: dojo.html }} />
-                </Description>
-            </DojoContainer>
-        </SingleColumn>
+        <Layout>
+
+            <SingleColumn>
+                <Helmet>
+                    <title>{dojo.title}</title>
+                    <meta name="description" content={dojo.description} />
+                    <meta name="keywords" content={`${dojo.tags}`} />
+                </Helmet>
+                <StyledLink to="/coding-dojo">
+                    <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
+                    liste
+                </StyledLink>
+                <DojoContainer>
+                    <DateAndSpeakers>
+                        <Calendar date={dojo.date} edition={dojo.edition} />
+                        {dojo.craftsmen.map(speaker => (
+                            <SpeakerTalk key={speaker.slug} speaker={speaker} />
+                        ))}
+                    </DateAndSpeakers>
+                    <Description>
+                        <Title>{dojo.title}</Title>
+                        <Tags tags={dojo.tags} />
+                        <div dangerouslySetInnerHTML={{ __html: dojo.html }} />
+                    </Description>
+                </DojoContainer>
+            </SingleColumn>
+        </Layout>
     );
 };
 

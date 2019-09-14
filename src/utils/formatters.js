@@ -4,7 +4,7 @@ export const formatGraphContent = graphContent => ({
     ...graphContent.frontmatter,
 });
 
-export const formatTalkWithSpeakers = (talk, speakers = []) => ({
+export const formatTalkWithSpeakers = (talk = {}, speakers = []) => ({
     ...formatGraphContent(talk),
     speakers: talk.frontmatter.speakers
         .map(speaker => {

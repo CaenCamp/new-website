@@ -1,7 +1,9 @@
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
+import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import Layout from '../components/Layout';
 
 import { formatSpeakerWithTalksAndDojos } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
@@ -60,65 +62,68 @@ export default ({ data }) => {
         data.dojos.edges,
     );
     return (
-        <SingleColumn>
-            <Helmet>
-                <title>
-                    {speaker.firstName} {speaker.lastName}
-                </title>
-                <meta name="description" content="A trouver" />
-                <meta name="keywords" content="A voir" />
-            </Helmet>
-            <StyledLink to="/speakers">
-                <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
-                liste
-            </StyledLink>
-            <SpeakerContainer>
-                <SpeakerBio>
-                    <Profile src={`/speakers/${speaker.picture}`} />
-                    <Links links={speaker.links} />
-                </SpeakerBio>
-                <SpeakerBio>
-                    <Name>
+        <Layout>
+            
+            <SingleColumn>
+                <Helmet>
+                    <title>
                         {speaker.firstName} {speaker.lastName}
-                    </Name>
-                    <div dangerouslySetInnerHTML={{ __html: speaker.html }} />
-                </SpeakerBio>
-            </SpeakerContainer>
+                    </title>
+                    <meta name="description" content="A trouver" />
+                    <meta name="keywords" content="A voir" />
+                </Helmet>
+                <StyledLink to="/speakers">
+                    <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
+                    liste
+                </StyledLink>
+                <SpeakerContainer>
+                    <SpeakerBio>
+                        <Profile src={`/speakers/${speaker.picture}`} />
+                        <Links links={speaker.links} />
+                    </SpeakerBio>
+                    <SpeakerBio>
+                        <Name>
+                            {speaker.firstName} {speaker.lastName}
+                        </Name>
+                        <div dangerouslySetInnerHTML={{ __html: speaker.html }} />
+                    </SpeakerBio>
+                </SpeakerContainer>
 
-            {speaker.talks.length > 0 && (
-                <TalksContainer>
-                    <h2>
-                        {speaker.talks.length === 1 ? 'Son Talk' : 'Ses Talks'}
-                    </h2>
-                    {speaker.talks.map(talk => (
-                        <TalkListItem
-                            key={talk.id}
-                            talk={{
-                                ...talk,
-                                speakers: [],
-                            }}
-                        />
-                    ))}
-                </TalksContainer>
-            )}
+                {speaker.talks.length > 0 && (
+                    <TalksContainer>
+                        <h2>
+                            {speaker.talks.length === 1 ? 'Son Talk' : 'Ses Talks'}
+                        </h2>
+                        {speaker.talks.map(talk => (
+                            <TalkListItem
+                                key={talk.id}
+                                talk={{
+                                    ...talk,
+                                    speakers: [],
+                                }}
+                            />
+                        ))}
+                    </TalksContainer>
+                )}
 
-            {speaker.dojos.length > 0 && (
-                <DojoContainer>
-                    <h2>
-                        {speaker.dojos.length === 1 ? 'Son Dojo' : 'Ses Dojos'}
-                    </h2>
-                    {speaker.dojos.map(dojo => (
-                        <DojoListItem
-                            key={dojo.id}
-                            dojo={{
-                                ...dojo,
-                                craftsmen: [],
-                            }}
-                        />
-                    ))}
-                </DojoContainer>
-            )}
-        </SingleColumn>
+                {speaker.dojos.length > 0 && (
+                    <DojoContainer>
+                        <h2>
+                            {speaker.dojos.length === 1 ? 'Son Dojo' : 'Ses Dojos'}
+                        </h2>
+                        {speaker.dojos.map(dojo => (
+                            <DojoListItem
+                                key={dojo.id}
+                                dojo={{
+                                    ...dojo,
+                                    craftsmen: [],
+                                }}
+                            />
+                        ))}
+                    </DojoContainer>
+                )}
+            </SingleColumn>
+        </Layout>
     );
 };
 

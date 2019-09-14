@@ -1,7 +1,9 @@
 import Helmet from 'react-helmet';
 import React from 'react';
+import { graphql } from 'gatsby';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
+import Layout from '../components/Layout';
 
 import { formatGraphContent } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
@@ -79,57 +81,60 @@ const MeetupLink = styled.a`
 export default ({ data }) => {
     const camp = formatGraphContent(data.rawCamp);
     return (
-        <SingleColumn>
-            <Helmet>
-                <title>{camp.title}</title>
-                <meta name="description" content={camp.description} />
-            </Helmet>
-            <StyledLink to="/coding-caen-camp">
-                <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
-                liste
-            </StyledLink>
-            <CampContainer>
-                <DateAndSpeakers>
-                    <Calendar date={camp.date} edition={camp.edition} />
-                    {camp.meetupId && (
-                        <MeetupLink
-                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
-                                camp.meetupId
-                            }/`}
-                        >
-                            <i className="fa fa-meetup" />
-                        </MeetupLink>
-                    )}
-                </DateAndSpeakers>
-                <Description>
-                    <Title>{camp.title}</Title>
-                    <div>
-                        <Image src={`/ccc/${camp.image}`} />
-                        <div dangerouslySetInnerHTML={{ __html: camp.html }} />
-                        {camp.meetupId && (
-                            <div>
-                                <h2>S'inscrire</h2>
+        <Layout>
 
-                                <h3>
-                                    Le nombre de places est limité à 15, et vous
-                                    devez apporter votre laptop.
-                                </h3>
-                                <p>
-                                    Pour le moment, les inscriptions se font sur
-                                    <MeetupLink
-                                        href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
-                                            camp.meetupId
-                                        }/`}
-                                    >
-                                        Meetup <i className="fa fa-meetup" />
-                                    </MeetupLink>
-                                </p>
-                            </div>
+            <SingleColumn>
+                <Helmet>
+                    <title>{camp.title}</title>
+                    <meta name="description" content={camp.description} />
+                </Helmet>
+                <StyledLink to="/coding-caen-camp">
+                    <i className="fa fa-list-alt" aria-hidden="true" /> Retour à la
+                    liste
+                </StyledLink>
+                <CampContainer>
+                    <DateAndSpeakers>
+                        <Calendar date={camp.date} edition={camp.edition} />
+                        {camp.meetupId && (
+                            <MeetupLink
+                                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                    camp.meetupId
+                                }/`}
+                            >
+                                <i className="fa fa-meetup" />
+                            </MeetupLink>
                         )}
-                    </div>
-                </Description>
-            </CampContainer>
-        </SingleColumn>
+                    </DateAndSpeakers>
+                    <Description>
+                        <Title>{camp.title}</Title>
+                        <div>
+                            <Image src={`/ccc/${camp.image}`} />
+                            <div dangerouslySetInnerHTML={{ __html: camp.html }} />
+                            {camp.meetupId && (
+                                <div>
+                                    <h2>S'inscrire</h2>
+
+                                    <h3>
+                                        Le nombre de places est limité à 15, et vous
+                                        devez apporter votre laptop.
+                                    </h3>
+                                    <p>
+                                        Pour le moment, les inscriptions se font sur
+                                        <MeetupLink
+                                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
+                                                camp.meetupId
+                                            }/`}
+                                        >
+                                            Meetup <i className="fa fa-meetup" />
+                                        </MeetupLink>
+                                    </p>
+                                </div>
+                            )}
+                        </div>
+                    </Description>
+                </CampContainer>
+            </SingleColumn>
+        </Layout>
     );
 };
 

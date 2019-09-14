@@ -36,9 +36,13 @@ const Schedule = styled.span`
 `;
 
 export default ({ date }) => {
-    const [day, month, year, schedules] = format(date, 'DD-MMM-YYYY-HH:mm', {
-        locale,
-    }).split('-');
+    const [day, month, year, schedules] = format(
+        new Date(date),
+        'dd-MMM-yyyy',
+        {
+            locale,
+        },
+    ).split('-');
     return (
         <DateContainer>
             <Day>{day}</Day>
