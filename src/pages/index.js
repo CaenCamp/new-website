@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import isBefore from 'date-fns/is_before';
+import isBefore from 'date-fns/isBefore';
 import React from 'react';
 import styled from 'styled-components';
 import 'font-awesome/css/font-awesome.css';

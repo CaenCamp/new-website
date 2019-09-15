@@ -1,7 +1,7 @@
 import Link from 'gatsby-link';
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import isBefore from 'date-fns/is_before';
+import isBefore from 'date-fns/isBefore';
 
 import Calendar from './Calendar';
 import MinimalView from '../speakers/MinimalView';

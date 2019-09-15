@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet';
 import favicon from '../../static/favicon/favicon-16x16.png';
 import FooterContent from '../components/Footer';
 import HeaderContent from '../components/Header';
-import theme from '../utils/theme';
+import theme, { GlobalStyle } from '../utils/theme';
 
 const Container = styled.div`
     height: 100%;
@@ -82,7 +82,8 @@ class TemplateWrapper extends Component {
                 `}
                 render={data => (
                     <ThemeProvider theme={theme}>
-                        <div>
+                        <>
+                            <GlobalStyle />
                             <Container>
                                 <Helmet>
                                     <link
@@ -103,7 +104,7 @@ class TemplateWrapper extends Component {
                                     />
                                 </Footer>
                             </Container>
-                        </div>
+                        </>
                     </ThemeProvider>
                 )}
             />

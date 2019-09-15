@@ -104,9 +104,13 @@ const Schedule = styled.span`
 `;
 
 export default ({ date, edition }) => {
-    const [day, month, year, schedules] = format(date, 'DD-MMM-YYYY-HH:mm', {
-        locale,
-    }).split('-');
+    const [day, month, year, schedules] = format(
+        new Date(date),
+        'dd-MMM-yyyy-HH:mm',
+        {
+            locale,
+        },
+    ).split('-');
     const displaySchedules = parseInt(year, 10) >= 2017;
     return (
         <Container displaySchedules={displaySchedules}>
