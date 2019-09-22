@@ -1,24 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
-import LogoCCC from '../components/LogoCCC';
 
 const Nav = styled.nav`
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: 5rem;
+    margin: auto;
     a {
         font-size: 1.4rem;
         display: inline-block;
         color: ${({ theme }) => theme.grey};
         padding: 2.1rem 0;
         font-variant: small-caps;
-        margin-right: 2rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
         font-weight: bold;
+        transition: 0.3s all ease;
         @media (max-width: ${props => props.theme.mobileSize}) {
             font-size: 1rem;
             padding: 0.5rem;
             margin-right: 0;
+        }
+
+        &:hover {
+            color: ${({ theme }) => theme.blue};
         }
     }
     @media (max-width: ${props => props.theme.mobileSize}) {
@@ -45,7 +48,7 @@ export default () => (
             les talks
         </Link>
         <Link to="/coding-caen-camp" activeStyle={activeLinkStyle}>
-            <LogoCCC />
+            les codings
         </Link>
     </Nav>
 );

@@ -7,7 +7,7 @@ import Nav from './Nav';
 
 const HeaderContent = styled.div`
     align-items: center;
-    background-color: #fff;
+    background-color: white;
     display: flex;
     flex-direction: row;
     left: 0;
