@@ -30,6 +30,7 @@ Tout le code est donc disponible à tous via [Git](https://www.meetup.com/fr-FR/
 
 
 ## Vous souhaitez participer ?
+
 Merci à vous :+1:
 
 Et c'est très simple :
@@ -37,4 +38,3 @@ Et c'est très simple :
 * Une fois que vous savez quoi faire, vous pouvez consulter le [**guide du contributeur**](.github/CONTRIBUTING.md) pour vous lancer.
 
 Et si vous ne trouvez toujours pas quoi faire dans les issues existantes et/ou que vous avez d'autres idées, n'hésitez pas à créer une nouvelle issue.
-
