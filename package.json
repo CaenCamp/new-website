@@ -22,7 +22,7 @@
         "e2e": "jest --config ./e2e/jest.config.json"
     },
     "dependencies": {
-        "axios": "0.18.0",
+        "axios": "0.19.0",
         "babel-plugin-styled-components": "1.8.0",
         "date-fns": "1.29.0",
         "font-awesome": "4.7.0",
@@ -66,7 +66,7 @@
         "jest": "23.6.0",
         "jest-cli": "23.6.0",
         "prettier": "1.14.3",
-        "puppeteer": "1.9.0",
+        "puppeteer": "1.20.0",
         "raf": "3.4.0"
     }
 }
