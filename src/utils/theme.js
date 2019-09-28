@@ -1,6 +1,6 @@
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-injectGlobal`
+export const GlobalStyle = createGlobalStyle`
   html {
     font-family: 'Work Sans', sans-serif;
     font-size: 14px;

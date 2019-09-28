@@ -96,7 +96,9 @@ exports.createPages = ({ graphql, actions }) => {
                 context: {
                     // Data passed to context is available in page queries as GraphQL variables.
                     slug: node.frontmatter.slug,
-                    meetupId: node.frontmatter.meetupId,
+                    meetupId: node.frontmatter.meetupId
+                        ? node.frontmatter.meetupId.toString()
+                        : node.frontmatter.meetupId,
                 },
             });
         });
