@@ -11,7 +11,7 @@ speakers:
     - pierre-emmanuel-fringant
     - matthieu-sadouni
 place: dome
-video: 
+video: https://www.youtube.com/watch?v=VXN8ZQGbfg0
 picture: cc45.png
 published: true
 ---
