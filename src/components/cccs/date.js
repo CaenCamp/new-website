@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import locale from 'date-fns/locale/fr';
 import format from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
 
 const DateContainer = styled.div`
     background-color: ${({ theme }) => theme.white};
@@ -36,8 +37,9 @@ const Schedule = styled.span`
 `;
 
 export default ({ date }) => {
+
     const [day, month, year, schedules] = format(
-        new Date(date),
+        parseISO(date),
         'dd-MMM-yyyy-HH:mm',
         {
             locale,
