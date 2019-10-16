@@ -18,6 +18,9 @@ start: ## run gatsby in develop mode with docker
 stop: ## stop gatsby in docker
 	@docker-compose down
 
+connect: ## start bash in the node container
+	@docker-compose exec gatsby ash
+
 logs: ## Display logs from docker
 	@docker-compose logs -f
 
