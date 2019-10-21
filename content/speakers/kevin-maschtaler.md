@@ -3,7 +3,7 @@ firstName: "Kévin"
 lastName: "Maschtaler"
 slug: "kevin-maschtaler"
 resume: "I write code"
-picture: "kmaschta.jpg"
+picture: "kevin-maschtaler.jpg"
 links:
     - title: twitter
       url: https://twitter.com/Kmaschta

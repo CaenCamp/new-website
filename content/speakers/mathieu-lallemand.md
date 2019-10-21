@@ -1,6 +1,6 @@
 ---
 firstName: "Mathieu"
-lastName: "Lallemend"
+lastName: "Lallemand"
 slug: "mathieu-lallemand"
 resume: "Web Dinosaur & Sherpa - Happiness Enthusiast"
 picture: "mathieu-lallemand.jpg"
