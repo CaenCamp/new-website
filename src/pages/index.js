@@ -12,7 +12,7 @@ import {
     formatTalkWithLightningsAndSpeakers,
 } from '../utils/formatters';
 import TalkListItem from '../components/talks/listItem';
-import { CampListItem } from '../components/cccs/list-item';
+import { CampListItem } from '../components/cccs/listItem';
 import DevopsListItem from '../components/ccds/listItem';
 import CaenCamp from '../components/CaenCamp';
 import Layout from '../components/layout';
