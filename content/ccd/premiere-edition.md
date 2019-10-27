@@ -1,6 +1,6 @@
 ---
 edition: 1
-meetupId: 
+meetupId: 265997846
 title: "Édition 1"
 slug: "edition-1"
 date: "2019-11-06 18:30:00"
