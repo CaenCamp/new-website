@@ -4,12 +4,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { DojoListItem } from '../components/dojos/listItem';
-import { formatSpeakerWithTalksLightningsAndDojos } from '../utils/formatters';
+import { formatSpeakerWithAll } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
 import BackToList from '../components/BackToList';
 import Layout from '../components/layout';
 import Links from '../components/speakers/Links';
 import TalkListItem from '../components/talks/listItem';
+import DevopsListItem from '../components/ccds/listItem';
 
 const SpeakerContainer = styled.div`
     display: flex;
@@ -52,11 +53,12 @@ const DojoContainer = styled.div`
 `;
 
 export default ({ data }) => {
-    const speaker = formatSpeakerWithTalksLightningsAndDojos(
+    const speaker = formatSpeakerWithAll(
         data.rawSpeaker,
         data.talks.edges,
         data.lightnings.edges,
         data.dojos.edges,
+        data.devops.edges,
     );
     return (
         <Layout>
@@ -98,6 +100,28 @@ export default ({ data }) => {
                                 talk={{
                                     ...lightning,
                                     speakers: [],
+                                }}
+                            />
+                        ))}
+                    </TalksContainer>
+                )}
+
+                {speaker.devops.length > 0 && (
+                    <TalksContainer>
+                        <h2>
+                            {speaker.devops.length === 1
+                                ? 'Son Devops'
+                                : 'Ses Devops'}
+                        </h2>
+                        {speaker.devops.map(edition => (
+                            <DevopsListItem
+                                key={edition.id}
+                                edition={{
+                                    ...edition,
+                                    talks: edition.talks.map(t => ({
+                                        ...t,
+                                        speakers: [],
+                                    })),
                                 }}
                             />
                         ))}
@@ -223,6 +247,28 @@ export const query = graphql`
                         description
                         tags
                         edition
+                    }
+                }
+            }
+        }
+        devops: allMarkdownRemark(
+            filter: { fileAbsolutePath: { glob: "**/ccd/**" } }
+            sort: { order: DESC, fields: [frontmatter___edition] }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        title
+                        slug
+                        date
+                        description
+                        edition
+                        meetupId
+                        talks {
+                            title
+                            speakers
+                        }
                     }
                 }
             }

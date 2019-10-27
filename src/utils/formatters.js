@@ -166,6 +166,57 @@ export const formatSpeakerWithTalksLightningsAndDojos = (
     };
 };
 
+export const formatSpeakerWithAll = (
+    speaker,
+    talks = [],
+    lightning = [],
+    dojos = [],
+    devops = [],
+) => {
+    const currentTalks = talks
+        .map(talk => formatGraphContent(talk.node))
+        .filter(talk =>
+            talk.speakers.find(sp => sp === speaker.frontmatter.slug),
+        );
+    const currentLightnings = lightning
+        .map(lightning => formatGraphContent(lightning.node))
+        .filter(lightning =>
+            lightning.speakers.find(sp => sp === speaker.frontmatter.slug),
+        )
+        .map(lightning => {
+            const talkForLightning = talks
+                .map(talk => formatGraphContent(talk.node))
+                .find(talk => talk.edition === lightning.edition);
+            return {
+                ...lightning,
+                slug: talkForLightning ? talkForLightning.slug : '',
+            };
+        });
+    const currentDevops = devops
+        .map(devop => formatGraphContent(devop.node))
+        .map(devop => ({
+            ...devop,
+            allSpeakers: devop.talks
+                .map(talk => talk.speakers)
+                .reduce((acc, spt) => [...acc, ...spt], []),
+        }))
+        .filter(devop =>
+            devop.allSpeakers.find(sp => sp === speaker.frontmatter.slug),
+        );
+    return {
+        ...formatGraphContent(speaker),
+        talks: currentTalks,
+        lightning: currentLightnings,
+        dojos: dojos
+            .map(dojo => formatGraphContent(dojo.node))
+            .filter(dojo =>
+                dojo.craftsmen.find(
+                    craftsman => craftsman === speaker.frontmatter.slug,
+                ),
+            ),
+        devops: currentDevops,
+    };
+};
 export const formatMeetup = rawMeetup => {
     let meetup = null;
 
