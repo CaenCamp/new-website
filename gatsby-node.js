@@ -35,6 +35,7 @@ exports.createPages = ({ graphql, actions }) => {
     const dojoTemplate = path.resolve(`src/templates/dojo.js`);
     const speakerTemplate = path.resolve(`src/templates/speaker.js`);
     const cccTemplate = path.resolve(`src/templates/ccc.js`);
+    const ccdTemplate = path.resolve(`src/templates/ccd.js`);
 
     return graphql(`
         query AllSingleContents {
@@ -74,6 +75,17 @@ exports.createPages = ({ graphql, actions }) => {
             }
             ccc: allMarkdownRemark(
                 filter: { fileAbsolutePath: { glob: "**/ccc/**" } }
+            ) {
+                edges {
+                    node {
+                        frontmatter {
+                            slug
+                        }
+                    }
+                }
+            }
+            ccd: allMarkdownRemark(
+                filter: { fileAbsolutePath: { glob: "**/ccd/**" } }
             ) {
                 edges {
                     node {
@@ -129,6 +141,17 @@ exports.createPages = ({ graphql, actions }) => {
             createPage({
                 path: `/coding-caen-camp/${node.frontmatter.slug}`,
                 component: cccTemplate,
+                context: {
+                    // Data passed to context is available in page queries as GraphQL variables.
+                    slug: node.frontmatter.slug,
+                },
+            });
+        });
+
+        result.data.ccd.edges.forEach(({ node }) => {
+            createPage({
+                path: `/caen-camp-devops/${node.frontmatter.slug}`,
+                component: ccdTemplate,
                 context: {
                     // Data passed to context is available in page queries as GraphQL variables.
                     slug: node.frontmatter.slug,
