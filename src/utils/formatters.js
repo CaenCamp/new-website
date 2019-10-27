@@ -4,6 +4,27 @@ export const formatGraphContent = graphContent => ({
     ...graphContent.frontmatter,
 });
 
+export const formatDevopsWithSpeakers = (devopsEdition, speakers = []) => ({
+    ...formatGraphContent(devopsEdition),
+    talks: devopsEdition.frontmatter.talks
+        .map(talk => ({
+            title: talk.title,
+            speakers: talk.speakers
+                .map(speaker => {
+                    const findedSpeaker = speakers.find(
+                        sp => sp.node.frontmatter.slug === speaker,
+                    );
+                    if (findedSpeaker) {
+                        return formatGraphContent(findedSpeaker.node);
+                    } else {
+                        return null;
+                    }
+                })
+                .filter(sp => sp !== null),
+        }))
+        .filter(sp => sp !== null),
+});
+
 export const formatTalkWithSpeakers = (talk, speakers = []) => ({
     ...formatGraphContent(talk),
     speakers: talk.frontmatter.speakers

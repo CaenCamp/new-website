@@ -1,41 +1,45 @@
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import Link from 'gatsby-link';
 import React from 'react';
 import styled from 'styled-components';
 
-import { formatGraphContent } from '../utils/formatters';
+import { formatDevopsWithSpeakers } from '../utils/formatters';
 import { SingleColumn } from '../components/Content';
+import { SpeakerListItem } from '../components/speakers/listItem';
+import BackToList from '../components/BackToList';
 import Calendar from '../components/talks/Calendar';
 import Layout from '../components/layout';
+import SpeakerTalk from '../components/speakers/SpeakerTalk';
 
-const StyledLink = styled(Link)`
-    color: ${({ theme }) => theme.black};
-`;
-
-const CampContainer = styled.div`
+const TalkContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: left;
     margin: 4rem 0;
     @media (max-width: ${props => props.theme.mobileSize}) {
         flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
+        margin: 1rem 0;
     }
 `;
 
 const DateAndSpeakers = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     margin-right: 2rem;
     @media (max-width: ${props => props.theme.mobileSize}) {
-        flex-direction: row;
-        width: 100%;
+        display: none;
+    }
+`;
+const DateAndSpeakersMobile = styled.div`
+    display: none;
+    @media (max-width: ${props => props.theme.mobileSize}) {
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        width: 100%;
     }
 `;
 
@@ -48,103 +52,117 @@ export const Title = styled.h1`
     font-size: 2rem;
     text-align: left;
     padding: 0;
-    margin: 0 0 1.5rem 0;
+    margin: 0;
     color: ${({ theme }) => theme.black};
-`;
-
-const Image = styled.img`
-    margin: 1rem;
-    height: auto;
-    width: auto;
-    max-width: 15rem;
-    max-height: 15rem;
-    float: right;
 `;
 
 const MeetupLink = styled.a`
     color: ${({ theme }) => theme.black};
-    font-size: 2rem;
-    margin-top: 2rem;
-    margin-left: 1rem;
     @media (max-width: ${props => props.theme.mobileSize}) {
-        margin-top: 0.5rem;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.5rem;
     }
-    i {
-        font-size: 5rem;
-    }
-    &:hover {
-        color: crimson;
-    }
-    transition: color 0.2s ease-out;
 `;
 
 export default ({ data }) => {
-    const camp = formatGraphContent(data.rawCamp);
+    const edition = formatDevopsWithSpeakers(
+        data.rawEdition,
+        data.speakers.edges,
+    );
+    const speakers = edition.talks
+        .map(talk => talk.speakers)
+        .reduce((acc, spt) => [...acc, ...spt], []);
+
     return (
         <Layout>
             <SingleColumn>
                 <Helmet>
-                    <title>{camp.title}</title>
-                    <meta name="description" content={camp.description} />
+                    <title>{edition.title}</title>
+                    <meta name="description" content={edition.description} />
                 </Helmet>
-                <StyledLink to="/coding-caen-camp">
-                    <i className="fa fa-list-alt" aria-hidden="true" /> Retour à
-                    la liste
-                </StyledLink>
-                <CampContainer>
+                <BackToList path="/caen-camp-devops" />
+                <TalkContainer>
                     <DateAndSpeakers>
-                        <Calendar date={camp.date} edition={camp.edition} />
-                        {camp.meetupId && (
+                        <Calendar
+                            date={edition.date}
+                            edition={edition.edition}
+                        />
+                        {speakers.map(speaker => (
+                            <SpeakerTalk key={speaker.slug} speaker={speaker} />
+                        ))}
+                        {edition.meetupId && (
                             <MeetupLink
-                                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${camp.meetupId}/`}
+                                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${edition.meetupId}/`}
                             >
-                                <i className="fa fa-meetup" />
+                                <i className="fa fa-meetup fa-5x" />
                             </MeetupLink>
                         )}
                     </DateAndSpeakers>
-                    <Description>
-                        <Title>{camp.title}</Title>
-                        <div>
-                            <Image src={`/ccc/${camp.image}`} />
+                    <div>
+                        <Description>
                             <div
-                                dangerouslySetInnerHTML={{ __html: camp.html }}
+                                dangerouslySetInnerHTML={{
+                                    __html: edition.html,
+                                }}
                             />
-                            {camp.meetupId && (
-                                <div>
-                                    <h2>S'inscrire</h2>
-
-                                    <h3>
-                                        Le nombre de places est limité à 20, et
-                                        vous devez apporter votre laptop.
-                                    </h3>
-                                    <p>
-                                        Pour le moment, les inscriptions se font
-                                        sur
-                                        <MeetupLink
-                                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${camp.meetupId}/`}
-                                        >
-                                            Meetup{' '}
-                                            <i className="fa fa-meetup" />
-                                        </MeetupLink>
-                                    </p>
-                                </div>
-                            )}
-                        </div>
-                    </Description>
-                </CampContainer>
+                        </Description>
+                    </div>
+                    <DateAndSpeakersMobile>
+                        <Calendar
+                            date={edition.date}
+                            edition={edition.edition}
+                        />
+                        {edition.meetupId && (
+                            <MeetupLink
+                                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${edition.meetupId}/`}
+                            >
+                                <i className="fa fa-meetup fa-5x" />
+                            </MeetupLink>
+                        )}
+                        {speakers.map(speaker => (
+                            <SpeakerListItem
+                                key={speaker.slug}
+                                speaker={speaker}
+                            />
+                        ))}
+                    </DateAndSpeakersMobile>
+                </TalkContainer>
             </SingleColumn>
         </Layout>
     );
 };
 
 export const query = graphql`
-    query ccdQuery($slug: String!) {
-        rawCamp: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+    query DevopsBySlug($slug: String!) {
+        rawEdition: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
             html
             frontmatter {
+                title
+                slug
+                date
                 description
                 edition
-                title
+                meetupId
+                talks {
+                    title
+                    speakers
+                }
+            }
+        }
+        speakers: allMarkdownRemark(
+            filter: { fileAbsolutePath: { glob: "**/speakers/**" } }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        firstName
+                        lastName
+                        picture
+                        slug
+                    }
+                }
             }
         }
     }

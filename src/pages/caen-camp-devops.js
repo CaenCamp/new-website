@@ -5,9 +5,9 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import { Content, SingleColumn } from '../components/Content';
-import CCC from '../components/CodingCaenCamp';
-import { formatGraphContent } from '../utils/formatters';
-import { CampListItem } from '../components/cccs/list-item';
+import CCD from '../components/CaenCampDevops';
+import { formatDevopsWithSpeakers } from '../utils/formatters';
+import DevopsListItem from '../components/ccds/listItem';
 
 export const Thanks = styled.div`
     display: flex;
@@ -19,33 +19,25 @@ export const Thanks = styled.div`
 `;
 
 export default ({ data }) => {
-    const cccs = data.cccs.edges.map(camp => formatGraphContent(camp.node));
+    const ccds = data.ccds.edges.map(camp =>
+        formatDevopsWithSpeakers(camp.node, data.devops.edges),
+    );
     return (
         <Layout>
             <div>
-                <Helmet title="CaenCamp: les Coding Caen Camp (CCC)">
+                <Helmet title="CaenCamp: les CaenCamp Devops (CCD)">
                     <meta
                         name="description"
-                        content="Affutez vos skills aux Coding Caen Camp"
+                        content="Meetup Devops et Sysadmin"
                     />
                 </Helmet>
-                <Content id="dojoContent">
+                <Content id="devopsContent">
                     <SingleColumn>
-                        <CCC />
-                        {cccs &&
-                            cccs.map(camp => (
-                                <CampListItem key={camp.id} camp={camp} />
+                        <CCD />
+                        {ccds &&
+                            ccds.map(camp => (
+                                <DevopsListItem key={camp.id} edition={camp} />
                             ))}
-                        <Thanks>
-                            <p>
-                                Un grand merci à Emmanuelle et Sylvain de{' '}
-                                <a href="https://www.hey-coworking.com/">
-                                    HEY! coworking
-                                </a>{' '}
-                                pour avoir accepter de nous accueillir une fois
-                                par mois.
-                            </p>
-                        </Thanks>
                     </SingleColumn>
                 </Content>
             </div>
@@ -55,9 +47,9 @@ export default ({ data }) => {
 
 export const query = graphql`
     query CcdsQuery {
-        cccs: allMarkdownRemark(
+        ccds: allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___date] }
-            filter: { fileAbsolutePath: { glob: "**/ccc/**" } }
+            filter: { fileAbsolutePath: { glob: "**/ccd/**" } }
         ) {
             edges {
                 node {
@@ -68,7 +60,26 @@ export const query = graphql`
                         date
                         description
                         edition
-                        image
+                        meetupId
+                        talks {
+                            title
+                            speakers
+                        }
+                    }
+                }
+            }
+        }
+        devops: allMarkdownRemark(
+            filter: { fileAbsolutePath: { glob: "**/speakers/**" } }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        firstName
+                        lastName
+                        picture
+                        slug
                     }
                 }
             }
