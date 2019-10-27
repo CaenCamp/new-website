@@ -17,7 +17,7 @@ talks:
 place: normandie-incubation
 video: 
 picture: 
-published: false
+published: true
 ---
 
 ## Présentation de HashiCorp Consul

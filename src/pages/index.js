@@ -8,10 +8,12 @@ import 'font-awesome/css/font-awesome.css';
 import { Content, SingleColumn } from '../components/Content';
 import {
     formatGraphContent,
+    formatDevopsWithSpeakers,
     formatTalkWithLightningsAndSpeakers,
 } from '../utils/formatters';
 import TalkListItem from '../components/talks/listItem';
 import { CampListItem } from '../components/cccs/list-item';
+import DevopsListItem from '../components/ccds/listItem';
 import CaenCamp from '../components/CaenCamp';
 import Layout from '../components/layout';
 
@@ -50,6 +52,18 @@ export default ({ data }) => {
         nextCamp = cccs[0];
     }
 
+    const ccds = data.devops.edges.map(camp =>
+        formatDevopsWithSpeakers(camp.node, data.speakers.edges),
+    );
+    let lastDevops = null;
+    let nextDevops = null;
+    if (!isBefore(new Date(), new Date(ccds[0].date))) {
+        lastDevops = ccds[0];
+    } else {
+        lastDevops = ccds[1];
+        nextDevops = ccds[0];
+    }
+
     return (
         <Layout>
             <div>
@@ -75,6 +89,12 @@ export default ({ data }) => {
                                 <TalkListItem talk={nextTalk} />
                             </TalksContainer>
                         )}
+                        {nextDevops && (
+                            <TalksContainer>
+                                <h2>Prochain CaenCamp Devops</h2>
+                                <DevopsListItem edition={nextDevops} />
+                            </TalksContainer>
+                        )}
                         {nextCamp && (
                             <TalksContainer>
                                 <h2>Prochain coding caen camp</h2>
@@ -85,6 +105,12 @@ export default ({ data }) => {
                             <TalksContainer>
                                 <h2>Dernier talk</h2>
                                 <TalkListItem talk={lastTalk} />
+                            </TalksContainer>
+                        )}
+                        {lastDevops && (
+                            <TalksContainer>
+                                <h2>Dernier CaenCamp Devops</h2>
+                                <DevopsListItem edition={lastDevops} />
                             </TalksContainer>
                         )}
                         {lastCamp && (
@@ -189,6 +215,31 @@ export const query = graphql`
             edges {
                 node {
                     id
+                }
+            }
+        }
+        devops: allMarkdownRemark(
+            filter: {
+                fileAbsolutePath: { glob: "**/ccd/**" }
+                frontmatter: { published: { eq: true } }
+            }
+            sort: { order: DESC, fields: [frontmatter___date] }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        title
+                        slug
+                        date
+                        description
+                        edition
+                        meetupId
+                        talks {
+                            title
+                            speakers
+                        }
+                    }
                 }
             }
         }
