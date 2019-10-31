@@ -124,15 +124,14 @@ export default class ListItem extends Component {
                 <Calendar date={talk.date} edition={talk.edition} />
                 <Description>
                     <Title>
-                        {talk.lightnings &&
-                            !!talk.lightnings.length && (
-                                <React.Fragment>
-                                    <i
-                                        className="fa fa-bullhorn"
-                                        aria-hidden="true"
-                                    />{' '}
-                                </React.Fragment>
-                            )}
+                        {talk.lightnings && !!talk.lightnings.length && (
+                            <React.Fragment>
+                                <i
+                                    className="fa fa-bullhorn"
+                                    aria-hidden="true"
+                                />{' '}
+                            </React.Fragment>
+                        )}
                         <Link to={`/talks/${talk.slug}`}>{talk.title}</Link>
                     </Title>
                     <Speakers>
@@ -157,20 +156,17 @@ export default class ListItem extends Component {
                             />
                         ))}
                 </Description>
-                {isBefore(new Date(), new Date(talk.date)) &&
-                    talk.meetupId && (
-                        <Registration>
-                            <a
-                                href={`https://www.meetup.com/fr-FR/CaenCamp/events/${
-                                    talk.meetupId
-                                }/`}
-                                onClick={this.handleClick}
-                            >
-                                <i className="fa fa-meetup fa-5x" />
-                                <p>Inscrivez-vous !</p>
-                            </a>
-                        </Registration>
-                    )}
+                {isBefore(new Date(), new Date(talk.date)) && talk.meetupId && (
+                    <Registration>
+                        <a
+                            href={`https://www.meetup.com/fr-FR/CaenCamp/events/${talk.meetupId}/`}
+                            onClick={this.handleClick}
+                        >
+                            <i className="fa fa-meetup fa-5x" />
+                            <p>Inscrivez-vous !</p>
+                        </a>
+                    </Registration>
+                )}
             </Item>
         );
     }

@@ -7,7 +7,7 @@ import Layout from '../components/layout';
 import { Content, SingleColumn } from '../components/Content';
 import CCC from '../components/CodingCaenCamp';
 import { formatGraphContent } from '../utils/formatters';
-import { CampListItem } from '../components/cccs/list-item';
+import { CampListItem } from '../components/cccs/listItem';
 
 export const Thanks = styled.div`
     display: flex;
