@@ -5,10 +5,10 @@ import Link from 'gatsby-link';
 const Nav = styled.nav`
     margin: auto;
     a {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         display: inline-block;
         color: ${({ theme }) => theme.grey};
-        padding: 2.1rem 0;
+        padding: 1.2rem 0;
         font-variant: small-caps;
         margin-right: 1rem;
         margin-left: 1rem;

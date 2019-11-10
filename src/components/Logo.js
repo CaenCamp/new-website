@@ -6,12 +6,12 @@ export default styled.img.attrs({
 })`
     display: block;
     position: absolute;
-    left: 1rem;
-    top: 1rem;
+    left: 0.6rem;
+    top: 0.6rem;
     bottom: 0;
-    height: 4rem;
+    height: 3rem;
     @media (max-width: ${props => props.theme.mobileSize}) {
-        height: 2rem;
+        height: 1.2rem;
         display: none;
     }
 `;
