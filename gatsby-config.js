@@ -4,6 +4,10 @@ module.exports = {
         baseline: 'Ici la baseline des Caencamp quand nous en aurons une.',
         socialLinks: [
             {
+                title: 'Envelope',
+                url: 'http://eepurl.com/gEWFkv',
+            },
+            {
                 title: 'Twitter',
                 url: 'https://twitter.com/caencamp',
             },
