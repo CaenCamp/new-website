@@ -1,6 +1,6 @@
 ---
 edition: 47
-meetupId:  
+meetupId: 268035256
 title: "Micro Frontends et Web Components"
 slug: "micro-frontends-et-web-components"
 date: "2020-01-29 18:30:00"

@@ -66,7 +66,7 @@ export default () => (
             <p>
                 Militant pour les mêmes valeurs de collectif et de partage, nous
                 avons décidé, en cette rentrée 2019, de mettre en communs nos
-                efforts et de lancer les <strong>CaenCamp Devops</strong> !
+                efforts et de lancer les <strong>Devops CaenCamp.s</strong> !
             </p>
         </Overview>
     </CaenCampContainer>
