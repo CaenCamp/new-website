@@ -91,7 +91,7 @@ export default class ListItem extends Component {
                             style={{ marginBottom: '3rem' }}
                         >
                             <Title>
-                                <Link to={`/caen-camp-devops/${edition.slug}`}>
+                                <Link to={`/devops-caen-camp/${edition.slug}`}>
                                     {talk.title}
                                 </Link>
                             </Title>

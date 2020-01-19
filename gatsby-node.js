@@ -150,7 +150,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         result.data.ccd.edges.forEach(({ node }) => {
             createPage({
-                path: `/caen-camp-devops/${node.frontmatter.slug}`,
+                path: `/devops-caen-camp/${node.frontmatter.slug}`,
                 component: ccdTemplate,
                 context: {
                     // Data passed to context is available in page queries as GraphQL variables.

@@ -50,7 +50,7 @@ export default () => (
         <Link to="/coding-caen-camp" activeStyle={activeLinkStyle}>
             les codings
         </Link>
-        <Link to="/caen-camp-devops" activeStyle={activeLinkStyle}>
+        <Link to="/devops-caen-camp" activeStyle={activeLinkStyle}>
             les devops
         </Link>
     </Nav>

@@ -81,7 +81,7 @@ export default ({ data }) => {
                     <title>{edition.title}</title>
                     <meta name="description" content={edition.description} />
                 </Helmet>
-                <BackToList path="/caen-camp-devops" />
+                <BackToList path="/devops-caen-camp" />
                 <TalkContainer>
                     <DateAndSpeakers>
                         <Calendar
