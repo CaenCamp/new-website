@@ -70,16 +70,16 @@ export default () => (
                 de front notre activité quotidienne : coder.
             </p>
             <p>
-                Si l'initiative n'est pas nouvelle (<Link to="/speakers/clement-alexandre">
-                    Clément Alexandre
-                </Link>{' '}
+                Si l'initiative n'est pas nouvelle (
+                <Link to="/speakers/clement-alexandre">Clément Alexandre</Link>{' '}
                 et <Link to="/speakers/julien-anne">Julien Anne</Link> ont
                 organisé des <Link to="/coding-dojo">coding dojos</Link> en
-                2013), nous avons décidé de lancer les Coding Caen Camp.
+                2013), nous avons décidé de lancer les{' '}
+                <strong>Coding CaenCamp.s</strong>.
             </p>
             <p>
-                Le principe : se réunir une fois par mois pour … et bien …{' '}
-                <strong>coder ensemble</strong>.
+                Le principe : se réunir une fois par mois pour … et bien … coder
+                ensemble.
             </p>
         </Overview>
     </CaenCampContainer>

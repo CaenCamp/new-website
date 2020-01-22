@@ -74,22 +74,21 @@ export default ({ talks, speakers, cccs, lightnings }) => (
         <Overview>
             <h2>Qu’est-ce que les CaenCamp.s ?</h2>
             <p>
-                Ce sont des moments de rencontre organisés sur{' '}
-                <strong>Caen</strong>, par et pour toutes les personnes qui
-                aiment ou trouvent un intérêt dans le{' '}
-                <strong>code et la programmation</strong>.<br />
-                Une rencontre régulière est organisée{' '}
-                <strong>chaque dernier mardi du mois</strong> avec un{' '}
-                <Link to="/talks">sujet</Link> présenté par un{' '}
-                <Link to="/speakers">speaker</Link> de la communauté, précédé
-                par un{' '}
+                C'est un collectif de <strong>développeurs caennais</strong>. Ce
+                collectif organise des rencontres, généralement le dernier mardi
+                du mois, avec un <Link to="/talks">sujet</Link> technique lié à
+                notre métier présenté par un <Link to="/speakers">speaker</Link>{' '}
+                de la communauté, parfois précédé par un{' '}
                 <a href="https://medium.com/@ckoster22/why-your-company-should-be-doing-lightning-talks-c84b32e8f82b">
                     lightning talk
                 </a>
-                . Mais d{"'"}
-                autres rencontres peuvent librement s{"'"}
-                organiser, comme les{' '}
-                <Link to="/coding-caen-camp">Coding Caen Camp (CCC)</Link>.
+                .
+            </p>
+            <p>
+                Mais d'autres rencontres peuvent librement s'organiser sur des
+                thématiques précises comme les{' '}
+                <Link to="/coding-caen-camp">Coding CaenCamp.s</Link> ou les{' '}
+                <Link to="/devops-caen-camp">Devops CaenCamp.s</Link>.
             </p>
             <p>
                 Les CaenCamp.s ne vivent que par{' '}
@@ -97,19 +96,18 @@ export default ({ talks, speakers, cccs, lightnings }) => (
                     l{"'"}
                     investissement des membres de sa communauté
                 </Link>{' '}
-                et ne dépendent d{"'"}
-                aucune chapelle ni d{"'"}
-                aucune entreprise. Nous tenons cependant à remercier le{' '}
-                <a href="http://www.forum-digital.fr/">Forum Digital</a> d’avoir
-                accueilli une majorité de nos rencontres, ainsi que{' '}
+                et ne dépendent d'aucune chapelle ni d'aucune entreprise. Pour
+                autant le support des structures caennaises est le bienvenue, et
+                nous tenons particulièrement à remercier le{' '}
+                <a href="http://www.forum-digital.fr/">Forum Digital</a>, le{' '}
+                <a href="http://ledome.info/">Dôme</a> ainsi que{' '}
                 <a href="https://www.hey-coworking.com/">HEY! coworking</a> pour
-                nous permettre l'organisation des{' '}
-                <Link to="/coding-caen-camp">CCC</Link>.
+                nous permettre d'organiser nos évènements en mettant à notre
+                disposition des lieux pour nous retrouver.
             </p>
             <p>
-                Sans forme d{"'"}
-                organisation formelle, les CaenCamp.s existent pourtant depuis{' '}
-                <strong>2012</strong>.
+                Sans forme de structure d'organisation formelle, les CaenCamp.s
+                existent depuis <strong>2012</strong>.
             </p>
         </Overview>
         <Stats>
@@ -127,7 +125,11 @@ export default ({ talks, speakers, cccs, lightnings }) => (
             </StyledLink>
             <StyledLink to="/coding-caen-camp">
                 <i className="fa fa-keyboard-o fa-5x" aria-hidden="true" />
-                <span>{cccs} CCC</span>
+                <span>{cccs} Coding CaenCamp</span>
+            </StyledLink>
+            <StyledLink to="/devops-caen-camp">
+                <i className="fa fa-server fa-5x" aria-hidden="true" />
+                <span>1 Devops CaenCamp</span>
             </StyledLink>
         </Stats>
     </CaenCampContainer>
