@@ -10,7 +10,7 @@ tags:
 speakers:
     - jean-baptiste-oellers
 place: dome
-video: https://www.youtube.com/watch?v=DkfNN1fae-8
+video: https://youtu.be/DkfNN1fae-8 
 picture: cc47.png
 published: true
 ---
