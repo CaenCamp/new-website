@@ -10,7 +10,7 @@ tags:
 speakers:
     - jean-baptiste-oellers
 place: dome
-video: 
+video: https://www.youtube.com/watch?v=DkfNN1fae-8
 picture: cc47.png
 published: true
 ---
@@ -18,6 +18,12 @@ published: true
 Votre projet front est devenu trop gros et trop complexe : il est temps de le découper. Mais comment faire ?    
 
 Les [Micro Frontends](https://martinfowler.com/articles/micro-frontends.html) peuvent apporter des éléments de réponse. Autour d'un exemple simple, nous ferons évoluer un front monolithique vers une architecture Micro Frontends à l'aide d'une technologie standard du web : les [Web Components](https://developer.mozilla.org/fr/docs/Web/Web_Components).
+
+Vous pouvez retrouver :
+
+* [les slides](https://gitlab.com/jboellers/outilsloc/-/wikis/home)
+* [le code de la présentation](https://gitlab.com/jboellers/outilsloc)
+* [les photos de la soirée](https://www.meetup.com/fr-FR/CaenCamp/photos/30717590/488612582/?photoId=488612582&photoAlbumId=30717590)
 
 ### Un grand merci à SII qui soutient cette édition
 
