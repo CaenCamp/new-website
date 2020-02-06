@@ -25,3 +25,9 @@ Il sera évidemment beaucoup question de code, mais sans chapelle technologique.
 ## Ce sera où ?
 
 Nous serons accueillis au [Dôme](http://ledome.info/), [3 Esplanade Stéphane Hessel à Caen](https://www.google.com/maps/place/Le+D%C3%B4me/@49.181727,-0.347006,16z/data=!4m5!3m4!1s0x0:0xd74237367f9a5dd9!8m2!3d49.1817269!4d-0.3470057?hl=fr-FR), le vendredi 18 octobre 2019, de 19h à 22h.
+
+## Pizzas !
+
+Un grand merci à [KNPLabs](https://knplabs.com/fr) qui sponsorise la soirée en offrant la pizza et les boissons.
+
+![KNPLabs](/ccc/logo-knp-labs.jpg)
