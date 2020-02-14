@@ -16,6 +16,7 @@ export const SponsorContainer = styled.div`
 `;
 export default ({ data }) => {
     const sponsors = data.site.siteMetadata.sponsors;
+    const venues = data.site.siteMetadata.venues;
     return (
         <Layout>
             <div>
@@ -41,6 +42,19 @@ export default ({ data }) => {
                                     />
                                 ))}
                         </SponsorContainer>
+                        <p>
+                            Ils nous accueillent ! Nous les remercions tout
+                            aussi chaleureusement !
+                        </p>
+                        <SponsorContainer>
+                            {venues.length > 0 &&
+                                venues.map(sponsor => (
+                                    <SponsorListItem
+                                        key={sponsor.name}
+                                        sponsor={sponsor}
+                                    />
+                                ))}
+                        </SponsorContainer>
                     </SingleColumn>
                 </Content>
             </div>
@@ -52,6 +66,11 @@ export const query = graphql`
         site {
             siteMetadata {
                 sponsors {
+                    name
+                    website
+                    logo
+                }
+                venues {
                     name
                     website
                     logo

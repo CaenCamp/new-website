@@ -40,6 +40,23 @@ module.exports = {
                 logo: 'imagile.jpg',
             },
         ],
+        venues: [
+            {
+                name: 'Le Dôme',
+                website: 'http://ledome.info/',
+                logo: 'dome.jpg',
+            },
+            {
+                name: 'Forum Digital',
+                website: 'http://forum-digital.fr/',
+                logo: 'forum-digital.jpg',
+            },
+            {
+                name: 'Hey! coworking',
+                website: 'https://www.hey-coworking.com/',
+                logo: 'hey.jpg',
+            },
+        ],
     },
     plugins: [
         'gatsby-plugin-styled-components',
