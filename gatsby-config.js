@@ -28,6 +28,18 @@ module.exports = {
                 url: 'https://www.meetup.com/fr-FR/CaenCamp/events/rss/',
             },
         ],
+        sponsors: [
+            {
+                name: 'Sii',
+                website: 'http://www.groupe-sii.com/fr',
+                logo: 'sii.jpg',
+            },
+            {
+                name: 'Imagile',
+                website: 'https://www.imagile.fr/',
+                logo: 'imagile.jpg',
+            },
+        ],
     },
     plugins: [
         'gatsby-plugin-styled-components',

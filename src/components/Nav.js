@@ -53,5 +53,8 @@ export default () => (
         <Link to="/devops-caen-camp" activeStyle={activeLinkStyle}>
             les devops
         </Link>
+        <Link to="/sponsors" activeStyle={activeLinkStyle}>
+            les sponsors
+        </Link>
     </Nav>
 );
