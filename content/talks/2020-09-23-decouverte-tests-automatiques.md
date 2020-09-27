@@ -11,7 +11,7 @@ speakers:
     - frederic-leguedois
     - julien-anne
 place: dome
-video:
+video: https://youtu.be/46AYdmshkKw
 picture: cc49.jpg
 published: true
 ---
