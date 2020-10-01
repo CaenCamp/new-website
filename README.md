@@ -8,7 +8,7 @@ Les CaenCamp.s sont une série de rencontres caennaises organisées par, animée
 
 Il existe un site internet des [CaenCamp](http://www.caencamp.fr/), mais il commence sans doute à dater un peu et ne rend pas forcément justice à la richesse des talks qui s'y sont déjà passés.
 
-Ce projet se propose donc de reprendre en partie le site existant, afin de rendre plus facilement accessible l'historique des rencontres et encourager les personnes intéressées à y participer.
+Ce project se propose donc de reprendre en partiele site existant, afin de rendre plus facilement accessible l'historique des rencontres et encourager les personnes intéressées à y participer.
 
 ## Les principaux objectifs de la refonte
 
