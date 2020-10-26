@@ -19,7 +19,8 @@
     "serve": "./node_modules/.bin/gatsby serve",
     "test:watch": "jest --config ./src/jest.config.json --watch",
     "test": "jest --config ./src/jest.config.js",
-    "e2e": "jest --config ./e2e/jest.config.json",
+    "e2e:ci": "npx cypress run --config-file ./cypress/config/ci.json",
+    "e2e": "npx cypress open --config-file ./cypress/config/development.json",
     "storybook": "start-storybook -s ./static -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -61,6 +62,7 @@
     "babel-jest": "25.1.0",
     "babel-loader": "8.0.6",
     "babel-preset-gatsby": "0.2.29",
+    "cypress": "^5.0.0",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
     "eslint": "6.8.0",

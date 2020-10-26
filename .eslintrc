@@ -41,6 +41,7 @@
         "jsx-a11y/href-no-hash": "off"
     },
     "globals": {
-        "graphql": true
+        "graphql": true,
+        "cy": true
     }
 }

@@ -62,10 +62,10 @@ export default ({ data, location }) => {
                 </Helmet>
                 <Content id="talksContent">
                     <SingleColumn>
-                        <TagList>
+                        <TagList className="tagsList">
                             <Tags tags={tags} currentTag={currentTag} />
                         </TagList>
-                        <TalksContainer>
+                        <TalksContainer className="talksContainer">
                             {talks.map(talk => (
                                 <TalkListItem
                                     key={talk.id}

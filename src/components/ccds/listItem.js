@@ -1,5 +1,5 @@
 import Link from 'gatsby-link';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import isBefore from 'date-fns/isBefore';
 
@@ -7,7 +7,7 @@ import Calendar from '../talks/Calendar';
 import MinimalView from '../speakers/MinimalView';
 
 const Item = styled.div`
-    border: 1px solid ${({ theme }) => theme.greyLight};
+    border: 1px solid ${({theme}) => theme.greyLight};
     width: 100%;
     margin: 1rem;
     padding: 1rem;
@@ -36,7 +36,7 @@ const Title = styled.h3`
         margin: 0.8rem 0;
     }
     a {
-        color: ${({ theme }) => theme.black};
+        color: ${({theme}) => theme.black};
     }
 `;
 
@@ -49,7 +49,7 @@ const Speakers = styled.div`
 const Registration = styled.div`
     margin-left: 2rem;
     a {
-        color: ${({ theme }) => theme.blue};
+        color: ${({theme}) => theme.blue};
         text-align: center;
         font-variant: small-caps;
         display: flex;
@@ -80,15 +80,15 @@ export default class ListItem extends Component {
     };
 
     render() {
-        const { edition } = this.props;
+        const {edition} = this.props;
         return (
-            <Item>
+            <Item className="devopsItem">
                 <Calendar date={edition.date} edition={edition.edition} />
                 <Description>
                     {edition.talks.map((talk, index) => (
                         <div
                             key={`devops-talk-${edition.id}-${index}`}
-                            style={{ marginBottom: '3rem' }}
+                            style={{marginBottom: '3rem'}}
                         >
                             <Title>
                                 <Link to={`/devops-caen-camp/${edition.slug}`}>

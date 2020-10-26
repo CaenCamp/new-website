@@ -1,5 +1,5 @@
 import Link from 'gatsby-link';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import isBefore from 'date-fns/isBefore';
 
@@ -8,7 +8,7 @@ import MinimalView from '../speakers/MinimalView';
 import Tags from './Tags';
 
 const Item = styled.div`
-    border: 1px solid ${({ theme }) => theme.greyLight};
+    border: 1px solid ${({theme}) => theme.greyLight};
     width: 100%;
     margin: 1rem;
     padding: 1rem;
@@ -37,7 +37,7 @@ const Title = styled.h3`
         margin: 0.8rem 0;
     }
     a {
-        color: ${({ theme }) => theme.black};
+        color: ${({theme}) => theme.black};
     }
 `;
 
@@ -50,12 +50,12 @@ const TitleLightning = styled.h4`
         margin: 0.8rem 0;
     }
     a {
-        color: ${({ theme }) => theme.black};
+        color: ${({theme}) => theme.black};
     }
 `;
 
 const Resume = styled.p`
-    color: ${({ theme }) => theme.black};
+    color: ${({theme}) => theme.black};
     margin: 1rem 0;
     padding: 0;
     font-style: italic;
@@ -70,7 +70,7 @@ const Speakers = styled.div`
 const Registration = styled.div`
     margin-left: 2rem;
     a {
-        color: ${({ theme }) => theme.blue};
+        color: ${({theme}) => theme.blue};
         text-align: center;
         font-variant: small-caps;
         display: flex;
@@ -94,7 +94,7 @@ const Registration = styled.div`
     }
 `;
 
-const Lightning = ({ currentTag, lightning, talk }) => (
+const Lightning = ({currentTag, lightning, talk}) => (
     <React.Fragment>
         <TitleLightning>
             <i className="fa fa-bolt" aria-hidden="true" />{' '}
@@ -118,9 +118,9 @@ export default class ListItem extends Component {
     };
 
     render() {
-        const { talk, currentTag } = this.props;
+        const {talk, currentTag} = this.props;
         return (
-            <Item>
+            <Item className="talkItem">
                 <Calendar date={talk.date} edition={talk.edition} />
                 <Description>
                     <Title>
