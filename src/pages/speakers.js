@@ -1,11 +1,11 @@
-import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
+import {graphql} from 'gatsby';
+import {Helmet} from 'react-helmet';
 import Link from 'gatsby-link';
 import React from 'react';
 import styled from 'styled-components';
 
-import { Content, SingleColumn } from '../components/Content';
-import { formatSpeakerWithTalksLightningsAndDojos } from '../utils/formatters';
+import {Content, SingleColumn} from '../components/Content';
+import {formatSpeakerWithTalksLightningsAndDojos} from '../utils/formatters';
 import Layout from '../components/layout';
 import {
     SpeakerListItem,
@@ -23,7 +23,7 @@ export const SpeakerContainer = styled.div`
     justify-content: left;
 `;
 
-export default ({ data }) => {
+export default ({data}) => {
     const speakers = data.speakers.edges.map(speaker =>
         formatSpeakerWithTalksLightningsAndDojos(speaker.node),
     );
@@ -64,8 +64,8 @@ export default ({ data }) => {
 export const query = graphql`
     query SpeakersQuery {
         speakers: allMarkdownRemark(
-            sort: { order: ASC, fields: [frontmatter___lastName] }
-            filter: { fileAbsolutePath: { glob: "**/speakers/**" } }
+            sort: {order: ASC, fields: [frontmatter___lastName]}
+            filter: {fileAbsolutePath: {glob: "**/speakers/**"}}
         ) {
             edges {
                 node {

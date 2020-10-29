@@ -2,11 +2,11 @@ import Link from 'gatsby-link';
 import React from 'react';
 import styled from 'styled-components';
 
-import { speakerPropType } from '../../utils/caenCampPropTypes';
+import {speakerPropType} from '../../utils/caenCampPropTypes';
 import Links from './Links';
 
 export const Item = styled.div`
-    border: 1px solid ${({ theme }) => theme.greyLight};
+    border: 1px solid ${({theme}) => theme.greyLight};
     height: 290px;
     width: 190px;
     margin: 1rem 1rem 1rem 0;
@@ -47,11 +47,11 @@ export const Introduction = styled.p`
     font-size: 1rem;
     padding: 0;
     margin: 0.2rem 0 0;
-    color: ${({ theme }) => theme.black};
+    color: ${({theme}) => theme.black};
 `;
 
-export const SpeakerListItem = ({ speaker }) => (
-    <Item>
+export const SpeakerListItem = ({speaker}) => (
+    <Item className="speakerItem">
         <Link to={`/speakers/${speaker.slug}`}>
             <Profile src={`/speakers/${speaker.picture}`} />
             <Name>

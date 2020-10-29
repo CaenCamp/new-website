@@ -2,11 +2,11 @@ import Link from 'gatsby-link';
 import React from 'react';
 import styled from 'styled-components';
 
-import { campPropType } from '../../utils/caenCampPropTypes';
+import {campPropType} from '../../utils/caenCampPropTypes';
 import Date from './date';
 
 const Item = styled.div`
-    border: 1px solid ${({ theme }) => theme.greyLight};
+    border: 1px solid ${({theme}) => theme.greyLight};
     width: 100%;
     margin: 1rem;
     padding: 1rem;
@@ -41,7 +41,7 @@ const Title = styled.h3`
 `;
 
 const Resume = styled.p`
-    color: ${({ theme }) => theme.black};
+    color: ${({theme}) => theme.black};
     margin: 1rem 0;
     padding: 0;
     font-style: italic;
@@ -55,8 +55,8 @@ const Image = styled.img`
     max-height: 8rem;
 `;
 
-export const CampListItem = ({ camp }) => (
-    <Item>
+export const CampListItem = ({camp}) => (
+    <Item className="codingItem">
         <Link to={`/coding-caen-camp/${camp.slug}`}>
             <Image src={`/ccc/${camp.image}`} />
             <Description>

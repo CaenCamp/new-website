@@ -1,8 +1,0 @@
-{
-    "name": "CaenCamp website e2e tests",
-    "collectCoverage": false,
-    "moduleFileExtensions": ["js"],
-    "testPathIgnorePatterns": ["/node_modules/", "/templates/", "/.cache"],
-    "testRegex": "e2e/.*\\.test\\.js$",
-    "verbose": true
-}
