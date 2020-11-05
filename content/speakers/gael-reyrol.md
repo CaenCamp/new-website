@@ -15,7 +15,7 @@ links:
       url: https://gaelreyrol.dev/
 ---
 
-Je m’appelle Gaël Reyrol, j’ai 24 ans, je niaise à Caen et je suis développeur fullstack ainsi que devops, chez [dans ma culotte](https://dansmaculotte.com/).
+Je m’appelle Gaël Reyrol, j’ai 24 ans, je niaise à Caen et je suis développeur fullstack ainsi que devops, chez [dans ma culotte](https://dansmaculotte.com/fr).
 
 La programmation ainsi que l’informatique en général me passionne depuis mes 12, 13 ans en commençant par des serveurs privés World of Warcraft. J’ai intégré l’École 42 à son lancement en 2013.
 
