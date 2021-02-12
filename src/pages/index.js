@@ -13,9 +13,11 @@ import {
 } from '../utils/formatters';
 import TalkListItem from '../components/talks/listItem';
 import { CampListItem } from '../components/cccs/listItem';
+import Hero from '../components/Hero';
 import DevopsListItem from '../components/ccds/listItem';
 import CaenCamp from '../components/CaenCamp';
-import Layout from '../components/layout';
+import Layout, { MaxWidthContent } from '../components/layouts/fullPageLayout';
+import Button from '../components/Button';
 
 const TalksContainer = styled.div`
     display: flex;
@@ -75,50 +77,63 @@ export default ({ data }) => {
                 </Helmet>
                 <Content id="homeContent">
                     <SingleColumn>
-                        <CaenCamp
-                            cccs={data.cccs.edges.length}
-                            dojos={data.dojos.edges.length}
-                            lightnings={data.lightnings.edges.length}
-                            partners="3"
-                            speakers={data.speakers.edges.length}
-                            talks={talks[0].edition}
-                        />
-                        {nextTalk && (
-                            <TalksContainer>
-                                <h2>Prochain talk</h2>
-                                <TalkListItem talk={nextTalk} />
-                            </TalksContainer>
-                        )}
-                        {nextDevops && (
-                            <TalksContainer>
-                                <h2>Prochain CaenCamp Devops</h2>
-                                <DevopsListItem edition={nextDevops} />
-                            </TalksContainer>
-                        )}
-                        {nextCamp && (
-                            <TalksContainer>
-                                <h2>Prochain coding caen camp</h2>
-                                <CampListItem camp={nextCamp} />
-                            </TalksContainer>
-                        )}
-                        {lastTalk && (
-                            <TalksContainer>
-                                <h2>Dernier talk</h2>
-                                <TalkListItem talk={lastTalk} />
-                            </TalksContainer>
-                        )}
-                        {lastDevops && (
-                            <TalksContainer>
-                                <h2>Dernier CaenCamp Devops</h2>
-                                <DevopsListItem edition={lastDevops} />
-                            </TalksContainer>
-                        )}
-                        {lastCamp && (
-                            <TalksContainer>
-                                <h2>Dernier coding caen camp</h2>
-                                <CampListItem camp={lastCamp} />
-                            </TalksContainer>
-                        )}
+                        <Hero>
+                            {nextTalk && (
+                                <TalksContainer>
+                                    <h2>Prochain talk</h2>
+                                    <TalkListItem talk={nextTalk} />
+                                </TalksContainer>
+                            )}
+                            {nextDevops && (
+                                <TalksContainer>
+                                    <h2>Prochain CaenCamp Devops</h2>
+                                    <DevopsListItem edition={nextDevops} />
+                                </TalksContainer>
+                            )}
+                            {nextCamp && (
+                                <TalksContainer>
+                                    <h2>Prochain coding caen camp</h2>
+                                    <CampListItem camp={nextCamp} />
+                                </TalksContainer>
+                            )}
+
+                            {!nextCamp && !nextTalk && !nextDevops && (
+                                <>
+                                    <h2>Toi aussi deviens speaker !</h2>
+                                    <Button to="/call-for-speakers">
+                                        Proposer un sujet de talk
+                                    </Button>
+                                </>
+                            )}
+                        </Hero>
+                        <MaxWidthContent>
+                            <CaenCamp
+                                cccs={data.cccs.edges.length}
+                                dojos={data.dojos.edges.length}
+                                lightnings={data.lightnings.edges.length}
+                                partners="3"
+                                speakers={data.speakers.edges.length}
+                                talks={talks[0].edition}
+                            />
+                            {lastTalk && (
+                                <TalksContainer>
+                                    <h2>Dernier talk</h2>
+                                    <TalkListItem talk={lastTalk} />
+                                </TalksContainer>
+                            )}
+                            {lastDevops && (
+                                <TalksContainer>
+                                    <h2>Dernier CaenCamp Devops</h2>
+                                    <DevopsListItem edition={lastDevops} />
+                                </TalksContainer>
+                            )}
+                            {lastCamp && (
+                                <TalksContainer>
+                                    <h2>Dernier coding caen camp</h2>
+                                    <CampListItem camp={lastCamp} />
+                                </TalksContainer>
+                            )}
+                        </MaxWidthContent>
                     </SingleColumn>
                 </Content>
             </div>
