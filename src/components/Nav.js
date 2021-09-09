@@ -48,7 +48,7 @@ export default () => (
             les talks
         </Link>
         <Link to="/coding-caen-camp" activeStyle={activeLinkStyle}>
-            les codings
+            le coding
         </Link>
         <Link to="/devops-caen-camp" activeStyle={activeLinkStyle}>
             les devops

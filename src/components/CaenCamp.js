@@ -72,41 +72,15 @@ const StyledLink = styled(Link)`
 export default ({ talks, speakers, cccs, lightnings }) => (
     <CaenCampContainer>
         <Overview>
-            <h2>Qu’est-ce que les CaenCamp.s ?</h2>
+            <h2>Qu’est-ce que le CaenCamp ?</h2>
             <p>
-                C'est un collectif de <strong>développeurs caennais</strong>. Ce
-                collectif organise des rencontres, généralement le dernier mardi
-                du mois, avec un <Link to="/talks">sujet</Link> technique lié à
-                notre métier présenté par un <Link to="/speakers">speaker</Link>{' '}
-                de la communauté, parfois précédé par un{' '}
-                <a href="https://medium.com/@ckoster22/why-your-company-should-be-doing-lightning-talks-c84b32e8f82b">
-                    lightning talk
-                </a>
-                .
+                Le CaenCamp est un collectif ouvert à <strong>tous.tes les développeur.euses</strong> du Calvados, que ces personnes soient juniors, séniores, professionnelles, étudiantes ou juste curieuses. 
             </p>
             <p>
-                Mais d'autres rencontres peuvent librement s'organiser sur des
-                thématiques précises comme les{' '}
-                <Link to="/coding-caen-camp">Coding CaenCamp.s</Link> ou les{' '}
-                <Link to="/devops-caen-camp">Devops CaenCamp.s</Link>.
+                Une rencontre, gratuite, est organisée <strong>chaque dernier jeudi du mois</strong> autour de sujets présentés par des membres du collectif souhaitant partager leur expérience. Ces sujets peuvent concerner n'importe quel langage de programmation, voir d'autres sujets que la programmation, du moment qu'ils concernent le monde du développement informatique.
             </p>
             <p>
-                Les CaenCamp.s ne vivent que par{' '}
-                <Link to="/call-for-speakers">
-                    l{"'"}
-                    investissement des membres de sa communauté
-                </Link>{' '}
-                et ne dépendent d'aucune chapelle ni d'aucune entreprise. Pour
-                autant le support des structures caennaises est le bienvenue, et
-                nous tenons particulièrement à remercier le{' '}
-                <a href="http://www.forum-digital.fr/">Forum Digital</a>, le{' '}
-                <a href="http://ledome.info/">Dôme</a> ainsi que{' '}
-                <a href="https://www.hey-coworking.com/">HEY! coworking</a> pour
-                nous permettre d'organiser nos évènements en mettant à notre
-                disposition des lieux pour nous retrouver.
-            </p>
-            <p>
-                Sans forme de structure d'organisation formelle, les CaenCamp.s
+                Sans forme de structure d'organisation formelle, le CaenCamp
                 existent depuis <strong>2012</strong>.
             </p>
         </Overview>
