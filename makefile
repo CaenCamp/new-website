@@ -41,3 +41,6 @@ test-e2e: ## launch test e2e
 	@make build # > /dev/null 2>&1
 	@docker-compose -f docker-compose-test.yml run --rm e2e
 	@docker-compose -f docker-compose-test.yml down
+
+deploy: build ## Deploy static site
+	rsync -avz --delete public/ caencamp:/home/websites/caencamp/www/
