@@ -7,13 +7,9 @@ import 'font-awesome/css/font-awesome.css';
 
 import { Content, SingleColumn } from '../components/Content';
 import {
-    formatGraphContent,
-    formatDevopsWithSpeakers,
     formatTalkWithLightningsAndSpeakers,
 } from '../utils/formatters';
 import TalkListItem from '../components/talks/listItem';
-import { CampListItem } from '../components/cccs/listItem';
-import DevopsListItem from '../components/ccds/listItem';
 import CaenCamp from '../components/CaenCamp';
 import Layout from '../components/layout';
 
@@ -42,28 +38,6 @@ export default ({ data }) => {
         lastTalk = talks[1];
         nextTalk = talks[0];
     }
-    const cccs = data.cccs.edges.map(camp => formatGraphContent(camp.node));
-    let lastCamp = null;
-    let nextCamp = null;
-    if (!isBefore(new Date(), new Date(cccs[0].date))) {
-        lastCamp = cccs[0];
-    } else {
-        lastCamp = cccs[1];
-        nextCamp = cccs[0];
-    }
-
-    const ccds = data.devops.edges.map(camp =>
-        formatDevopsWithSpeakers(camp.node, data.speakers.edges),
-    );
-    let lastDevops = null;
-    let nextDevops = null;
-    if (!isBefore(new Date(), new Date(ccds[0].date))) {
-        lastDevops = ccds[0];
-    } else {
-        lastDevops = ccds[1];
-        nextDevops = ccds[0];
-    }
-
     return (
         <Layout>
             <div>
@@ -76,10 +50,7 @@ export default ({ data }) => {
                 <Content id="homeContent">
                     <SingleColumn>
                         <CaenCamp
-                            cccs={data.cccs.edges.length}
-                            dojos={data.dojos.edges.length}
                             lightnings={data.lightnings.edges.length}
-                            partners="3"
                             speakers={data.speakers.edges.length}
                             talks={talks[0].edition}
                         />
@@ -89,34 +60,10 @@ export default ({ data }) => {
                                 <TalkListItem talk={nextTalk} />
                             </TalksContainer>
                         )}
-                        {nextDevops && (
-                            <TalksContainer>
-                                <h2>Prochain CaenCamp Devops</h2>
-                                <DevopsListItem edition={nextDevops} />
-                            </TalksContainer>
-                        )}
-                        {nextCamp && (
-                            <TalksContainer>
-                                <h2>Prochain coding caen camp</h2>
-                                <CampListItem camp={nextCamp} />
-                            </TalksContainer>
-                        )}
                         {lastTalk && (
                             <TalksContainer>
                                 <h2>Dernier talk</h2>
                                 <TalkListItem talk={lastTalk} />
-                            </TalksContainer>
-                        )}
-                        {lastDevops && (
-                            <TalksContainer>
-                                <h2>Dernier CaenCamp Devops</h2>
-                                <DevopsListItem edition={lastDevops} />
-                            </TalksContainer>
-                        )}
-                        {lastCamp && (
-                            <TalksContainer>
-                                <h2>Dernier coding caen camp</h2>
-                                <CampListItem camp={lastCamp} />
                             </TalksContainer>
                         )}
                     </SingleColumn>

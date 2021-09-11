@@ -41,17 +41,14 @@ export default () => (
         <Link to="/" activeStyle={activeLinkStyle}>
             accueil
         </Link>
-        <Link to="/speakers" activeStyle={activeLinkStyle}>
-            les speakers
-        </Link>
         <Link to="/talks" activeStyle={activeLinkStyle}>
             les talks
         </Link>
+        <Link to="/speakers" activeStyle={activeLinkStyle}>
+            les speakers
+        </Link>
         <Link to="/coding-caen-camp" activeStyle={activeLinkStyle}>
             le coding
-        </Link>
-        <Link to="/devops-caen-camp" activeStyle={activeLinkStyle}>
-            les devops
         </Link>
         <Link to="/sponsors" activeStyle={activeLinkStyle}>
             les sponsors

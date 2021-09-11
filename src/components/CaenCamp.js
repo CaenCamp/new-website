@@ -69,7 +69,7 @@ const StyledLink = styled(Link)`
     }
 `;
 
-export default ({ talks, speakers, cccs, lightnings }) => (
+export default ({ talks, speakers, lightnings }) => (
     <CaenCampContainer>
         <Overview>
             <h2>Qu’est-ce que le CaenCamp ?</h2>
@@ -96,14 +96,6 @@ export default ({ talks, speakers, cccs, lightnings }) => (
             <StyledLink to="/talks">
                 <i className="fa fa-bolt fa-5x" aria-hidden="true" />
                 <span>{lightnings} lightning talks</span>
-            </StyledLink>
-            <StyledLink to="/coding-caen-camp">
-                <i className="fa fa-keyboard-o fa-5x" aria-hidden="true" />
-                <span>{cccs} Coding CaenCamp</span>
-            </StyledLink>
-            <StyledLink to="/devops-caen-camp">
-                <i className="fa fa-server fa-5x" aria-hidden="true" />
-                <span>1 Devops CaenCamp</span>
             </StyledLink>
         </Stats>
     </CaenCampContainer>

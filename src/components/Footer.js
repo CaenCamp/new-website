@@ -33,8 +33,7 @@ export default ({ socialLinks }) => (
     <Footer>
         <StayInTouch links={socialLinks} />
         <CallForSpeakers />
-        <OpenCollective />
         <AboutCode />
-        <Copyright>@caencamp 2018</Copyright>
+        <Copyright>@CaenCamp 2021</Copyright>
     </Footer>
 );
