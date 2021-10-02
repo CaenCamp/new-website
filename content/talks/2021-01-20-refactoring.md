@@ -10,7 +10,7 @@ tags:
 speakers:
     - mathieu-haton
 place: online
-video:
+video: https://youtu.be/sphNUFPtxwQ
 picture: cc51.png
 published: true
 ---
