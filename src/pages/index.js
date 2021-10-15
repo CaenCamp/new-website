@@ -38,6 +38,7 @@ export default ({ data }) => {
         lastTalk = talks[1];
         nextTalk = talks[0];
     }
+    nextTalk = talks[0];
     return (
         <Layout>
             <div>
@@ -58,12 +59,6 @@ export default ({ data }) => {
                             <TalksContainer>
                                 <h2>Prochain talk</h2>
                                 <TalkListItem talk={nextTalk} />
-                            </TalksContainer>
-                        )}
-                        {lastTalk && (
-                            <TalksContainer>
-                                <h2>Dernier talk</h2>
-                                <TalkListItem talk={lastTalk} />
                             </TalksContainer>
                         )}
                     </SingleColumn>

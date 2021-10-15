@@ -6,7 +6,7 @@ resume: "Alternant heureux à Clever Cloud, code en Rust depuis trois ans."
 picture: "emmanuel-bosquet.jpg"
 links:
     - title: twitter
-      url: https://twitter.com/alexisjanvier
+      url: https://twitter.com/EmmanuelBosquet
     - title: github
       url: https://github.com/keksoj
     - title: linkedin
